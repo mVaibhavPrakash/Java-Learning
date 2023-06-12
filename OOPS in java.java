@@ -302,9 +302,9 @@ L6- 25:00 Can interface implement other interfaces?
 			
 			An interface can extend another interface in the same way that a class can extend another class.
 			The extends keyword is used to extend an interface, and the child interface inherits the methods of the parent interface.
-			Ex - interface A {
-   					public void test();
-   					public void test1();
+			Ex- interface A {
+   				   public void test();
+   				   public void test1();
 				}
 				interface B {
 				   public void test();
