@@ -660,3 +660,274 @@ L11-03:09 How OOPs is different than Procedural programming?
 		}
 	}  
 	-> Since, BabyDog is not overriding the eat() method, so eat() method of Dog class is invoked.
+
+	What is Association, Composition and Aggregation in Java?
+	
+	** Association in Java
+	-> Association in java is the relationship that can be established between any two classes. 
+	These relationships can be of four types:
+		1.One-to-One relation
+		2.One-to-many relation
+		3.Many-to-one relation
+		4.Many-to-many relation
+	-> To illustrate, let’s take two classes, Professor class, and Department class. 
+	One professor can only be assigned to work in one department. This forms a one-to-one association between the two classes.
+	One professor can be assigned to work in multiple departments. This is a one-to-many association between the two classes.
+	Multiple professors can be assigned to work in one department. This forms a many-to-one association between the two classes.
+	Multiple professors can be assigned to work in multiple departments. This is the many-to-many association between the two classes.
+
+	-> These associations in java help the objects of one class to communicate with the objects of the other class.
+	
+		So one object will be able to access the data of another object.
+		For example, A professor entity modeled as an object would be able to access/know the names of all the departments he works at. 
+		And a department object can be able to access/know the names/details of all the professors that work in it.
+
+		Functionality/Services of one object can be accessible to another object. 
+		For example, A professor who is trying to enroll in a department can be able to verify whether a department he wants to join has a vacancy. 
+		This service(programmatic method/function) to find whether there’s a departmental vacancy can be provided 
+		by the Department class which the Professor class can access.
+
+	Example to illustrate one-to-many Association between Department class and Professor class:
+	class Professor {
+	 private String name;
+		
+	 Professor(String name)
+	 {
+	   this.name = name;
+	 }
+	 
+	 public String getName()
+	 {
+	   return this.name;
+	 }
+	 
+	}
+	
+	class Department {
+	 private String name;
+	 List<Professor> staff;
+	
+	 Department(String name)
+	 {
+	   this.name = name;
+	 }
+	 
+	 public String getName()
+	 {
+	   return this.name;
+	 }
+	 
+	 public void setStaff(List<Professor> staff)
+	 {
+	   this.staff = staff;
+	 }
+	 
+	 public List<String> getStaff()
+	 {
+	   List<String> professor_names = new ArrayList<String>();
+	   for(Professor prof : this.staff)
+	   {
+	     professor_names.add(prof.getName()); 
+	   }
+	   return professor_names; /
+	 }
+	}
+	
+	class Main {
+	 public static void main(String[] args) {
+	    Professor ak = new Professor("Arun Kumar");
+	    Professor ry = new Professor("Rahul Yadav");
+	    Department cse = new Department("CSE");
+	    List<Professor> staff_cse = new ArrayList<Professor>();
+	    staff_cse.add(ak);
+	    staff_cse.add(ry);
+	    cse.setStaff(staff_cse);
+	    System.out.println("The staff of department " + cse.getName() + " is: " + cse.getStaff());
+	 }
+	}
+	
+	**Forms of Association in Java
+	-> There can be two types of relationships in OOPs:
+
+		IS-A
+		HAS-A
+	1. IS-A (Inheritance)
+	-> A parrot is-a Bird. Here Bird is a base class, and Parrot is a derived class, 
+	Parrot class inherits all the properties and attributes & methods (other than those that are private) 
+	of base class Bird, thus establishing inheritance(IS-A) relation between the two classes.
+		
+	The HAS-A association on the other hand is where the Instance variables of a class refer to objects of another class. 
+	In other words, one class stores the objects of another class as its instance variables thereby establishing 
+	a HAS-A association between the two classes.
+
+	2. HAS-A (association)
+	-> There are two forms of Association that are possible in Java:
+	a) Aggregation
+	b) Composition
+	
+	** Aggregation:
+	-> Aggregation in java is a form of HAS-A relationship between two classes.
+	It is a relatively more loosely coupled relation than composition in that, 
+	although both classes are associated with each other, one can exist without the other independently. 
+	So Aggregation in java is also called a weak association.
+
+	Example: Consider the association between a Country class and a Sportsperson class. Here’s how it is defined
+	Country class is defined with a name and other attributes like size, population, capital, etc, and a list of all the Sportspersons that come from it.
+	A Sportsperson class is defined with a name and other attributes like age, height, weight, etc.
+	
+	The Country object has-a Sportsperson object and not the other way around, meaning the Country object instance variables store the 
+	Sportsperson objects, so the association is one-sided. 
+	Thus Aggregation is also known as a unidirectional association.
+
+	class Country{
+		private String name;
+		List<SportPerson> sportPersons;
+	  	public Country(String name)  //to assign Country name
+	  	{
+	    	this.name = name;
+		  	}
+		public void setSportPersons(List<SportPerson> sportPersons)  //To assign sportspeople
+		{
+		    this.sportPersons = sportPersons;
+		}
+		public List<String> getSportPersons()
+		{
+		  List<SportPerson> listOfSportPersons = this.sportPersons;
+		  List<String> names = new ArrayList<String>();
+		  for(SportPerson sportPerson : listOfSportPersons)
+		  {
+		      names.add(sportPerson.getName());
+		  }
+		  return names;
+		}
+
+		 public String getName()
+		 {
+		  return this.name;
+		 }
+	}
+	//Sportsperson class
+	class SportPerson{
+		private String name;
+		public SportPerson(String name)  //to assign Sportsperson name
+		{
+		  this.name = name;
+		}
+		public String getName()
+		{
+		  return this.name;
+		}
+	}
+	class Main {
+		public static void main(String[] args) {
+		  SportPerson macculum = new SportPerson("Mccullum");
+		  SportPerson dhoni = new SportPerson("Dhoni");
+		  SportPersonk kohli = new SportPerson("Kohli");
+		  Country india = new Country("India");
+		  List<SportPerson> listOfSportPersons = new ArrayList<SportPerson>();
+		  sportPersons.add(macculum);
+		  sportPersons.add(dhoni);
+		  sportPersons.add(kohli);
+		
+		  india.setSportPersons(listOfSportPersons);
+		  System.out.println("The sports people from country " + india.getName() + " are " + india.getSportPersons());
+		
+		}
+	}
+
+	Conclusion: 
+	-> This is the logical idea behind Aggregation, Sportsperson Class objects can exist independently of the Country class object.
+	-> if Country object is to be deleted, it has no effect on the SportPerson and vice-versa.
+	-> Thus Aggregation helps in code reusability. Since classes exist independently, 
+		The same classes can be reused to create associations with other classes, without having to modify an existing class, 
+		or without causing any issues to existing associations.
+
+	** Composition:
+	-> Composition in java is a form of relation that is more tightly coupled. Composition in java is also called Strong association. 
+	This association is also known as Belongs-To association as one class, for all intents and purpose belongs to another class, and exists because of it
+	
+	->Example: The association between College and Student. Below is how it is defined.
+		College class is defined with name and the list of students that are studying in it
+		A Student class is defined with name and the college he is studying at.
+		Here a student must be studying in at least one college if he is to be called Student. If the college class is removed, Student class cannot exist alone logically, 
+			because if a person is not studying in any college then he is not a student.
+	
+	-> Program:
+	class College{
+		private String name;
+		ArrayList<Student> studentList;
+		public College(String name)  //to assign college name
+		{
+		   this.name = name;
+		}
+		public void setStudentList()  //To set Students list
+		{
+		    //Create three Student objects
+		    Student student1 = new Student("Abe");
+		    Student student2 = new Student("lincoln");
+		    Student student3 = new Student("Abraham");
+		    ArrayList<Student> students = new ArrayList<Student>();
+		    students.add(student1);
+		    students.add(student2);
+		    students.add(student3);
+		
+		    this.studentList = students;
+		}
+		public String getName()
+		{
+		  return this.name;
+		}
+		public List<String> getStudentList() //To get students list
+		{
+			List<Student> students = this.studentList;
+			List<String> names = new ArrayList<String>();
+			for(Student student : students)
+			{
+				names.add(student.getName());
+			}
+			return names;
+		}
+	}
+	class Student{
+		private String name;
+		 public Student(String name)  //to assign Student name
+		{
+		  this.name = name;
+		}
+		public String getName()
+		{
+		  return this.name;
+		}
+	}
+	class Main {
+		public static void main(String[] args) {
+		College college1 = new College("MIB");
+		college1.setStudentList();
+		System.out.println("The students studying in " + college1.getName() + " college are " + college1.getStudentList());
+		}
+	}
+
+	Conclusion :
+	-> The method setStudentList is defined, which created three students’ objects inside the College class and assigned them to the college studentList.
+	So here, the Student class objects are created and stored internally in the College class, which creates a tightly bound association between the College and Student classes.
+	Because, if College class is removed, all student objects are removed as well.
+
+	-> All the students are to be part of the class, no student can exist independently. And the result is outputted.
+
+	-> Note here that no single student can exist without a college, but a college can exist without the student. Student is the dependent class.
+
+	Below are the primary differences between the forms of Association, Composition and Aggregation in java:
+
+	Aggregation															Composition
+	------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------
+	Weak Association													Strong Association
+
+	Classes in relation can exist independently							One class is dependent on Another Independent class. The Dependent class cannot exist independently 
+																		in the event of the non-existence of an independent class.
+
+	One class has-a relationship with another class						Once class belongs-to another class
+	
+	Helps with code reusability. Since classes exist independently, 	Code is not that reusable as the association is dependent. Such Associations once  
+	associations can be reassigned or new associations created      	established will create a dependency,and these associations cannot be reassigned or 
+	without any modifications to the existing class.					new associations like aggregation, etc cannot be created without changing the existing class.
+		
