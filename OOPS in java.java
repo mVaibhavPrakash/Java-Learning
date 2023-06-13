@@ -594,3 +594,69 @@ L11-03:09 How OOPs is different than Procedural programming?
 
     -> Procedural language provides less scope of code reuse but object oriented language provides more
     scope of code reuse.
+
+	What is Polymorphism?
+	-> Polymorphism in Java is a concept by which we can perform a single action in different ways.
+	-> There are two types of polymorphism in Java: compile-time polymorphism and runtime polymorphism.
+	We can perform polymorphism in java by method overloading and method overriding. 
+	-> If you overload a static method in Java, it is the example of compile time polymorphism.
+	
+	**Runtime Polymorphism in Java
+	-> Runtime polymorphism or Dynamic Method Dispatch is a process in which a call to an overridden method
+	 is resolved at runtime rather than compile-time.
+	-> In this process, an overridden method is called through the reference variable of a superclass.
+	 The determination of the method to be called is based on the object being referred to by the reference variable.
+
+	**Upcasting
+	-> If the reference variable of Parent class refers to the object of Child class, 
+	it is known as upcasting. For example:
+	class A{} // Parent Class 
+	class B extends A{}  
+	A a=new B();//upcasting  
+
+	**Example of Runtime Polymorphism
+
+	class Bike{  
+  		void run(){System.out.println("running");}  
+	}  
+	class Splendor extends Bike{  
+  		void run(){System.out.println("running safely with 60km");}  
+  
+  		public static void main(String args[]){  
+    		Bike b = new Splendor();//upcasting  
+    		b.run();  
+  		}  
+	}  
+
+	**Java Runtime Polymorphism with Data Member
+	-> Runtime polymorphism can't be achieved by data members as it's not overridden.
+	-> Example :
+		class Bike{  
+ 			int speedlimit=90;  
+		}  
+		class Honda3 extends Bike{  
+ 			int speedlimit=150;  
+  
+ 			public static void main(String args[]){  
+  				Bike obj=new Honda3();  
+  				System.out.println(obj.speedlimit);//90  
+			}  
+		}
+	** Java Runtime Polymorphism with Multilevel Inheritance
+	class Animal{  
+		void eat(){
+			System.out.println("animal is eating...");
+		}  
+	}  
+	class Dog extends Animal{  
+		void eat(){
+			System.out.println("dog is eating...");
+		}  
+	}  
+	class BabyDog1 extends Dog{  
+		public static void main(String args[]){  
+			Animal a=new BabyDog1();  
+			a.eat();  //Dog is eating
+		}
+	}  
+	-> Since, BabyDog is not overriding the eat() method, so eat() method of Dog class is invoked.
