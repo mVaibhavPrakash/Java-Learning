@@ -298,13 +298,16 @@ What is garbage collection?
     ->It is a mechanism of JVM to reclaim heap space from objects which are eligible for garbage collection.
 
 Which objects are eligible for garbage collection?
+
     Any object on the heap which unreachable through a reference from the stack is eligible for garbage collection.
 
 Is programmer responsible to destroy objects?⭐️
+
     No! In java programmer need not to worry for this. Garbage collector destroys the objects which are no longer in use.
     Before calling garbage collector, it is recommended to make the unused object available for garbage collection.
 
 How to make an object available for garbage collection?⭐️
+
     There are 4 ways to do so,
 
     1. Nullifying the reference variable: by doing so the object in heap will be unreachable from the stack.
