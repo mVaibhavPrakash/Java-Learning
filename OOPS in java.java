@@ -595,7 +595,7 @@ L11-03:09 How OOPs is different than Procedural programming?
     -> Procedural language provides less scope of code reuse but object oriented language provides more
     scope of code reuse.
 
-	What is Polymorphism?
+	\**/ What is Polymorphism?
 	-> Polymorphism in Java is a concept by which we can perform a single action in different ways.
 	-> There are two types of polymorphism in Java: compile-time polymorphism and runtime polymorphism.
 	We can perform polymorphism in java by method overloading and method overriding. 
@@ -617,10 +617,14 @@ L11-03:09 How OOPs is different than Procedural programming?
 	**Example of Runtime Polymorphism
 
 	class Bike{  
-  		void run(){System.out.println("running");}  
+  		void run(){
+			System.out.println("running");
+		}  
 	}  
 	class Splendor extends Bike{  
-  		void run(){System.out.println("running safely with 60km");}  
+  		void run(){
+			System.out.println("running safely with 60km");
+		}  
   
   		public static void main(String args[]){  
     		Bike b = new Splendor();//upcasting  
@@ -642,6 +646,7 @@ L11-03:09 How OOPs is different than Procedural programming?
   				System.out.println(obj.speedlimit);//90  
 			}  
 		}
+
 	** Java Runtime Polymorphism with Multilevel Inheritance
 	class Animal{  
 		void eat(){
@@ -661,7 +666,7 @@ L11-03:09 How OOPs is different than Procedural programming?
 	}  
 	-> Since, BabyDog is not overriding the eat() method, so eat() method of Dog class is invoked.
 
-	What is Association, Composition and Aggregation in Java?
+	\**/ What is Association, Composition and Aggregation in Java?
 	
 	** Association in Java
 	-> Association in java is the relationship that can be established between any two classes. 
@@ -679,13 +684,13 @@ L11-03:09 How OOPs is different than Procedural programming?
 	-> These associations in java help the objects of one class to communicate with the objects of the other class.
 	
 		So one object will be able to access the data of another object.
-		For example, A professor entity modeled as an object would be able to access/know the names of all the departments he works at. 
-		And a department object can be able to access/know the names/details of all the professors that work in it.
+		->For example, A professor entity modeled as an object would be able to access/know the names of all the departments he works at. 
+			And a department object can be able to access/know the names/details of all the professors that work in it.
 
 		Functionality/Services of one object can be accessible to another object. 
-		For example, A professor who is trying to enroll in a department can be able to verify whether a department he wants to join has a vacancy. 
-		This service(programmatic method/function) to find whether there’s a departmental vacancy can be provided 
-		by the Department class which the Professor class can access.
+		->For example, A professor who is trying to enroll in a department can be able to verify whether a department he wants to join has a vacancy. 
+			This service(programmatic method/function) to find whether there’s a departmental vacancy can be provided 
+			by the Department class which the Professor class can access.
 
 	Example to illustrate one-to-many Association between Department class and Professor class:
 	class Professor {
@@ -926,7 +931,7 @@ L11-03:09 How OOPs is different than Procedural programming?
 																		in the event of the non-existence of an independent class.
 
 	One class has-a relationship with another class						Once class belongs-to another class
-	
+
 	Helps with code reusability. Since classes exist independently, 	Code is not that reusable as the association is dependent. Such Associations once  
 	associations can be reassigned or new associations created      	established will create a dependency,and these associations cannot be reassigned or 
 	without any modifications to the existing class.					new associations like aggregation, etc cannot be created without changing the existing class.
