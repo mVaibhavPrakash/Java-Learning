@@ -197,13 +197,13 @@ What is Bounded and Unbounded wildcards in Generics ?
 
 Can we have more than one Bound?
 
-  With type parameters we can have more than one bound but with wildCards we can not.
+    With type parameters we can have more than one bound but with wildCards we can not.
 
 What are the restrictions on wildcards?
 
 can we use Type parameters and wildcards as return type?
 
-  yes. But wildcard can not be used as the direct return type.
+    yes. But wildcard can not be used as the direct return type.
 
 How Generics works in Java? What is type erasure?⭐️
 
