@@ -118,7 +118,7 @@ First, any new objects are allocated to the eden space. Both survivor spaces sta
 ![Hotspot JVM](Images/objectallocation.PNG)
 When the eden space fills up, a minor garbage collection is triggered.
 
-![Hotspot JVM](Images/fillingedenspace.PNG)
+![Hotspot JVM](Images/fiilingedenspace.PNG)
 Referenced objects are moved to the first survivor space. Unreferenced objects are deleted when the eden space is cleared.
 
 ![Hotspot JVM](Images/copyingrefspace.PNG)
