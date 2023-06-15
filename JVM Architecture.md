@@ -1,23 +1,25 @@
------JVM----
-
 L1-00:40 What do you mean by Virtual Machine?
+
     A software program that simulates behaviour of a physical machine, which can perform operations
     like any other physical machine. For example,
     -> VMWare is the system based virtual machine
     -> JVM is the Application based virtual machine
 
 L1-01:17 What is JVM?
+
     "Java Virtual Machine"
     Basically JVM provides runtime environment in which Java programs are executed.
     First the java programs get compiled and converted into byte code.
     JVM is responsible for loading Class files and executing that byte code.
 
 -> What makes Java platform independent? Or what you mean by 'write once, run anywhere'?⭐️
+
     JVM converts the byte code to the machine specific code i.e,
     one java program can be executed on any type operating system because of JVM.
     That is why we need different kinds of JVM for different Operating systems.
 
 L1-02:36 Is JVM, a compiler or interpreter ?⭐️
+
     JVM is an interpreter.
 
 L1-02:45 What are JRE, JDK? how these are different from JVM?⭐️
