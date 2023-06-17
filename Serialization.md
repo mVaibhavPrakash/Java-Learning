@@ -4,8 +4,8 @@ What is serialization?⭐️
 	Serialization is a mechanism of converting the state of an object into a byte stream.
 
 what is Deserialization?⭐️
-
-	Deserialization is reverse of serialization.
+  
+  Deserialization is reverse of serialization.
 	The reverse process of creating object from sequence of bytes is called deserialization.
 
 How to make a Java class Serializable?
@@ -13,10 +13,8 @@ How to make a Java class Serializable?
 	By implementing Serializable interface.
 
 How many methods Serializable has? If no method then what is the purpose of Serializable interface?
-
-  It is a marker interface.The main purpose of using marker interface is to tell
-  the compiler that treat differently the  object of the class which implemented marker interface.
-  they are used to indicate something to compiler or JVM.
+  
+  It is a marker interface.The main purpose of using marker interface is to tell the compiler that treat differently the  object of the class which implemented marker interface.they are used to indicate something to compiler or JVM.
 
 Which methods are used during Serialization and DeSerialization process in Java?
 
