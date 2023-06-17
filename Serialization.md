@@ -91,11 +91,9 @@ Can we customize Serialization process in Java?⭐️
 
 What is the need of customized serialization?
 
-  To do any kind of pre or post processing task like encryption and decryption of fields which should be secured.
-  or we can say to recover loss of information because of transient fields.
+  To do any kind of pre or post processing task like encryption and decryption of fields which should be secured. or we can say to recover loss of information because of transient fields.
 
-what if the child of serializable does not implement serializable and we try to serialize or deserialize object
-of that class?
+what if the child of serializable does not implement serializable and we try to serialize or deserialize object of that class?
 
 	All the child of serializable are by default serializable. Its inherited in child.
 
