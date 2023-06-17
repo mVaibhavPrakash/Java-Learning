@@ -1,5 +1,6 @@
 
 What is Java Collection Framework?
+
     A java collection framework is a collection of interfaces and classes which are used to store and
     process data efficiently, as a Collection is something which is used to store Data objects.
 
@@ -16,6 +17,7 @@ What are the basic interfaces of collection framework?
     5. Map
 
 Why Map Interface does not extend Collection interface?
+
     The Map is way different than collection. In Map there are no elements, it has key-value pairs.
     👉🏻 It does not fit into the Group of elements Paradigm.
 
@@ -24,16 +26,19 @@ Why Map Interface does not extend Collection interface?
 What is the difference between Collection and Collections?
 
 Why Collection Interface does not extend Serializable and Cloneable interfaces?
+
     'There is no need to do it!'
     Collection is not supposed to do what Cloneable and Serializable interfaces do.
 
     What they do?
+
     They are just the marker interfaces which are actually empty interfaces.
 
     👉🏻 If Collection Interface implements these interfaces then it will mandate cloning and serialization
     in all implementation, which is less flexible and more restrictive.
 
 When we had Array, Why do we need collection?
+
     We know Array is a group of primitives.. which holds homogeneous data.
     It has also some limitations like, arrays are always fixed in size.
     So to overcome these problems, collection were introduced.
@@ -53,6 +58,7 @@ When we had Array, Why do we need collection?
     But Collections can have any kind of data element. They can be homogeneous or heterogeneous.
 
 when we should use arrays and when collection?
+
     Array are recommended to use if we know the size in advance..
     because Performance-wise Arrays are better to use than Collections.
 
@@ -62,6 +68,7 @@ when we should use arrays and when collection?
     On the other hand, Collections are grow-able or resizable in nature, and it uses memory as per required only.
 
 What is the difference between Array and ArrayList?
+
     The very first difference between Array and ArrayList is,
     Array can contain primitive or Objects whereas ArrayList can only contain Objects.
     next is
@@ -73,6 +80,7 @@ What is the difference between Array and ArrayList?
     And if are working on multidimensional situation, then also using array [][] is way more easy than List<List<>>..
 
 How LinkedList is different from ArrayList?
+
     ArrayList and LinkedList both implement the List interface but there are some differences between them..
 
     ArrayList is an indexed based data structure.. The underlying data structure for ArrayList is a resizable or growable Array.
@@ -99,6 +107,7 @@ How LinkedList is different from ArrayList?
     LinkedList consumes more memory than ArrayList because every node in LinkedList stores reference of previous and next elements..'
 
 What are the different ways to iterate over a list?
+
     To access or to get elements from collection there are many ways present in java.
     1. Loops (classic for loop)
     2. Cursors
@@ -110,6 +119,7 @@ What are the different ways to iterate over a list?
 What is the difference between Iterator and ListIterator and Enumeration?
 
 What are the legacy implementations?
+
     Vector is a legacy class.
     Legacy class: The classes that were already there before introducing collection framework.
 
@@ -132,10 +142,12 @@ What are the legacy implementations?
 What are the similarities and difference between ArrayList and Vector?
 
 Which collection classes provide random access of its elements?
+
     These are the collection classes which provide random access:
         ArrayList, Vector, Stack, HashMap, TreeMap, Hash-table.
 
 What are Stack and Queue? How they are different?
+
     Stack and Queue are used to store data before processing them.
 
     Queue represents an ordered list of objects which is limited to insert elements
@@ -175,6 +187,7 @@ What are Stack and Queue? How they are different?
     So thats the difference between Stack and queue.. Stack is a class and queue is an interface.
 
 How can we sort Collections?
+
     There are some implementations of set and map which are used to store elements in a sorting order.
     -> SortedMap, SortedSet etc. - can be used to get a sorted collection(Map or Set).
 
@@ -185,6 +198,7 @@ How can we sort Collections?
     -> It does not return anything just sorts the collection.
 
 How to make a collection read only?
+
     We can create a read only collection by using unmodifiableCollection method of Collections class.
 
     Collections.unmodifiableCollection(Collection c)
@@ -192,10 +206,12 @@ How to make a collection read only?
     -> if any operation occurs it will throw UnsupportedOperationException.
 
 How can we make a collection thread-safe?
+
     There is a method in Collections class ->
     synchronizedCollection(Collection c) : used to get a synchronized or thread-safe collection.
 
 What is the difference between Set and List?
+
     Both Set and List are used to store objects and provides convenient way to insert,
     remove and retrieve elements and also provides support for iteration.
 
@@ -204,6 +220,7 @@ What is the difference between Set and List?
      2. Order
 
 When should we use List and when to use Set??
+
     👉🏻 If we need to maintain insertion order and we can have duplicates too then we use List.
     👉🏻 If we want a collection of unique objects then we should use Set.
 
@@ -212,6 +229,7 @@ How does HashSet is implemented? How does it use Hashing?
 What are Comparable and Comparator interface? When to use what?
 
 Whats difference between TreeSet and LinkedHashSet and HashSet?
+
     These are the implementations of Set.
 
     Starting with TreeSet, the main feature of TreeSet is Sorting.
@@ -262,18 +280,21 @@ Whats difference between TreeSet and LinkedHashSet and HashSet?
     This was all about differences between them.
 
 Can we add a null element to TreeSet and HashSet?
+
     We can add a null element in HashSet but not in treeSet.
 
     👉🏻 TreeSet uses compareTo() method to compare objects with each other, if any element will be null
     by any chance, it will throw NullPointerException.
 
 What is difference between poll() and remove() methods of Queue?
+
     Both of these methods are used to remove element and returns the head of the queue. The difference is,
 
     -> if the queue is empty and we call the remove() method, then it will throw exception,
     but if we call poll() method, it will return null.
 
 What is the difference between remove() method of Collection and remove() method of Iterator?
+
     Collection.remove() is used for removing object from collection, while not iterating.
 
     -> When we use this remove() method to remove element at the time of iteration then it may throw
@@ -286,16 +307,19 @@ How HashMap works in Java?
 Whats the difference between HashMap and HashTable?
 
 Can we use a Custom object as a key in HashMap? If yes then How?
+
     Yes! we may create custom object key for HashMap.
     -> for that we need to override the equals() and hashcode() method to the Class which we want to use
     as key.
 
 Why it is suggetsed to have immutable objects as keys in hashMap?
+
   //why string is popular hasmap key in java?
     -> if we want to use custom object as key, we need to ensure that the hashcode() of the key of hashMap
     does not change. If it happens then it is impossible to get object value from that key.
 
 What is the contract of equals() and hashCode() method?
+
     👉🏻 If two objects are equal, then they must have the same hashcode.
     👉🏻 if two objects have the same hash code, then they may or may not be equal.
 
@@ -309,12 +333,14 @@ What is the contract of equals() and hashCode() method?
 What is the NavigableMap?
 
 What is the difference between HashMap and HashSet in java?
+
     👉🏻 HashMap is collection of key-value pairs whereas HashSet is an un-ordered collection of unique
     elements!
 
 What are IdentityHashMap and WeakHashMap? How they are different?
 
 When to use HashMap and when to use TreeMap?
+
     👉🏻 HashMap is the best implementation of Map for inserting, deleting, and locating elements.
 
     👉🏻 TreeMap is the better alternative if we need to traverse the keys in a sorted order.
@@ -327,6 +353,7 @@ When to use HashMap and when to use TreeMap?
 //java.util.concurrent v5
 
 What is iterator's fail-fast property?
+
     While iterating over any collection, we cannot perform any modification on elements.
     Whenever we access the next element in collection, Iterator's fail fast property checks for any
     modification in the structure of that collection.'
@@ -336,6 +363,7 @@ What is iterator's fail-fast property?
       ** Except the concurrent collection classes.
 
 What are Concurrent Collection classes? When does ConcurrentModificationException occur?
+
     The Concurrent Package [java.util.concurrent] which introduced in java 1.5,
     contains thread-safe collection classes called Concurrent Collection class:
     -> that allows collections to be modified while iterating.
@@ -350,6 +378,7 @@ What are Concurrent Collection classes? When does ConcurrentModificationExceptio
 What is the difference between fail-fast and fail safe?
 
 What is the difference between Synchronized Collection and concurrent collection?
+
     Synchronized collections classes, like Hashtable and Vector provides thread-safe implementation of Map
     and List.
 
@@ -361,6 +390,7 @@ What is the difference between Synchronized Collection and concurrent collection
 When do we use ConcurrentHashMap in Java?
 
 Can we replace HashTable with ConcurrentHashMap?
+
     Yes, we can replace the HashTable with ConcurrentHashMap.
     -> As the performance of ConcurrentHashMap is better than HashTable.
 

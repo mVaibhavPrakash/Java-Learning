@@ -2,6 +2,7 @@
 Operators:
 
 How many types of operators are present in java?
+
 		There are :
 		1. Arithmetic Operators
 		2. Unary Operators
@@ -13,6 +14,7 @@ How many types of operators are present in java?
 		8. Ternary Operator
 
 What are Arithmetic operators?
+
 		Arithmetic operators are used to perform simple arithmetic operations on primitive data types.
 		These are;
 				+ Addition Operator
@@ -22,6 +24,7 @@ What are Arithmetic operators?
 				% Modulo operator
 
 Can we add two short values to a short type?
+
 		No we cannot. Addition of two short type numbers will be int. If we Try to assign it too short we
 		will get an error.
 
@@ -29,6 +32,7 @@ Can we add two short values to a short type?
 		an int.
 
 What are Unary Binary and Ternary operators?
+
 		Unary Operators are the operators which operate on only one operand.
 		Binary Operators operate on two operands and Ternary operators operate on Three operands.
 
@@ -49,6 +53,7 @@ Explain Unary operators.
 															Post	pre
 
 	-> What is the difference between ++a and a++ under increment operators?
+
 				In post increment the value gets incremented by 1 after computing the result.
 
 		4. Decrement operator -- : decrements value by 1.
@@ -57,6 +62,7 @@ Explain Unary operators.
 		5. Logical not operator ! : which is used for inverting a boolean value.
 
 What is Assignment Operator, and what are Compound Assignment operators?
+
 		Assignment operator: '='
 				This operator is used to assign a value to any variable.
 				It assigns value given on the right hand side of the operator to the left hand side variable.
@@ -69,6 +75,7 @@ What is Assignment Operator, and what are Compound Assignment operators?
 					+=, -=, *=, /=, %=
 
 Which operators are used to compare the primitives with each other?
+
 		Relational Operators.
 		These operators are used compare two operands. like, if an element is equals to another or not. Such operators return boolean result.
 
@@ -95,19 +102,23 @@ Which operators are used to compare the primitives with each other?
 		6. >= (greater than or equal to)
 
 What is the difference between the statement a = a+b and a+=b?
+
 		This compound assignment [+=] implicitly cast the result of addition into the type of variable used
 		to hold the result.
 
 Can we cast an int value into byte variable?
+
 		Yes we can cast.
 				int a = 10;
 				byte b = (byte) a;
 
 What will happen if the value of int is larger than the byte?
+
 		An int is 32 bit long, while byte is 8 bit long. When we cast an int to byte, the higher 24 bits
 		will be lost as byte can only hold value from -128 to 128.
 
 What is difference between equal to (==) and .equals() ?
+
 		The equality operator is a binary operator which is provided by java to compare primitives and objects.
 		Whereas .equals() is a method defined by Object class, which is used to compare objects.
 
@@ -116,10 +127,12 @@ What is difference between equal to (==) and .equals() ?
 		while equals() returns true if both have same value.
 
 What will this return : 3*0.1 == 0.3? True or False?
+
 		Logically this should return true, But This will return false.
 		Because some floating point numbers can not be represented exactly.
 
 What are logical operators?
+
 		Logical operators are used to perform the logical AND and logical OR operations.
 				Operands with logical statements are conditions, which results into true or false.
 
@@ -132,6 +145,7 @@ What are logical operators?
 			 statements.
 
 What are Bitwise Logical Operators in java?
+
 		Bitwise operators are used to perform operations on individual bits of number for example,
 		These are the bitwise operators:
 
@@ -146,11 +160,13 @@ What are Bitwise Logical Operators in java?
 		We can also use Bitwise OR and Bitwise AND operators in conditional statements.
 
 What is difference between Logical OR and Bitwise OR?
+
 		While operating, The logical OR operator does not check second condition if first condition is true.
 		It checks second condition only if first condition is false.
 		Whereas the bitwise OR operator always checks both conditions, whether first condition is true or not.
 
 What is Ternary Operator (Conditional) in java?
+
 		In java, Ternary operator is a shorter version of if-else statement.
 		It has three operands:
 
@@ -168,15 +184,18 @@ Explain Shift operators in java.
 		specified by the right operand.
 
 What is the difference between >>(Bitwise right shift operator) and >>>(bitwise zero fill right shift)?
+
 		This '>>>' is also used to shift the bits towards right. But it is different from the regular '>>',
 		as it does not protect the sign bit of the number, while '>>' protects the sign bit.
 		👉🏻 '>>>' this always fills 0 in the sign bit.
 
 What is the precedence of operators available in java?
+
 		When it comes to hybrid equations, which have more than one or two operators,
 		then the operators which have higher precedence are solved first.
 
 What is instanceof operator?
+
 		This operator is used to check if an object is an instance of a Class or a subclass.
 
 				object instanceof class/subclass/interface
