@@ -1,12 +1,11 @@
 
 What is serialization?⭐️
 
-	Serialization is a mechanism of converting the state of an object into a byte stream.
+  Serialization is a mechanism of converting the state of an object into a byte stream.
 
-what is Deserialization?⭐️
+What is Deserialization?⭐️
   
-  Deserialization is reverse of serialization.
-	The reverse process of creating object from sequence of bytes is called deserialization.
+  Deserialization is reverse of serialization. The reverse process of creating object from sequence of bytes is called deserialization.
 
 How to make a Java class Serializable?
 
@@ -18,12 +17,7 @@ How many methods Serializable has? If no method then what is the purpose of Seri
 
 Which methods are used during Serialization and DeSerialization process in Java?
 
-  we call ObjectOutputStream.writeObject(saveThisobject) and
-  to deserialize that object we call ObjectInputStream.readObject() method.
-  Call to writeObject() method trigger serialization process in java.
-  one important thing to note about readObject() method is that it is used to read bytes
-  from the persistence and to create object from those bytes and its return an Object
-  which needs to be type cast to correct type.
+  we call ObjectOutputStream.writeObject(saveThisobject) and to deserialize that object we call ObjectInputStream.readObject() method. Call to writeObject() method trigger serialization process in java. one important thing to note about readObject() method is that it is used to read bytes from the persistence and to create object from those bytes and its return an Object which needs to be type cast to correct type.
 
 What if we want to serialize or deserialize primitives?
 
