@@ -582,3 +582,105 @@ So that pretty much covers the entire process with the young generation. Eventua
 
 ![Hotspot JVM](Images/gcprocesssummary.PNG)
 
+### GC Implementations
+JVM has five types of GC implementations:
+
+Serial Garbage Collector
+Parallel Garbage Collector
+CMS Garbage Collector
+G1 Garbage Collector
+Z Garbage Collector
+
+#### Serial Garbage Collector
+This is the simplest GC implementation, as it basically works with a single thread. As a result, this GC implementation freezes all application threads when it runs. Therefore, it's not a good idea to use it in multi-threaded applications, like server environments.
+
+However, there was an excellent talk given by Twitter engineers at QCon 2012 about the performance of Serial Garbage Collector, which is a good way to understand this collector better.
+
+The Serial GC is the garbage collector of choice for most applications that don't have small pause time requirements and run on client-style machines. To enable Serial Garbage Collector, we can use the following argument:
+
+``java -XX:+UseSerialGC -jar Application.java``
+
+#### Parallel Garbage Collector 
+It's the default GC of the JVM, and sometimes called Throughput Collectors. Unlike Serial Garbage Collector, it uses multiple threads for managing heap space, but it also freezes other application threads while performing GC.
+
+If we use this GC, we can specify maximum garbage collection threads and pause time, throughput, and footprint (heap size).
+
+The numbers of garbage collector threads can be controlled with the command-line option ``-XX:ParallelGCThreads=<N>.``
+
+The maximum pause time goal (gap [in milliseconds] between two GC) is specified with the command-line option ``-XX:MaxGCPauseMillis=<N>.``
+
+The time spent doing garbage collection versus the time spent outside of garbage collection is called the maximum throughput target and can be specified by the command-line option ``-XX:GCTimeRatio=<N>.``
+
+The maximum heap footprint (the amount of heap memory that a program requires while running) is specified using the option ``-Xmx<N>.``
+
+To enable Parallel Garbage Collector, we can use the following argument:
+
+``java -XX:+UseParallelGC -jar Application.java``
+
+#### CMS Garbage Collector
+The Concurrent Mark Sweep (CMS) implementation uses multiple garbage collector threads for garbage collection. It's designed for applications that prefer shorter garbage collection pauses, and can afford to share processor resources with the garbage collector while the application is running.
+
+Simply put, applications using this type of GC respond slower on average, but don't stop responding to perform garbage collection.
+
+A quick point to note here is that since this GC is concurrent, an invocation of explicit garbage collection, such as using System.gc() while the concurrent process is working, will result in Concurrent Mode Failure / Interruption.
+
+If more than 98% of the total time is spent in CMS garbage collection, and less than 2% of the heap is recovered, then an OutOfMemoryError is thrown by the CMS collector. If necessary, we can disable this feature by adding the option ``-XX:-UseGCOverheadLimit`` to the command line.
+
+This collector also has a mode known as an incremental mode, which is being deprecated in Java SE 8 and may be removed in a future major release.
+
+To enable the CMS Garbage Collector, we can use the following flag:
+
+``java -XX:+UseParNewGC -jar Application.java``
+
+As of Java 9, the CMS garbage collector has been deprecated. Therefore, JVM prints a warning message if we try to use it:
+
+``java -XX:+UseConcMarkSweepGC --version
+Java HotSpot(TM) 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated 
+in version 9.0 and will likely be removed in a future release.
+java version "9.0.1"
+``
+
+Moreover, Java 14 completely dropped the CMS support:
+
+``java -XX:+UseConcMarkSweepGC --version
+OpenJDK 64-Bit Server VM warning: Ignoring option UseConcMarkSweepGC; 
+support was removed in 14.0
+openjdk 14 2020-03-17``
+
+#### G1 Garbage Collector
+G1 (Garbage First) Garbage Collector is designed for applications running on multi-processor machines with large memory space. It's available from the JDK7 Update 4 and in later releases.
+
+G1 collector will replace the CMS collector, since it's more performance efficient.
+
+Unlike other collectors, the G1 collector partitions the heap into a set of equal-sized heap regions, each a contiguous range of virtual memory. When performing garbage collections, G1 shows a concurrent global marking phase (i.e. phase 1, known as Marking) to determine the liveness of objects throughout the heap.
+
+After the mark phase is complete, G1 knows which regions are mostly empty. It collects in these areas first, which usually yields a significant amount of free space (i.e. phase 2, known as Sweeping). That's why this method of garbage collection is called Garbage-First.
+
+To enable the G1 Garbage Collector, we can use the following argument:
+
+``java -XX:+UseG1GC -jar Application.java``
+
+#### Java 8 Changes 
+Java 8u20 has introduced one more JVM parameter for reducing the unnecessary use of memory by creating too many instances of the same String. This optimizes the heap memory by removing duplicate String values to a global single char[] array.
+
+We can enable this parameter by adding -XX:+UseStringDeduplication as a JVM parameter.
+
+#### Z Garbage Collector
+ZGC (Z Garbage Collector) is a scalable low-latency garbage collector that debuted in Java 11 as an experimental option for Linux. JDK 14 introduced  ZGC under the Windows and macOS operating systems. ZGC has obtained the production status from Java 15 onwards.
+
+ZGC performs all expensive work concurrently, without stopping the execution of application threads for more than 10 ms, which makes it suitable for applications that require low latency. It uses load barriers with colored pointers to perform concurrent operations when the threads are running, and they're used to keep track of heap usage.
+
+Reference coloring (colored pointers) is the core concept of ZGC. It means that ZGC uses some bits (metadata bits) of reference to mark the state of the object. It also handles heaps ranging from 8MB to 16TB in size. Furthermore, pause times don't increase with the heap, live-set, or root-set size.
+
+Similar to G1, Z Garbage Collector partitions the heap, except that heap regions can have different sizes.
+
+To enable the Z Garbage Collector, we can use the following argument in JDK versions lower than 15:
+
+``java -XX:+UnlockExperimentalVMOptions -XX:+UseZGC Application.java``
+
+From version 15 on, we don't need experimental mode on:
+
+``java -XX:+UseZGC Application.java``
+
+We should note that ZGC isn't the default Garbage Collector.
+
