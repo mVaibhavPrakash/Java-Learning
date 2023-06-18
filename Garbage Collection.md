@@ -257,3 +257,29 @@ java -XX:+UseZGC Application.java
 ```
 
 We should note that ZGC isn't the default Garbage Collector.
+
+### JVM Arguments
+The table describes the arguments that can be used to instruct the JVM.
+
+| Option | Description |
+| -------- | ------- |
+| -XX:+UseSerialGC	| Serial Garbage Collector |
+| -XX:+UseParallelGC | Parallel Garbage Collector |
+| -XX:+UseConcMarkSweepGC | CMS Garbage Collector |
+| -XX:ParallelCMSThreads= |	CMS Collector - number of threads to use |
+| -XX:+UseG1GC	 | G1 Garbage Collector |
+
+#### Some Other Important Arguments
+| -XX:InitiatingHeapOccupancyPercent=<n> | It controls the heap occupancy after starting the concurrent cycle. Here, n is the percentage of heap space. The default percentage is 45. |
+| -XX:G1MixedGCLiveThresholdPercent=<t> |	If a live object in the OLD region exists with a value greater than or equal to this option, it is excluded from the GC object. Here, t is the time in milliseconds. The default value is 65. |
+| -XX:G1HeapWastePercent=<r> | It specifies how many regions are allowed to be wasted. Here, r is the number of regions. The default value is 10. |
+
+#### GC Optimization Options
+
+| Option | Description |
+| -------- | ------- |
+| -Xms | It specifies the initial heap size. |
+| -Xmx | It maximizes the heap size. |
+| -Xmn | It is used to specify the size of the Young Generation. |
+| -XX:PermSize | Initial Permanent Generation size |
+| -XX:MaxPermSize	| It is used to specify the maximum size of Permanent Generation (PermGen). |
