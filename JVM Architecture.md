@@ -490,7 +490,7 @@ As you can see, fewer and fewer objects remain allocated over time. In fact most
 
 
 
-Garbage collection and Java
+### Garbage collection and Java
 In programming languages like C, developers have to take close care of memory by allocating and deallocating it accordingly.
 
 Java, on the other hand, has its own automatic garbage collection with the idea that most developers don’t have to worry too much about such manual memory tasks, if at all.
@@ -503,7 +503,7 @@ The details of that algorithm is for another article, but what is important is t
 
 In the above diagram, we finally see the terms “young generation”, “old generation”, and “permanent generation”. If it looks scary, don’t worry; the basic concepts are actually pretty intuitive.
 
-The Young Generation
+#### The Young Generation
 From a high level, the young generation is where all new objects start out. Once they’re allocated in the Java code, they go specifically to this subsection called the eden space.
 
 Eventually, the eden space fills up with objects. At this point, a minor garbage collection event occurs.
@@ -526,7 +526,7 @@ Hopefully the above diagram illustrates the switching of the from and to survivo
 
 And honestly, this is pretty into the nitty-gritty. It’s probably more than enough knowledge to just know that essentially all new objects start out in the eden space and then eventually make their way into a survivor space as they survive garbage collection cycles.
 
-The Old Generation
+#### The Old Generation
 The old generation can be thought of as where long-lived objects lie. Basically, if objects reach a certain age threshold after multiple garbage collection events in the young generation, then they can then be moved to the old generation.
 
 When objects get garbage collected from the old generation, a major garbage collection event occurs.
@@ -541,7 +541,7 @@ The old generation is comprised of only one section called the tenured generatio
 
 The events that lead to a clearing of the old generation — again, a major garbage collection event — can vary, and it’s not particularly within the scope of this article to know them. Let’s move on.
 
-The Permanent Generation
+#### The Permanent Generation
 So here’s a big gotcha. The permanent generation is not populated when the old generation’s objects reach a certain threshold and then get moved (promoted) to the permanent generation. Again, it doesn’t work this way!
 
 Rather, the permanent generation is immediately filled up by the JVM with the metadata that represents the applications’ classes and methods at runtime.
@@ -552,45 +552,6 @@ What is a “stop the world” event?
 A “stop the world” event sounds pretty dramatic, but think of it in terms of the Java application being the world.
 
 When there’s a minor garbage collection (remember: for the young generation) or a major garbage collection (for the old generation), then the world stops; in other words, all application threads are completely stopped and have to wait for the garbage collection event to complete.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-JVM Generations
-The information learned from the object allocation behavior can be used to enhance the performance of the JVM. Therefore, the heap is broken up into smaller parts or generations. The heap parts are: Young Generation, Old or Tenured Generation, and Permanent Generation
-
-![Hotspot JVM](Images/hotheapstr.PNG)
-**The Young Generation** is where all new objects are allocated and aged. When the young generation fills up, this causes a minor garbage collection. Minor collections can be optimized assuming a high object mortality rate. A young generation full of dead objects is collected very quickly. Some surviving objects are aged and eventually move to the old generation.
-
-Stop the World Event - All minor garbage collections are "Stop the World" events. This means that all application threads are stopped until the operation completes. Minor garbage collections are always Stop the World events.
-
-**The Old Generation** is used to store long surviving objects. Typically, a threshold is set for young generation object and when that age is met, the object gets moved to the old generation. Eventually the old generation needs to be collected. This event is called a major garbage collection.
-
-Major garbage collection are also Stop the World events. Often a major collection is much slower because it involves all live objects. So for Responsive applications, major garbage collections should be minimized. Also note, that the length of the Stop the World event for a major garbage collection is affected by the kind of garbage collector that is used for the old generation space.
-
-**The Permanent generation** contains metadata required by the JVM to describe the classes and methods used in the application. The permanent generation is populated by the JVM at runtime based on classes in use by the application. In addition, Java SE library classes and methods may be stored here.
-
-Classes may get collected (unloaded) if the JVM finds they are no longer needed and space may be needed for other classes. The permanent generation is included in a full garbage collection.
-
-(2) Tuning GC with JVM 5 - Section 3 Generations
 
  
 ### The Generational Garbage Collection Process
