@@ -36,117 +36,105 @@ class Fan{
 Class members: isOn [Data member], turnOn() turnOff() [Member functions]
 
 L1-09:07 How to create objects?
-		We create objects with the keyword 'new'.
+	We create objects with the keyword 'new'.
 
-			<classname> ref = new <classname>();
+		```<classname> ref = new <classname>();```
 
 L1-13:41 How many classes we can create in a java file?
-		We can create any number of classes in a java file.
-		👉🏻 We can have only one Public Class in a java file.
+	We can create any number of classes in a java file.
+	👉🏻 We can have only one Public Class in a java file.
 
 
 //modifiers
 
 L2-00:22 There are two types of modifiers present in java
-    		1. Access modifiers
-    		2. Non-Access Modifiers.
+    1. Access modifiers
+    2. Non-Access Modifiers.
 
 L2-00:29 What are the Access modifiers in java?
-    		Access Modifiers are the keywords in object oriented language, which set the accessibility of classes
-    		or methods or any members.
-
-    		-> Using public modifier we specify that the Class can be accessed everywhere.
+    Access Modifiers are the keywords in object oriented language, which set the accessibility of classes
+    or methods or any members
+    -> Using public modifier we specify that the Class can be accessed everywhere.
 
 L2-01:13 How many access modifiers are there in java?
-    		1. public
-    		2. private
-    		3. protected
-    		4. <default>
+    1. public
+    2. private
+    3. protected
+    4. <default>
 
-    	public:
-    			 public members can be accessed anywhere, in any class, present in any Package.
-
-    	default:
-    			 When there is no modifier used, then the component has default accessibilities.
-    			 -> Classes with no modifier said to be default classes. The scope for the default classes
-    		   and default Class members is within their Package.
-
-    	private:
-    			 Private members cannot be accessed anywhere except in the Class itself where they are declared.
-
-    	protected:
-    			 Protected members can be accessed within the same Package and in its subclass,
-    			 but it cannot be accessed in the other packages excepts its child classes.
-
-    			 So their scope is limited to its Package and its subclasses.
+	public:
+		public members can be accessed anywhere, in any class, present in any Package	
+	default:
+		When there is no modifier used, then the component has default accessibilities.
+		-> Classes with no modifier said to be default classes. The scope for the default classes
+		and default Class members is within their Package	
+	private:
+		Private members cannot be accessed anywhere except in the Class itself where they are declared	
+	protected:
+		Protected members can be accessed within the same Package and in its subclass,
+		but it cannot be accessed in the other packages excepts its child classes	
+		So their scope is limited to its Package and its subclasses	
 
 L3-00:02 What is a Package?
-    		A Package is a mechanism to keep all classes, interfaces and sub-packages;
-    		which has similar functionalities, at the same place.
-
-    		Packages provides a folder structure to organize our classes-interfaces, so that one can easily
-    		search and use them.
+    A Package is a mechanism to keep all classes, interfaces and sub-packages;
+    which has similar functionalities, at the same place
+    Packages provides a folder structure to organize our classes-interfaces, so that one can easily
+    search and use them.
 
 L3-01:12 How can we access a Class outside its Package?
-    		To use a Class outside its Package we must Import it, using the 'import' keyword.
-    		For example,
-
-    		import com.basicsstrong.oops.<theclassname>;
+    To use a Class outside its Package we must Import it, using the 'import' keyword.
+    For example
+    import com.basicsstrong.oops.<theclassname>;
 
 L3-01:55 Can we declare a Top level Class private?
 
-Answer is no, A Class can be public or defaul
-Inner class: Class defined in a clas
-Inner classes can be declared as private or protected as they are the members of the class.
--> Top level Class can not be private or protected.
+	Answer is no, A Class can be public or defaul
+	Inner class: Class defined in a clas
+	Inner classes can be declared as private or protected as they are the members of the class.
+	-> Top level Class can not be private or protected.
 
 L3-03:10 Which access modifier is the least restrictive and which is the most restrictive?
-Least Restrictive Modifier: Public access modifier
--> It is also known as Universal Access Modifier.
+	Least Restrictive Modifier: Public access modifier
+	-> It is also known as Universal Access Modifier.
 
 Most Restrictive access modifier : private.
 
 L4-00:04 What are non-access modifiers in java?
-    		1. Static :
-    						static keyword is used to specify whether the member is a Class member or an instance member.
-    						If a member is defined static, then it is said to be Class member.
-
-    		2. Final :
-    						final specifier is used to restrict further modifications on any class, any method or any
-    						variable.
-    						-> if any primitive variable is final, we cannot change its value in whole program.
-
-    		3. Abstract :
-    						abstract specifier is used to mark the method or Class to be incomplete and to must be
-    						modified further by other classes.
-
-    		4. Synchronized :
-    						This is used to achieve thread safety in multithreaded environment which is about executing
-    						tasks simultaneously with different threads.
+    1. Static :
+    	If a member is defined static, then it is said to be Class member
+    	static keyword is used to specify whether the member is a Class member or an instance member.
+    2. Final :
+    	final specifier is used to restrict further modifications on any class, any method or any
+    	variable.
+    	-> if any primitive variable is final, we cannot change its value in whole program
+    3. Abstract :
+    	abstract specifier is used to mark the method or Class to be incomplete and to must be
+    	modified further by other classes
+    4. Synchronized :
+    	This is used to achieve thread safety in multithreaded environment which is about executing
+    	tasks simultaneously with different threads.
 
 L4-06:35 Can a Class or a method be abstract and final at the same time?
-    		A Class or a method cannot be abstract or final at the same time.
-    		-> Final restricts the component to be modified further.
-    		-> abstract make component available to be modified further.
+    A Class or a method cannot be abstract or final at the same time.
+    -> Final restricts the component to be modified further.
+    -> abstract make component available to be modified further.
 
 L4-06:56 What do you mean by abstract classes?
-    		A Class with abstract specifier is a abstract class.
-
-    		If a Class is abstract it is not fully implemented and if a method is abstract, it does not have
-    		any implementation.
-
-    		👉🏻 abstract methods can only be defined in abstract class.
+    A Class with abstract specifier is a abstract class
+    If a Class is abstract it is not fully implemented and if a method is abstract, it does not have
+    any implementation
+    👉🏻 abstract methods can only be defined in abstract class.
 
 L4-07:32 what is abstract method?
-    		A method without any implementation or definition is an Abstract method.
-    		Abstract method are declared with the keyword abstract.
+    A method without any implementation or definition is an Abstract method.
+    Abstract method are declared with the keyword abstract.
 
 L4-09:33 Can we define an abstract method in a non-abstract class?
-    		We can not declare any abstract method in a non-abstract class.
+    We can not declare any abstract method in a non-abstract class.
 
 L4-09:50 Can an abstract method be declared as private?
-    		No, abstract method cannot be declared as private, as they are meant to be used in other classes,
-    		so they must be public, or default or protected.
+    No, abstract method cannot be declared as private, as they are meant to be used in other classes,
+    so they must be public, or default or protected.
 
 L4-10:48 Can we instantiate abstract classes?
     		Answer is No, since abstract classes are not fully implemented that is why we cannot create objects
@@ -215,58 +203,55 @@ L6-09:08 What is Constructor?
     				}
 
 L6-09:38 What are the various types of constructors?
-    		There are three types of constructors..
-    		1. default Constructor: if we do not write constructor in program, then this constructor is called automatically.
-    		2. Non-Parameterised Constructor : the constructor with no-arguments
-    		3. Parameterised Constructor : the constructor with arguments is called as parameterised.
+    There are three types of constructors..
+    1. default Constructor: if we do not write constructor in program, then this constructor is called automatically.
+    2. Non-Parameterised Constructor : the constructor with no-arguments
+    3. Parameterised Constructor : the constructor with arguments is called as parameterised
 
 L6:10:56 When constructors are called?
-    		Constructor are called at the time we create objects using 'new' keyword.
-
-    		👉🏻 If we have not written any constructor in program then it takes default constructor automatically
-    		and initialise the data members with their default values.
+    Constructor are called at the time we create objects using 'new' keyword
+    👉🏻 If we have not written any constructor in program then it takes default constructor automatically
+    and initialise the data members with their default values.
 
 L6-16:06 Can a constructor be final or static or abstract?
-    		No, Constructor cannot have any Non-access modifiers.
-
-    		-> The constructor can not be final because once we create anything final, then that method cannot
-    		be modified by other class, and as the Constructor already can not be overridden or modified by any
-    		class, there is no need of final keyword.
-
-    		-> abstract method does not have body. They have only declaration.
-    		But constructor cannot lack a body, thats why constructor can not be abstract.
-
-    		-> static members always belong to class, not to any objects. Therefore constructor cannot be static
-    		as, they are invoked every time we create objects.
+    No, Constructor cannot have any Non-access modifiers
+    -> The constructor can not be final because once we create anything final, then that method cannot
+    be modified by other class, and as the Constructor already can not be overridden or modified by any
+    class, there is no need of final keyword
+    -> abstract method does not have body. They have only declaration.
+    But constructor cannot lack a body, thats why constructor can not be abstract
+    -> static members always belong to class, not to any objects. Therefore constructor cannot be static
+    as, they are invoked every time we create objects.
 
 L6-16:57 Can we have return type or any return statement with constructor?
-    		No, we cannot have these.
+    No, we cannot have these.
 
 L6-17:06 What is the use of private constructor in Java?
-    		private members can only be accessed inside the class, where they are defined. So if we define
-    		constructors private, then we can create objects of the Class only in inside that Class internally.
-    		No other classes can create object for that.
-
-    		-> So using private constructor we can restrict the caller from creating objects.
+    private members can only be accessed inside the class, where they are defined. So if we define
+    constructors private, then we can create objects of the Class only in inside that Class internally.
+    No other classes can create object for that
+    -> So using private constructor we can restrict the caller from creating objects.
 
 L6-19:19 Can a Constructor return any value ?
-    		As we know constructors do not have any return type, So a constructor cannot return any explicit value.
-    		However constructor returns the instance of the Class implicitly.
+    As we know constructors do not have any return type, So a constructor cannot return any explicit value.
+    However constructor returns the instance of the Class implicitly
 
 L6-19:47 Can an Abstract Class have a constructor?
-    		Yes, an abstract Class can have a constructor.
+    Yes, an abstract Class can have a constructor.
 
 L6-20:01 How we define a method in java?
-    		Method is block of code which can be invoked by its name whenever required. In java we write method as,
-
-    		<modifier> <return type> <method name>(datatype args){
-    			//method body
-    		}
+    Method is block of code which can be invoked by its name whenever required. In java we write method as    
+	```java
+	<modifier> <return type> <method name>(datatype args){
+    	//method body
+    }
+	```
 
 L6-20:30 What is Method signature?
-    		The method name and the data type of parameters it have is called as method signature. Like:
-    		Method signature for method is,
-    				findSum(int a ,int b).
+    The method name and the data type of parameters it have is called as method signature. Like:
+    Method signature for method is,
+    	```java 
+		findSum(int a ,int b).```
 
 L6-21:06 Does return type of the method is a part of method signature?
     		No, method signature only contain method name and type of arguments.
@@ -300,61 +285,60 @@ L6-24:15 What are interfaces?
     					void method2();	//this is method declaration.
     				}
 L6- 25:00 Can interface implement other interfaces?
-			An interface can't implement another interface because if any interface is implemented then its methods must be defined 
-			and interface never has the definition of any method.
-			
-			An interface can extend another interface in the same way that a class can extend another class.
-			The extends keyword is used to extend an interface, and the child interface inherits the methods of the parent interface.
-			Ex- interface A {
-   				   public void test();
-   				   public void test1();
-				}
-				interface B {
-				   public void test();
-				   public void test2();
-				}
-				interface C extends A,B {
-				   public void test3();
-				}
-				class D implements C {
-				   public void test() {
-				      System.out.println("Testing
-				");
-				   }
-				   public void test1() {
-				      System.out.println("Testing1
-				");
-				   }
-				   public void test2() {
-				      System.out.println("Testing2
-				");
-				   }
-				   public void test3() {
-				      System.out.println("Testing3");
-				   }
-				}
-				public class Main {
-				   public static void main(String[] args) {
-				      D d=new D();
-				      d.test();
-				      d.test1();
-				      d.test2();
-				      d.test3();
-				   }
-				 }
-			
+An interface can't implement another interface because if any interface is implemented then its methods must be defined 
+and interface never has the definition of any method.
+
+An interface can extend another interface in the same way that a class can extend another class.
+The extends keyword is used to extend an interface, and the child interface inherits the methods of the parent interface.
+Ex- 
+```java
+interface A {
+	public void test();
+	public void test1();
+}
+interface B {
+   public void test();
+   public void test2();
+}
+interface C extends A,B {
+   public void test3();
+}
+class D implements C {
+   public void test() {
+      System.out.println("Testing");
+   }
+   public void test1() {
+      System.out.println("Testing1");
+   }
+   public void test2() {
+      System.out.println("Testing2");
+   }
+   public void test3() {
+      System.out.println("Testing3");
+   }
+}
+public class Main {
+   public static void main(String[] args) {
+      D d=new D();
+      d.test();
+      d.test1();
+      d.test2();
+      d.test3();
+   }
+ }```
+
 L6-25:57 What is a native method?
     		A native method is a method which is implemented in a non-java language, and is targeted for a
     		single machine type.
 
 L6-26:35 Can we define any method as final?
-    		Yes. Methods can be made as final.
-    		-> You can define any method final if you want to restrict others to modify the implementation of the
-    		 method.
+    Yes. Methods can be made as final.
+    -> You can define any method final if you want to restrict others to modify the implementation of the
+     method.
 
 L6-26:53 Can we create object for final class?
-    		Yes, we can definitely create an object for final class.
-    		Example is class:String. It is a final class.
+    Yes, we can definitely create an object for final class.
+    Example is class:String. It is a final class.
 
 //OOPS
 
