@@ -367,7 +367,8 @@ Conclusion
 * Java String Pool allows caching of string and reusability.
 
 ### Java StringBuffer class
-    It provides us with a way to use mutable strings in Java. These strings are safe to be used by multiple threads simultaneously. In order to give this advantage to the StringBuffer, the implementation of this class becomes less time efficient.
+
+It provides us with a way to use mutable strings in Java. These strings are safe to be used by multiple threads simultaneously. In order to give this advantage to the StringBuffer, the implementation of this class becomes less time efficient.
 
 Syntax:
 
@@ -403,7 +404,8 @@ Scaler
 Scaler Articles
 ```
 ### Java StringBuilder class
-    StringBuilder class also provides us with mutable strings but here we lack thread safety. It cannot be used by multiple threads simultaneously. Since StringBuilder class is not applying this extra feature like StringBuffer, it is faster than StringBuffer class.
+
+StringBuilder class also provides us with mutable strings but here we lack thread safety. It cannot be used by multiple threads simultaneously. Since StringBuilder class is not applying this extra feature like StringBuffer, it is faster than StringBuffer class.
 
 Syntax:
 ```java
