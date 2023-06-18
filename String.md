@@ -219,13 +219,13 @@ Let us look at the figure which illustrates the memory allocation used in the pr
 
 #### Garbage Collection
 
-   Before Java 7, the JVM placed the Java String Pool in the PermGen space, which has a fixed size — it can't be expanded at runtime and is not eligible for garbage collection.   
-   The risk of interning Strings in the PermGen (instead of the Heap) is that we can get an OutOfMemory error from the JVM if we intern too many Strings.   
-   From Java 7 onwards, the Java String Pool is stored in the Heap space, which is garbage collected by the JVM. The advantage of this approach is the reduced risk of OutOfMemory error because unreferenced Strings will be removed from the pool, thereby releasing memory.   
+   Before Java 7, the JVM placed the Java String Pool in the **PermGen space**, which has a fixed size — it can't be expanded at runtime and is not eligible for garbage collection.   
+   The risk of interning Strings in the **PermGen** (instead of the Heap) is that we can get an **OutOfMemory** error from the JVM if we intern too many Strings.   
+    From Java 7 onwards, the Java String Pool is stored in the Heap space, which is garbage collected by the JVM**. The advantage of this approach is the reduced risk of OutOfMemory error because unreferenced Strings will be removed from the pool, thereby releasing memory.   
 
 #### Performance and Optimizations
 
-   In Java 6, the only optimization we can perform is increasing the PermGen space during the program invocation with the MaxPermSize JVM option:
+   In Java 6, the only optimization we can perform is increasing the PermGen space during the program invocation with the **MaxPermSize** JVM option:
    ```java
    -XX:MaxPermSize=1G
    ```
@@ -239,7 +239,7 @@ Let us look at the figure which illustrates the memory allocation used in the pr
    -XX:+PrintStringTableStatistics
    ```
 
-   If we want to increase the pool size in terms of buckets, we can use the StringTableSize JVM option:
+   If we want to increase the pool size in terms of buckets, we can use the **StringTableSize** JVM option:
 
    ```java
    -XX:StringTableSize=4901
@@ -250,9 +250,97 @@ Let us look at the figure which illustrates the memory allocation used in the pr
 
 ##   # A Note About Java 9
 
-   Until Java 8, Strings were internally represented as an array of characters – char[], encoded in UTF-16, so that every character uses two bytes of memory.   
-   With Java 9 a new representation is provided, called Compact Strings. This new format will choose the appropriate encoding between char[] and byte[] depending on the stored content.   
-   Since the new String representation will use the UTF-16 encoding only when necessary, the amount of heap memory will be significantly lower, which in turn causes less Garbage Collector overhead on the JVM.   
+   Until Java 8, Strings were internally represented as an array of characters – **char[], encoded in UTF-16, so that every character uses two bytes of memory.**   
+   With Java 9 a new representation is provided, called **Compact Strings**. This new format will choose the appropriate encoding between char[] and byte[] depending on the stored content.   
+   Since the new String representation will use the UTF-16 encoding only when necessary, the amount of heap memory will be significantly lower, which in turn causes less Garbage Collector overhead on the JVM.  
+
+
+* Strings in Java are internally represented by a char[] containing the characters of the String. And, every char is made up of 2 bytes because Java internally uses UTF-16.
+
+For instance, if a String contains a word in the English language, the leading 8 bits will all be 0 for every char, as an ASCII character can be represented using a single byte.
+
+Many characters require 16 bits to represent them but statistically most require only 8 bits — LATIN-1 character representation. So, there is a scope to improve the memory consumption and performance.
+
+What's also important is that Strings typically usually occupy a large proportion of the JVM heap space. And, because of the way they're stored by the JVM, in most cases, a String instance can take up double space it actually needs.
+
+* #### Compressed String – Java 6
+The JDK 6 update 21 Performance Release, introduced a new VM option:
+```java
+-XX:+UseCompressedStrings
+```
+When this option is enabled, Strings are stored as byte[], instead of char[] – thus, saving a lot of memory. However, this option was eventually removed in JDK 7, mainly because it had some unintended performance consequences.
+
+* #### Compact String – Java 9
+Java 9 has brought the concept of compact Strings back.
+
+This means that whenever we create a String if all the characters of the String can be represented using a byte — LATIN-1 representation, a byte array will be used internally, such that one byte is given for one character.
+
+In other cases, if any character requires more than 8-bits to represent it, all the characters are stored using two bytes for each — UTF-16 representation.
+
+So basically, whenever possible, it’ll just use a single byte for each character.
+
+Now, the question is – how will all the String operations work? How will it distinguish between the LATIN-1 and UTF-16 representations?
+
+Well, to tackle this issue, another change is made to the internal implementation of the String. We have a final field coder, that preserves this information.
+
+3.1. String Implementation in Java 9
+Until now, the String was stored as a char[]:
+```java
+private final char[] value;
+```
+From now on, it'll be a byte[]:
+```java
+private final byte[] value;
+```
+The variable coder:
+```java
+private final byte coder;
+```
+Where the coder can be:
+```java
+static final byte LATIN1 = 0;
+static final byte UTF16 = 1;
+```
+Most of the String operations now check the coder and dispatch to the specific implementation:
+```java
+public int indexOf(int ch, int fromIndex) {
+    return isLatin1() 
+      ? StringLatin1.indexOf(value, ch, fromIndex) 
+      : StringUTF16.indexOf(value, ch, fromIndex);
+}  
+
+private boolean isLatin1() {
+    return COMPACT_STRINGS && coder == LATIN1;
+}
+```
+With all the info the JVM needs ready and available, the CompactString VM option is enabled by default. To disable it, we can use:
+```java
++XX:-CompactStrings
+```
+##### How coder Works
+In Java 9 String class implementation, the length is calculated as:
+```java
+public int length() {
+    return value.length >> coder;
+}
+```
+If the String contains only LATIN-1, the value of the coder will be 0 so the length of the String will be the same as the length of the byte array.
+
+In other cases, if the String is in UTF-16 representation, the value of coder will be 1, and hence the length will be half the size of the actual byte array.
+
+Note that all the changes made for Compact String, are in the internal implementation of the String class and are fully transparent for developers using String.
+
+* #### Compact Strings vs. Compressed Strings
+In case of JDK 6 Compressed Strings, a major problem faced was that the String constructor accepted only char[] as an argument. In addition to this, many String operations depended on char[] representation and not a byte array. Due to this, a lot of unpacking had to be done, which affected the performance.
+
+Whereas in case of Compact String, maintaining the extra field “coder” can also increase the overhead. To mitigate the cost of the coder and the unpacking of bytes to chars (in case of UTF-16 representation), some of the methods are intrinsified and the ASM code generated by the JIT compiler has also been improved.
+
+This change resulted in some counter-intuitive results. The LATIN-1 indexOf(String) calls an intrinsic method, whereas the indexOf(char) does not. In case of UTF-16, both of these methods call an intrinsic method. This issue affects only the LATIN-1 String and will be fixed in future releases.
+
+Thus, Compact Strings are better than the Compressed Strings in terms of performance.
+
+To find out how much memory is saved using the Compact Strings, various Java application heap dumps were analyzed. And, while results were heavily dependent on the specific applications, the overall improvements were almost always considerable.
+
 #### FAQs
 
 1. What is meant by String Pool in Java?
