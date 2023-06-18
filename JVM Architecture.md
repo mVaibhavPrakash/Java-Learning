@@ -487,6 +487,93 @@ Here is an example of such data. The Y axis shows the number of bytes allocated 
 ![Hotspot JVM](Images/Byteallocated.gif)
 As you can see, fewer and fewer objects remain allocated over time. In fact most objects have a very short life as shown by the higher values on the left side of the graph.
 
+
+
+
+Garbage collection and Java
+In programming languages like C, developers have to take close care of memory by allocating and deallocating it accordingly.
+
+Java, on the other hand, has its own automatic garbage collection with the idea that most developers don’t have to worry too much about such manual memory tasks, if at all.
+
+In a nutshell, objects in Java are allocated in a heap (also known as heap memory). Java’s garbage collection algorithm then goes through the heap and marks objects that are in use by the JVM and then later on goes back and reclaims the memory of any object that was not marked.
+
+The details of that algorithm is for another article, but what is important is the marking itself and the fact that the heap is allocated into smaller parts, called generations.
+
+![Hotspot JVM](Images/hotheapstr.PNG)
+
+In the above diagram, we finally see the terms “young generation”, “old generation”, and “permanent generation”. If it looks scary, don’t worry; the basic concepts are actually pretty intuitive.
+
+The Young Generation
+From a high level, the young generation is where all new objects start out. Once they’re allocated in the Java code, they go specifically to this subsection called the eden space.
+
+Eventually, the eden space fills up with objects. At this point, a minor garbage collection event occurs.
+
+That’s where the marking algorithm I described earlier comes into play. Some objects (those that are referenced) are marked, and some (those that are unreferenced) are not. Those that had been marked then move onto another subsection of the young generation called S0 of the survivor space (note that the survivor space itself is split into two parts, S0 and S1). Those left unmarked are cleared out by Java’s automatic garbage collection.
+
+![Hotspot JVM](Images/copyingrefspace.PNG)
+
+It stays this way until the eden space fills up again; at this point, a new cycle kicks off. The previous paragraph’s events happen again, but in this cycle, it’s a little different. S0 was populated, and so all marked objects that survive from both the eden space and S0 actually go to the second part of the survivor space called S1. In the below diagram, we see that they’re labeled the from survivor space and the to survivor space, respectively.
+
+![Hotspot JVM](Images/objectaging.PNG)
+
+One very important thing to note that any objects that make it to the survivor space gets tagged with an age counter. The algorithm will check this to see if it meets a threshold to go to the next stage: the old generation. More on that in a later section.
+
+OK, let’s take a deep breath here, because during the next cycle of garbage collection, it gets a little strange, but it’s not too bad. Essentially, when the eden space fills up again and triggers another minor garbage collection, we’re not putting all the marked (referenced) objects into S1; rather, the from and to survivor spaces are switched.
+
+![Hotspot JVM](Images/additionalaging.PNG)
+
+Hopefully the above diagram illustrates the switching of the from and to survivor space. The thing that I personally take away from here is that objects don’t necessary go from S0 to S1 of the survivor space. Really, they just alternate to where they switch to with every minor garbage collection event.
+
+And honestly, this is pretty into the nitty-gritty. It’s probably more than enough knowledge to just know that essentially all new objects start out in the eden space and then eventually make their way into a survivor space as they survive garbage collection cycles.
+
+The Old Generation
+The old generation can be thought of as where long-lived objects lie. Basically, if objects reach a certain age threshold after multiple garbage collection events in the young generation, then they can then be moved to the old generation.
+
+When objects get garbage collected from the old generation, a major garbage collection event occurs.
+
+Let’s see what a promotion from the survivor space of the young generation to the old generation looks like.
+
+![Hotspot JVM](Images/promotion1.PNG)
+
+In the above example, any surviving objects that have hit an age threshold of 8 cycles — and this is just an example, so don’t specifically memorize that number — is moved by the algorithm to the old generation.
+
+The old generation is comprised of only one section called the tenured generation. This is why in conversation or in reading sometimes that the two terms have come to be mostly interchangeable.
+
+The events that lead to a clearing of the old generation — again, a major garbage collection event — can vary, and it’s not particularly within the scope of this article to know them. Let’s move on.
+
+The Permanent Generation
+So here’s a big gotcha. The permanent generation is not populated when the old generation’s objects reach a certain threshold and then get moved (promoted) to the permanent generation. Again, it doesn’t work this way!
+
+Rather, the permanent generation is immediately filled up by the JVM with the metadata that represents the applications’ classes and methods at runtime.
+
+The JVM may sometimes follow certain rules to clean out the permanent generation, and when it does, it’s called a full garbage collection.
+
+What is a “stop the world” event?
+A “stop the world” event sounds pretty dramatic, but think of it in terms of the Java application being the world.
+
+When there’s a minor garbage collection (remember: for the young generation) or a major garbage collection (for the old generation), then the world stops; in other words, all application threads are completely stopped and have to wait for the garbage collection event to complete.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 JVM Generations
 The information learned from the object allocation behavior can be used to enhance the performance of the JVM. Therefore, the heap is broken up into smaller parts or generations. The heap parts are: Young Generation, Old or Tenured Generation, and Permanent Generation
 
