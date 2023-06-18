@@ -816,20 +816,23 @@ a HAS-A association between the two classes.
 * Composition
 
 #### Aggregation:
--> Aggregation in java is a form of HAS-A relationship between two classes.
+
+Aggregation in java is a form of HAS-A relationship between two classes.
 It is a relatively more loosely coupled relation than composition in that, 
 although both classes are associated with each other, one can exist without the other independently. 
 
 So Aggregation in java is also called a weak association.
 
-Example: Consider the association between a Country class and a Sportsperson class. Here’s how it is defined
-Country class is defined with a name and other attributes like size, population, capital, etc, and a list of all the Sportspersons that come from it.
-A Sportsperson class is defined with a name and other attributes like age, height, weight, etc.
+#### Example: 
+Consider the association between a Country class and a Sportsperson class. Here’s how it is defined
 
-The Country object has-a Sportsperson object and not the other way around, meaning the Country object instance variables store the 
-Sportsperson objects, so the association is one-sided. 
+* Country class is defined with a name and other attributes like size, population, capital, etc, and a list of all the Sportspersons that come from it.
+* A Sportsperson class is defined with a name and other attributes like age, height, weight, etc.
 
-Thus Aggregation is also known as a unidirectional association.
+* The Country object has-a Sportsperson object and not the other way around, meaning the Country object instance variables store the 
+* Sportsperson objects, so the association is one-sided. 
+
+* Thus Aggregation is also known as a unidirectional association.
 ```java
 class Country{
 	private String name;
@@ -887,7 +890,7 @@ class Main {
 }
 ```
 
-Conclusion: 
+#### Conclusion: 
 * This is the logical idea behind Aggregation, Sportsperson Class objects can exist independently of the Country class object.
 * if Country object is to be deleted, it has no effect on the SportPerson and vice-versa.
 * Thus Aggregation helps in code reusability. Since classes exist independently, 
@@ -895,16 +898,15 @@ Conclusion:
 	or without causing any issues to existing associations.
 #### Composition:
 
--> Composition in java is a form of relation that is more tightly coupled. Composition in java is also called Strong association. 
+* Composition in java is a form of relation that is more tightly coupled. Composition in java is also called Strong association. 
 This association is also known as Belongs-To association as one class, for all intents and purpose belongs to another class, and exists because of it
 
-->Example: The association between College and Student. Below is how it is defined.
-	College class is defined with name and the list of students that are studying in it
-	A Student class is defined with name and the college he is studying at.
-	Here a student must be studying in at least one college if he is to be called Student. If the college class is removed, Student class cannot exist alone logically, 
-		because if a person is not studying in any college then he is not a student.
+* Example: The association between College and Student. Below is how it is defined.
+	* College class is defined with name and the list of students that are studying in it
+	* A Student class is defined with name and the college he is studying at.
+	* Here a student must be studying in at least one college if he is to be called Student. If the college class is removed, Student class cannot exist alone logically, because if a person is not studying in any college then he is not a student.
 
--> Program:
+**Program:**
 ```java
 class College{
 	private String name;
