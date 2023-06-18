@@ -40,7 +40,7 @@ L1-09:07 How to create objects?
 	
 	We create objects with the keyword 'new'.
 
-		```<classname> ref = new <classname>();```
+	<classname> ref = new <classname>();
 
 L1-13:41 How many classes we can create in a java file?
 	We can create any number of classes in a java file.
@@ -208,14 +208,15 @@ L6-09:08 What is Constructor?
 
     Constructor is a special kind of method which is used to initialise objects.
     The name of constructor is same as of its class
-    		```java
-			class Fan{
-    		    Fan(){
-    		      //this is constructor.
-    		    }
-    		}```
+    	
+		class Fan{
+    		Fan(){
+    		    //this is constructor.
+    		}
+    	}
 
 L6-09:38 What are the various types of constructors?
+
     There are three types of constructors..
     1. default Constructor: if we do not write constructor in program, then this constructor is called automatically.
     2. Non-Parameterised Constructor : the constructor with no-arguments
@@ -261,18 +262,16 @@ L6-19:47 Can an Abstract Class have a constructor?
 L6-20:01 How we define a method in java?
     
 	Method is block of code which can be invoked by its name whenever required. In java we write method as    
-	```java
+	
 	<modifier> <return type> <method name>(datatype args){
     	//method body
     }
-	```
 
 L6-20:30 What is Method signature?
     
 	The method name and the data type of parameters it have is called as method signature. Like:
     Method signature for method is,
-    	```java 
-		findSum(int a ,int b).```
+	findSum(int a ,int b);
 
 L6-21:06 Does return type of the method is a part of method signature?
     
@@ -302,10 +301,10 @@ L6-24:15 What are interfaces?
 	An Interface is actually blueprint of a class, which specifies what a Class must do. (not how)
     i.e, Interfaces does not have implementations of methods, There are only method declarations
     and all the methods are abstract and public by default
-    		interface InterfaceDemo{
-    			void method1();
-    			void method2();	//this is method declaration.
-    		}
+    	interface InterfaceDemo{
+    		void method1();
+    		void method2();	//this is method declaration.
+    	}
 
 L6- 25:00 Can interface implement other interfaces?
 
