@@ -449,6 +449,7 @@ L9-00:39 Can we create constructor in abstract class?
     but as we cannot instantiate an Abstract Class so there is no use of creating it.
 
 L9-00:58 What are the various types of inheritance?
+
     These are the types of inheritance:
 
     1. Single Inheritance: a single Class extends another class.
@@ -464,14 +465,11 @@ L9-00:58 What are the various types of inheritance?
 
     3. Multiple Inheritance: A single Class extends more than 1 class.
 
-    👉🏻 Java does not support this type of inheritance, because if a class extends more than one class then there is chance
-       of ambiguity problem if there is any method present with the same name.
+    👉🏻 Java does not support this type of inheritance, because if a class extends more than one class then there is chance of ambiguity problem if there is any method present with the same name.
+	However we may implement more than one interfaces, so multiple inheritance is possible with
+    interfaces.
 
-       However we may implement more than one interfaces, so multiple inheritance is possible with
-       interfaces.
-
-    4. Hierarchical Inheritance: This is about having single base class, and multiple implementation
-       classes. i.e, single parent multiple Child classes.
+    4. Hierarchical Inheritance: This is about having single base class, and multiple implementation classes. i.e, single parent multiple Child classes.
 
         class A{}
         class B extends A{}
@@ -479,8 +477,7 @@ L9-00:58 What are the various types of inheritance?
 
       Java allows this type of inheritance. We can extend a Class in more than one classes.
 
-    5. Hybrid Inheritance: This is the combination of more than one type of inheritance. It is about having
-       multiple base and multiple implementation classes.
+    5. Hybrid Inheritance: This is the combination of more than one type of inheritance. It is about having multiple base and multiple implementation classes.
 
        👉🏻 It is not supported in java, as we know multiple classes can extend a single Class but a
           single Class can not extend multiple classes.
@@ -493,20 +490,24 @@ L9-00:58 What are the various types of inheritance?
        Instead of doing this, one may merge these two classes. So Cyclic inheritance is not required.
 
 L9-04:02 What is Diamond Problem in inheritance?
+
     In case of multiple inheritance, if a Class extends two classes, then there is chance of ambiguity
     problem. This ambiguity problem is called as Diamond Access problem.
 
 L9-04:32 Why do not we have ambiguity problem with interfaces in case of multiple inheritance?
+
     We can implement more than one interface. So multiple inheritance is possible as interfaces
     only have declaration of methods, not implementation. If two interfaces have methods with same name,
     then these are only multiple declarations of that method. The implementation will be only one.
     So there is no chance of ambiguity problem.
 
 L9-05:12 What happens when we have default methods of same signatures while implementing multiple interfaces?
+
     To resolve default method calls,
     We can explicitly specify which default method is to be used, in implementing class.
 
 L9-07:21 What is the difference between Late Binding and Early Binding?
+
     Binding is the association of a method call with the method definition.
     i.e, when a method is called in java, the program control binds to the memory address where that
     method is defined.
@@ -533,33 +534,39 @@ L9-07:21 What is the difference between Late Binding and Early Binding?
        This reduces the size of base code and makes code more readable.
 
 L10-00:02 Can we overload and override static methods?
+
     Yes we can overload static methods. But we cannot override them. We can define same method with same
     method signature in other Class but that will not be Method overriding.
     Because static method calls are resolved statically, i.e, at compile time.
     And in method overriding, method calls are resolved dynamically.
 
 L10-00:29 What is constructor overloading?
+
     Constructor overloading allows to have more than one constructor inside the class.
     So in Constructor overloading we have multiple constructors with different signatures, i.e,
     with different arguments.
 
 L10-01:45 What is this keyword in java? ⭐️
+
     'this' Keyword in java is a reference variable that refers to the current object.
     It holds the current state and behaviour for an object.
 
 L10-05:47 What is super keyword?
+
     Super keyword is used to refer to Parent Class objects.
     -> When a Derived Class and Base Class has same data members then we may use super keyword to access
        the parent classMembers. same with the methods, we use super keyword with method calls to specify
        that parent Class method will be invoked.
 
 L10-06:24 What is Constructor Chaining in java? ⭐️
+
     In java, we can call one constructor from another. This is called Constructor Chaining.
     We have this and super keywords for that.
     -> this() is used to call another constructor from a constructor.
     -> super() is used to call the constructor of the super class from the constructor of base class.
 
 L11-00:01 Can we overload main method?
+
     Apart from the fact that JVM always looks for the main method to launch the program, main method is
     just like other methods.
     We can overload main method too, But JVM never gonna call that overloaded method.
@@ -577,6 +584,7 @@ L11-01:26 Can a final method be overloaded in java?
     Yes, final method can be overloaded but cannot be overridden.
 
 L11-01:36 What is IS-A and HAS-A relationship?
+
     IS-A relationship implies inheritance. i.e, if class 'A' extends class 'B', then A is-a B.
     For example,
 
@@ -588,10 +596,12 @@ L11-01:36 What is IS-A and HAS-A relationship?
     College has-a Teacher. This is also known as Aggregation.
 
 L11-02:54 What is Stronger association: Composition or Aggregation?
+
     Composition is the stronger association than aggregation. Because in composition, the entities are
     highly dependent on each other.
 
 L11-03:09 How OOPs is different than Procedural programming?
+
     -> Procedural language is based on functions but object oriented language is based on objects.
 
     -> Procedural language exposes the data for that program, whereas Object oriented language
@@ -682,6 +692,7 @@ L11-03:09 How OOPs is different than Procedural programming?
 Data Encapsulation can be defined as wrapping the code or methods(properties) and the related fields or variables together as a single unit,making the code more organized. Encapsulation helps to hide data by preventing unauthorized access to the implementation details.
 
 #### How to implement Encapsulation in Java?
+
 We need to perform two steps to achieve the purpose of Encapsulation in Java.
 
 1. Use the private access modifier to declare all variables/fields of class as private.
@@ -698,273 +709,272 @@ We need to perform two steps to achieve the purpose of Encapsulation in Java.
 
 Abstraction is a technique for hiding implementation details. Encapsulation, on the other hand, is a way of hiding data in a single entity or unit and protecting information from the outside.
 
-	\**/ What is Association, Composition and Aggregation in Java?
+### What is Association, Composition and Aggregation in Java?
+
+#### Association in Java
+
+-> Association in java is the relationship that can be established between any two classes. 
+These relationships can be of four types:
+	1.One-to-One relation
+	2.One-to-many relation
+	3.Many-to-one relation
+	4.Many-to-many relation
+-> To illustrate, let’s take two classes, Professor class, and Department class. 
+* One professor can only be assigned to work in one department. This forms a one-to-one association between the two classes.
+* One professor can be assigned to work in multiple departments. This is a one-to-many association between the two classes.
+* Multiple professors can be assigned to work in one department. This forms a many-to-one association between the two classes.
+* Multiple professors can be assigned to work in multiple departments. This is the many-to-many association between the two classes.
+-> These associations in java help the objects of one class to communicate with the objects of the other class.
+
+	So one object will be able to access the data of another object.
+	->For example, A professor entity modeled as an object would be able to access/know the names of all the departments he works at. 
+		And a department object can be able to access/know the names/details of all the professors that work in it.
+	Functionality/Services of one object can be accessible to another object. 
+	->For example, A professor who is trying to enroll in a department can be able to verify whether a department he wants to join has a vacancy. 
+		This service(programmatic method/function) to find whether there’s a departmental vacancy can be provided 
+		by the Department class which the Professor class can access.
+Example to illustrate one-to-many Association between Department class and Professor class:
+
+```java
+class Professor {
+ private String name;
 	
-	** Association in Java
-	-> Association in java is the relationship that can be established between any two classes. 
-	These relationships can be of four types:
-		1.One-to-One relation
-		2.One-to-many relation
-		3.Many-to-one relation
-		4.Many-to-many relation
-	-> To illustrate, let’s take two classes, Professor class, and Department class. 
-	One professor can only be assigned to work in one department. This forms a one-to-one association between the two classes.
-	One professor can be assigned to work in multiple departments. This is a one-to-many association between the two classes.
-	Multiple professors can be assigned to work in one department. This forms a many-to-one association between the two classes.
-	Multiple professors can be assigned to work in multiple departments. This is the many-to-many association between the two classes.
+ Professor(String name)
+ {
+   this.name = name;
+ }
+ 
+ public String getName()
+ {
+   return this.name;
+ }
+ 
+}
 
-	-> These associations in java help the objects of one class to communicate with the objects of the other class.
+class Department {
+ private String name;
+ List<Professor> staff;
+
+ Department(String name)
+ {
+   this.name = name;
+ }
+ 
+ public String getName()
+ {
+   return this.name;
+ }
+ 
+ public void setStaff(List<Professor> staff)
+ {
+   this.staff = staff;
+ }
+ 
+ public List<String> getStaff()
+ {
+   List<String> professor_names = new ArrayList<String>();
+   for(Professor prof : this.staff)
+   {
+     professor_names.add(prof.getName()); 
+   }
+   return professor_names; /
+ }
+}
+
+class Main {
+ public static void main(String[] args) {
+    Professor ak = new Professor("Arun Kumar");
+    Professor ry = new Professor("Rahul Yadav");
+    Department cse = new Department("CSE");
+    List<Professor> staff_cse = new ArrayList<Professor>();
+    staff_cse.add(ak);
+    staff_cse.add(ry);
+    cse.setStaff(staff_cse);
+    System.out.println("The staff of department " + cse.getName() + " is: " + cse.getStaff());
+ }
+}
+```
+
+#### Forms of Association in Java
+-> There can be two types of relationships in OOPs:
+	IS-A
+	HAS-A
+
+1. IS-A (Inheritance)
+
+-> A parrot is-a Bird. Here Bird is a base class, and Parrot is a derived class, 
+Parrot class inherits all the properties and attributes & methods (other than those that are private) 
+of base class Bird, thus establishing inheritance(IS-A) relation between the two classes.
 	
-		So one object will be able to access the data of another object.
-		->For example, A professor entity modeled as an object would be able to access/know the names of all the departments he works at. 
-			And a department object can be able to access/know the names/details of all the professors that work in it.
+The HAS-A association on the other hand is where the Instance variables of a class refer to objects of another class. 
+In other words, one class stores the objects of another class as its instance variables thereby establishing 
+a HAS-A association between the two classes.
 
-		Functionality/Services of one object can be accessible to another object. 
-		->For example, A professor who is trying to enroll in a department can be able to verify whether a department he wants to join has a vacancy. 
-			This service(programmatic method/function) to find whether there’s a departmental vacancy can be provided 
-			by the Department class which the Professor class can access.
+2. HAS-A (association)
+-> There are two forms of Association that are possible in Java:
+* Aggregation
+* Composition
 
-	Example to illustrate one-to-many Association between Department class and Professor class:
-	class Professor {
-	 private String name;
-		
-	 Professor(String name)
-	 {
-	   this.name = name;
-	 }
-	 
+#### Aggregation:
+-> Aggregation in java is a form of HAS-A relationship between two classes.
+It is a relatively more loosely coupled relation than composition in that, 
+although both classes are associated with each other, one can exist without the other independently. 
+
+So Aggregation in java is also called a weak association.
+
+Example: Consider the association between a Country class and a Sportsperson class. Here’s how it is defined
+Country class is defined with a name and other attributes like size, population, capital, etc, and a list of all the Sportspersons that come from it.
+A Sportsperson class is defined with a name and other attributes like age, height, weight, etc.
+
+The Country object has-a Sportsperson object and not the other way around, meaning the Country object instance variables store the 
+Sportsperson objects, so the association is one-sided. 
+
+Thus Aggregation is also known as a unidirectional association.
+```java
+class Country{
+	private String name;
+	List<SportPerson> sportPersons;
+  	public Country(String name)  //to assign Country name
+  	{
+    	this.name = name;
+	  	}
+	public void setSportPersons(List<SportPerson> sportPersons)  //To assign sportspeople
+	{
+	    this.sportPersons = sportPersons;
+	}
+	public List<String> getSportPersons()
+	{
+	  List<SportPerson> listOfSportPersons = this.sportPersons;
+	  List<String> names = new ArrayList<String>();
+	  for(SportPerson sportPerson : listOfSportPersons)
+	  {
+	      names.add(sportPerson.getName());
+	  }
+	  return names;
+	}
 	 public String getName()
 	 {
-	   return this.name;
+	  return this.name;
 	 }
-	 
+}
+//Sportsperson class
+class SportPerson{
+	private String name;
+	public SportPerson(String name)  //to assign Sportsperson name
+	{
+	  this.name = name;
 	}
+	public String getName()
+	{
+	  return this.name;
+	}
+}
+class Main {
+	public static void main(String[] args) {
+	  SportPerson macculum = new SportPerson("Mccullum");
+	  SportPerson dhoni = new SportPerson("Dhoni");
+	  SportPersonk kohli = new SportPerson("Kohli");
+	  Country india = new Country("India");
+	  List<SportPerson> listOfSportPersons = new ArrayList<SportPerson>();
+	  sportPersons.add(macculum);
+	  sportPersons.add(dhoni);
+	  sportPersons.add(kohli);
 	
-	class Department {
-	 private String name;
-	 List<Professor> staff;
+	  india.setSportPersons(listOfSportPersons);
+	  System.out.println("The sports people from country " + india.getName() + " are " + india.getSportPersons());
 	
-	 Department(String name)
-	 {
+	}
+}
+```
+
+Conclusion: 
+* This is the logical idea behind Aggregation, Sportsperson Class objects can exist independently of the Country class object.
+* if Country object is to be deleted, it has no effect on the SportPerson and vice-versa.
+* Thus Aggregation helps in code reusability. Since classes exist independently, 
+	The same classes can be reused to create associations with other classes, without having to modify an existing class, 
+	or without causing any issues to existing associations.
+#### Composition:
+
+-> Composition in java is a form of relation that is more tightly coupled. Composition in java is also called Strong association. 
+This association is also known as Belongs-To association as one class, for all intents and purpose belongs to another class, and exists because of it
+
+->Example: The association between College and Student. Below is how it is defined.
+	College class is defined with name and the list of students that are studying in it
+	A Student class is defined with name and the college he is studying at.
+	Here a student must be studying in at least one college if he is to be called Student. If the college class is removed, Student class cannot exist alone logically, 
+		because if a person is not studying in any college then he is not a student.
+
+-> Program:
+```java
+class College{
+	private String name;
+	ArrayList<Student> studentList;
+	public College(String name)  //to assign college name
+	{
 	   this.name = name;
-	 }
-	 
-	 public String getName()
-	 {
-	   return this.name;
-	 }
-	 
-	 public void setStaff(List<Professor> staff)
-	 {
-	   this.staff = staff;
-	 }
-	 
-	 public List<String> getStaff()
-	 {
-	   List<String> professor_names = new ArrayList<String>();
-	   for(Professor prof : this.staff)
-	   {
-	     professor_names.add(prof.getName()); 
-	   }
-	   return professor_names; /
-	 }
 	}
+	public void setStudentList()  //To set Students list
+	{
+	    //Create three Student objects
+	    Student student1 = new Student("Abe");
+	    Student student2 = new Student("lincoln");
+	    Student student3 = new Student("Abraham");
+	    ArrayList<Student> students = new ArrayList<Student>();
+	    students.add(student1);
+	    students.add(student2);
+	    students.add(student3);
 	
-	class Main {
-	 public static void main(String[] args) {
-	    Professor ak = new Professor("Arun Kumar");
-	    Professor ry = new Professor("Rahul Yadav");
-	    Department cse = new Department("CSE");
-	    List<Professor> staff_cse = new ArrayList<Professor>();
-	    staff_cse.add(ak);
-	    staff_cse.add(ry);
-	    cse.setStaff(staff_cse);
-	    System.out.println("The staff of department " + cse.getName() + " is: " + cse.getStaff());
-	 }
+	    this.studentList = students;
 	}
+	public String getName()
+	{
+	  return this.name;
+	}
+	public List<String> getStudentList() //To get students list
+	{
+		List<Student> students = this.studentList;
+		List<String> names = new ArrayList<String>();
+		for(Student student : students)
+		{
+			names.add(student.getName());
+		}
+		return names;
+	}
+}
+class Student{
+	private String name;
+	 public Student(String name)  //to assign Student name
+	{
+	  this.name = name;
+	}
+	public String getName()
+	{
+	  return this.name;
+	}
+}
+class Main {
+	public static void main(String[] args) {
+	College college1 = new College("MIB");
+	college1.setStudentList();
+	System.out.println("The students studying in " + college1.getName() + " college are " + college1.getStudentList());
+	}
+}
+```
+#### Conclusion :
+* The method setStudentList is defined, which created three students’ objects inside the College class and assigned them to the college studentList.
+So here, the Student class objects are created and stored internally in the College class, which creates a tightly bound association between the College and Student classes.
+Because, if College class is removed, all student objects are removed as well.
+* All the students are to be part of the class, no student can exist independently. And the result is outputted.
+> Note here that no single student can exist without a college, but a college can exist without the student. Student is the dependent class.
+
+Below are the primary differences between the forms of Association, Composition and Aggregation in java:
+Aggregation															Composition
+------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------
+Weak Association													Strong Association
+Classes in relation can exist independently							One class is dependent on Another Independent class. The Dependent class cannot exist independently 
+																	in the event of the non-existence of an independent class.
+One class has-a relationship with another class						Once class belongs-to another class
+Helps with code reusability. Since classes exist independently, 	Code is not that reusable as the association is dependent. Such Associations once  
+associations can be reassigned or new associations created      	established will create a dependency,and these associations cannot be reassigned or 
+without any modifications to the existing class.					new associations like aggregation, etc cannot be created without changing the existing class.
 	
-	**Forms of Association in Java
-	-> There can be two types of relationships in OOPs:
-
-		IS-A
-		HAS-A
-	1. IS-A (Inheritance)
-	-> A parrot is-a Bird. Here Bird is a base class, and Parrot is a derived class, 
-	Parrot class inherits all the properties and attributes & methods (other than those that are private) 
-	of base class Bird, thus establishing inheritance(IS-A) relation between the two classes.
-		
-	The HAS-A association on the other hand is where the Instance variables of a class refer to objects of another class. 
-	In other words, one class stores the objects of another class as its instance variables thereby establishing 
-	a HAS-A association between the two classes.
-
-	2. HAS-A (association)
-	-> There are two forms of Association that are possible in Java:
-	a) Aggregation
-	b) Composition
-	
-	** Aggregation:
-	-> Aggregation in java is a form of HAS-A relationship between two classes.
-	It is a relatively more loosely coupled relation than composition in that, 
-	although both classes are associated with each other, one can exist without the other independently. 
-	So Aggregation in java is also called a weak association.
-
-	Example: Consider the association between a Country class and a Sportsperson class. Here’s how it is defined
-	Country class is defined with a name and other attributes like size, population, capital, etc, and a list of all the Sportspersons that come from it.
-	A Sportsperson class is defined with a name and other attributes like age, height, weight, etc.
-	
-	The Country object has-a Sportsperson object and not the other way around, meaning the Country object instance variables store the 
-	Sportsperson objects, so the association is one-sided. 
-	Thus Aggregation is also known as a unidirectional association.
-
-	class Country{
-		private String name;
-		List<SportPerson> sportPersons;
-	  	public Country(String name)  //to assign Country name
-	  	{
-	    	this.name = name;
-		  	}
-		public void setSportPersons(List<SportPerson> sportPersons)  //To assign sportspeople
-		{
-		    this.sportPersons = sportPersons;
-		}
-		public List<String> getSportPersons()
-		{
-		  List<SportPerson> listOfSportPersons = this.sportPersons;
-		  List<String> names = new ArrayList<String>();
-		  for(SportPerson sportPerson : listOfSportPersons)
-		  {
-		      names.add(sportPerson.getName());
-		  }
-		  return names;
-		}
-
-		 public String getName()
-		 {
-		  return this.name;
-		 }
-	}
-	//Sportsperson class
-	class SportPerson{
-		private String name;
-		public SportPerson(String name)  //to assign Sportsperson name
-		{
-		  this.name = name;
-		}
-		public String getName()
-		{
-		  return this.name;
-		}
-	}
-	class Main {
-		public static void main(String[] args) {
-		  SportPerson macculum = new SportPerson("Mccullum");
-		  SportPerson dhoni = new SportPerson("Dhoni");
-		  SportPersonk kohli = new SportPerson("Kohli");
-		  Country india = new Country("India");
-		  List<SportPerson> listOfSportPersons = new ArrayList<SportPerson>();
-		  sportPersons.add(macculum);
-		  sportPersons.add(dhoni);
-		  sportPersons.add(kohli);
-		
-		  india.setSportPersons(listOfSportPersons);
-		  System.out.println("The sports people from country " + india.getName() + " are " + india.getSportPersons());
-		
-		}
-	}
-
-	Conclusion: 
-	-> This is the logical idea behind Aggregation, Sportsperson Class objects can exist independently of the Country class object.
-	-> if Country object is to be deleted, it has no effect on the SportPerson and vice-versa.
-	-> Thus Aggregation helps in code reusability. Since classes exist independently, 
-		The same classes can be reused to create associations with other classes, without having to modify an existing class, 
-		or without causing any issues to existing associations.
-
-	** Composition:
-	-> Composition in java is a form of relation that is more tightly coupled. Composition in java is also called Strong association. 
-	This association is also known as Belongs-To association as one class, for all intents and purpose belongs to another class, and exists because of it
-	
-	->Example: The association between College and Student. Below is how it is defined.
-		College class is defined with name and the list of students that are studying in it
-		A Student class is defined with name and the college he is studying at.
-		Here a student must be studying in at least one college if he is to be called Student. If the college class is removed, Student class cannot exist alone logically, 
-			because if a person is not studying in any college then he is not a student.
-	
-	-> Program:
-	class College{
-		private String name;
-		ArrayList<Student> studentList;
-		public College(String name)  //to assign college name
-		{
-		   this.name = name;
-		}
-		public void setStudentList()  //To set Students list
-		{
-		    //Create three Student objects
-		    Student student1 = new Student("Abe");
-		    Student student2 = new Student("lincoln");
-		    Student student3 = new Student("Abraham");
-		    ArrayList<Student> students = new ArrayList<Student>();
-		    students.add(student1);
-		    students.add(student2);
-		    students.add(student3);
-		
-		    this.studentList = students;
-		}
-		public String getName()
-		{
-		  return this.name;
-		}
-		public List<String> getStudentList() //To get students list
-		{
-			List<Student> students = this.studentList;
-			List<String> names = new ArrayList<String>();
-			for(Student student : students)
-			{
-				names.add(student.getName());
-			}
-			return names;
-		}
-	}
-	class Student{
-		private String name;
-		 public Student(String name)  //to assign Student name
-		{
-		  this.name = name;
-		}
-		public String getName()
-		{
-		  return this.name;
-		}
-	}
-	class Main {
-		public static void main(String[] args) {
-		College college1 = new College("MIB");
-		college1.setStudentList();
-		System.out.println("The students studying in " + college1.getName() + " college are " + college1.getStudentList());
-		}
-	}
-
-	Conclusion :
-	-> The method setStudentList is defined, which created three students’ objects inside the College class and assigned them to the college studentList.
-	So here, the Student class objects are created and stored internally in the College class, which creates a tightly bound association between the College and Student classes.
-	Because, if College class is removed, all student objects are removed as well.
-
-	-> All the students are to be part of the class, no student can exist independently. And the result is outputted.
-
-	-> Note here that no single student can exist without a college, but a college can exist without the student. Student is the dependent class.
-
-	Below are the primary differences between the forms of Association, Composition and Aggregation in java:
-
-	Aggregation															Composition
-	------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------
-	Weak Association													Strong Association
-
-	Classes in relation can exist independently							One class is dependent on Another Independent class. The Dependent class cannot exist independently 
-																		in the event of the non-existence of an independent class.
-
-	One class has-a relationship with another class						Once class belongs-to another class
-
-	Helps with code reusability. Since classes exist independently, 	Code is not that reusable as the association is dependent. Such Associations once  
-	associations can be reassigned or new associations created      	established will create a dependency,and these associations cannot be reassigned or 
-	without any modifications to the existing class.					new associations like aggregation, etc cannot be created without changing the existing class.
-		
