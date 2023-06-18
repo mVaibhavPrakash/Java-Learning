@@ -218,43 +218,46 @@ Let us look at the figure which illustrates the memory allocation used in the pr
 >> In order to overcome the drawbacks of the String class, Java provides StringBuffer and StringBuilder classes. They are used to create mutable String objects.
 
 #### Garbage Collection
-Before Java 7, the JVM placed the Java String Pool in the PermGen space, which has a fixed size — it can't be expanded at runtime and is not eligible for garbage collection.
 
-The risk of interning Strings in the PermGen (instead of the Heap) is that we can get an OutOfMemory error from the JVM if we intern too many Strings.
+    Before Java 7, the JVM placed the Java String Pool in the PermGen space, which has a fixed size — it can't be expanded at runtime and is not eligible for garbage collection.
 
-From Java 7 onwards, the Java String Pool is stored in the Heap space, which is garbage collected by the JVM. The advantage of this approach is the reduced risk of OutOfMemory error because unreferenced Strings will be removed from the pool, thereby releasing memory.
+    The risk of interning Strings in the PermGen (instead of the Heap) is that we can get an OutOfMemory error from the JVM if we intern too many Strings.
+
+    From Java 7 onwards, the Java String Pool is stored in the Heap space, which is garbage collected by the JVM. The advantage of this approach is the reduced risk of OutOfMemory error because unreferenced Strings will be removed from the pool, thereby releasing memory.
 
 #### Performance and Optimizations
-In Java 6, the only optimization we can perform is increasing the PermGen space during the program invocation with the MaxPermSize JVM option:
-```java
--XX:MaxPermSize=1G
-```
 
-In Java 7, we have more detailed options to examine and expand/reduce the pool size. Let's see the two options for viewing the pool size:
+    In Java 6, the only optimization we can perform is increasing the PermGen space during the program invocation with the MaxPermSize JVM option:
+    ```java
+    -XX:MaxPermSize=1G
+    ```
 
-```java
--XX:+PrintFlagsFinal
-```
-```java
--XX:+PrintStringTableStatistics
-```
+    In Java 7, we have more detailed options to examine and expand/reduce the pool size. Let's see the two options for viewing the pool size:
 
-If we want to increase the pool size in terms of buckets, we can use the StringTableSize JVM option:
+    ```java
+    -XX:+PrintFlagsFinal
+    ```
+    ```java
+    -XX:+PrintStringTableStatistics
+    ```
 
-```java
--XX:StringTableSize=4901
-```
-Prior to Java 7u40, the default pool size was 1009 buckets but this value was subject to a few changes in more recent Java versions. To be precise, the default pool size from Java 7u40 until Java 11 was 60013 and now it increased to 65536.
+    If we want to increase the pool size in terms of buckets, we can use the StringTableSize JVM option:
 
-Note that increasing the pool size will consume more memory but has the advantage of reducing the time required to insert the Strings into the table.
+    ```java
+    -XX:StringTableSize=4901
+    ```
+    Prior to Java 7u40, the default pool size was 1009 buckets but this value was subject to a few changes in more recent Java versions. To be precise, the default pool size from Java 7u40 until Java 11 was 60013 and now it increased to 65536.
+
+    Note that increasing the pool size will consume more memory but has the advantage of reducing the time required to insert the Strings into the table.
 
 #### A Note About Java 9
-Until Java 8, Strings were internally represented as an array of characters – char[], encoded in UTF-16, so that every character uses two bytes of memory.
 
-With Java 9 a new representation is provided, called Compact Strings. This new format will choose the appropriate encoding between char[] and byte[] depending on the stored content.
-
-Since the new String representation will use the UTF-16 encoding only when necessary, the amount of heap memory will be significantly lower, which in turn causes less Garbage Collector overhead on the JVM.
-
+    Until Java 8, Strings were internally represented as an array of characters – char[], encoded in UTF-16, so that every character uses two bytes of memory.
+    
+    With Java 9 a new representation is provided, called Compact Strings. This new format will choose the appropriate encoding between char[] and byte[] depending on the stored content.
+    
+    Since the new String representation will use the UTF-16 encoding only when necessary, the amount of heap memory will be significantly lower, which in turn causes less Garbage Collector overhead on the JVM.
+    
 #### FAQs
 
 1. What is meant by String Pool in Java?
