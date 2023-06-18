@@ -130,9 +130,9 @@ The following figure illustrates the memory allocation for the same-
 
 ![Hotspot JVM](Images/sp4.webp)
 
-Note:
-
-    For any two strings say str1 and str2, str1.intern() = = str2.intern() will be true if and only if the statement str1.equals(str2) will be true.
+> **Note:**
+>
+>> For any two strings say str1 and str2, str1.intern() = = str2.intern() will be true if and only if the statement str1.equals(str2) will be true.
 
 ##### String Pool in Java Flow Diagram
 Let us understand the working of a string pool with a basic diagram.
@@ -209,14 +209,16 @@ Let us look at the figure which illustrates the memory allocation used in the pr
     Provides reusability: It saves time to create a new string if there is already a string with the same value present in the pool. The old string is reused, and its reference is returned.
 
 > **Note:**
-    >> String interning is a method of storing only one copy of each distinct string value, which must be immutable. In Java, String interning is achieved using the concept of String Pool.
+>
+> String interning is a method of storing only one copy of each distinct string value, which must be immutable. In Java, String interning is achieved using the concept of String Pool.
 
 #### Disadvantages of Using String Objects
     Strings have a constant value, and even if they are altered, instead of reflecting the changes in the original string, a new object is created.
     This causes a lot of objects to be created in the heap and wastes a lot of memory if the user keeps on updating the value of the string.
 
 > **Note:**
-    >> In order to overcome the drawbacks of the String class, Java provides StringBuffer and StringBuilder classes. They are used to create mutable String objects.
+>
+> In order to overcome the drawbacks of the String class, Java provides StringBuffer and StringBuilder classes. They are used to create mutable String objects.
 
 #### FAQs
 
