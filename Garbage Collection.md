@@ -128,11 +128,11 @@ So that pretty much covers the entire process with the young generation. Eventua
 ### GC Implementations
 JVM has five types of GC implementations:
 
-Serial Garbage Collector
-Parallel Garbage Collector
-CMS Garbage Collector
-G1 Garbage Collector
-Z Garbage Collector
+1. Serial Garbage Collector
+2. Parallel Garbage Collector
+3. CMS Garbage Collector
+4. G1 Garbage Collector
+5. Z Garbage Collector
 
 #### Serial Garbage Collector
 This is the simplest GC implementation, as it basically works with a single thread. As a result, this GC implementation freezes all application threads when it runs. Therefore, it's not a good idea to use it in multi-threaded applications, like server environments.
