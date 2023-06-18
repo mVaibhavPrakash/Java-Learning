@@ -598,24 +598,24 @@ However, there was an excellent talk given by Twitter engineers at QCon 2012 abo
 
 The Serial GC is the garbage collector of choice for most applications that don't have small pause time requirements and run on client-style machines. To enable Serial Garbage Collector, we can use the following argument:
 
-``java -XX:+UseSerialGC -jar Application.java``
+```java -XX:+UseSerialGC -jar Application.java```
 
 #### Parallel Garbage Collector 
 It's the default GC of the JVM, and sometimes called Throughput Collectors. Unlike Serial Garbage Collector, it uses multiple threads for managing heap space, but it also freezes other application threads while performing GC.
 
 If we use this GC, we can specify maximum garbage collection threads and pause time, throughput, and footprint (heap size).
 
-The numbers of garbage collector threads can be controlled with the command-line option ``-XX:ParallelGCThreads=<N>.``
+The numbers of garbage collector threads can be controlled with the command-line option ```-XX:ParallelGCThreads=<N>.```
 
-The maximum pause time goal (gap [in milliseconds] between two GC) is specified with the command-line option ``-XX:MaxGCPauseMillis=<N>.``
+The maximum pause time goal (gap [in milliseconds] between two GC) is specified with the command-line option ```-XX:MaxGCPauseMillis=<N>.```
 
-The time spent doing garbage collection versus the time spent outside of garbage collection is called the maximum throughput target and can be specified by the command-line option ``-XX:GCTimeRatio=<N>.``
+The time spent doing garbage collection versus the time spent outside of garbage collection is called the maximum throughput target and can be specified by the command-line option ```-XX:GCTimeRatio=<N>.```
 
-The maximum heap footprint (the amount of heap memory that a program requires while running) is specified using the option ``-Xmx<N>.``
+The maximum heap footprint (the amount of heap memory that a program requires while running) is specified using the option ```-Xmx<N>.```
 
 To enable Parallel Garbage Collector, we can use the following argument:
 
-``java -XX:+UseParallelGC -jar Application.java``
+```java -XX:+UseParallelGC -jar Application.java```
 
 #### CMS Garbage Collector
 The Concurrent Mark Sweep (CMS) implementation uses multiple garbage collector threads for garbage collection. It's designed for applications that prefer shorter garbage collection pauses, and can afford to share processor resources with the garbage collector while the application is running.
@@ -624,21 +624,22 @@ Simply put, applications using this type of GC respond slower on average, but do
 
 A quick point to note here is that since this GC is concurrent, an invocation of explicit garbage collection, such as using System.gc() while the concurrent process is working, will result in Concurrent Mode Failure / Interruption.
 
-If more than 98% of the total time is spent in CMS garbage collection, and less than 2% of the heap is recovered, then an OutOfMemoryError is thrown by the CMS collector. If necessary, we can disable this feature by adding the option ``-XX:-UseGCOverheadLimit`` to the command line.
+If more than 98% of the total time is spent in CMS garbage collection, and less than 2% of the heap is recovered, then an OutOfMemoryError is thrown by the CMS collector. If necessary, we can disable this feature by adding the option ```-XX:-UseGCOverheadLimit``` to the command line.
 
 This collector also has a mode known as an incremental mode, which is being deprecated in Java SE 8 and may be removed in a future major release.
 
 To enable the CMS Garbage Collector, we can use the following flag:
 
-``java -XX:+UseParNewGC -jar Application.java``
+```java -XX:+UseParNewGC -jar Application.java```
 
 As of Java 9, the CMS garbage collector has been deprecated. Therefore, JVM prints a warning message if we try to use it:
 
-``java -XX:+UseConcMarkSweepGC --version
+```java
+java -XX:+UseConcMarkSweepGC --version
 Java HotSpot(TM) 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated 
 in version 9.0 and will likely be removed in a future release.
 java version "9.0.1"
-``
+```
 
 Moreover, Java 14 completely dropped the CMS support:
 
@@ -658,7 +659,7 @@ After the mark phase is complete, G1 knows which regions are mostly empty. It co
 
 To enable the G1 Garbage Collector, we can use the following argument:
 
-``java -XX:+UseG1GC -jar Application.java``
+```java -XX:+UseG1GC -jar Application.java```
 
 #### Java 8 Changes 
 Java 8u20 has introduced one more JVM parameter for reducing the unnecessary use of memory by creating too many instances of the same String. This optimizes the heap memory by removing duplicate String values to a global single char[] array.
@@ -676,11 +677,11 @@ Similar to G1, Z Garbage Collector partitions the heap, except that heap regions
 
 To enable the Z Garbage Collector, we can use the following argument in JDK versions lower than 15:
 
-``java -XX:+UnlockExperimentalVMOptions -XX:+UseZGC Application.java``
+```java -XX:+UnlockExperimentalVMOptions -XX:+UseZGC Application.java```
 
 From version 15 on, we don't need experimental mode on:
 
-``java -XX:+UseZGC Application.java``
+```java -XX:+UseZGC Application.java```
 
 We should note that ZGC isn't the default Garbage Collector.
 
