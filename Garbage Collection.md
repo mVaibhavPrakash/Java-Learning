@@ -135,15 +135,14 @@ JVM has five types of GC implementations:
 5. Z Garbage Collector
 
 #### Serial Garbage Collector
-This is the simplest GC implementation, as it basically works with a single thread. As a result, this GC implementation freezes all application threads when it runs. Therefore, it's not a good idea to use it in multi-threaded applications, like server environments.
-
-However, there was an excellent talk given by Twitter engineers at QCon 2012 about the performance of Serial Garbage Collector, which is a good way to understand this collector better.
+This is the simplest GC implementation.Serial Garbage collector is well-matched for single-threaded environments. It uses the only thread for garbage collection. It works by holding all the threads of an application. It means that threads of the application freeze by the serial garbage collector during the garbage collection process and the process is known as **stop the world event.**
 
 The Serial GC is the garbage collector of choice for most applications that don't have small pause time requirements and run on client-style machines. To enable Serial Garbage Collector, we can use the following argument:
 
 ```java
 java -XX:+UseSerialGC -jar Application.java
 ```
+![Hotspot JVM](Images/gc1.png)
 
 #### Parallel Garbage Collector 
 It's the default GC of the JVM, and sometimes called Throughput Collectors. Unlike Serial Garbage Collector, it uses multiple threads for managing heap space, but it also freezes other application threads while performing GC.
@@ -155,17 +154,26 @@ The numbers of garbage collector threads can be controlled with the command-line
 -XX:ParallelGCThreads=<N>.
 ```
 
-The maximum pause time goal (gap [in milliseconds] between two GC) is specified with the command-line option ```-XX:MaxGCPauseMillis=<N>.```
+The maximum **pause time** goal (gap [in milliseconds] between two GC) is specified with the command-line option ```-XX:MaxGCPauseMillis=<N>.```
 
-The time spent doing garbage collection versus the time spent outside of garbage collection is called the maximum throughput target and can be specified by the command-line option ```-XX:GCTimeRatio=<N>.```
+The time spent doing garbage collection versus the time spent outside of garbage collection is called the **maximum throughput target** and can be specified by the command-line option ```-XX:GCTimeRatio=<N>.```
 
-The maximum heap footprint (the amount of heap memory that a program requires while running) is specified using the option ```-Xmx<N>.```
+The **maximum heap footprint** (the amount of heap memory that a program requires while running) is specified using the option ```-Xmx<N>.```
 
 To enable Parallel Garbage Collector, we can use the following argument:
 
 ```java
 java -XX:+UseParallelGC -jar Application.java
 ```
+![Hotspot JVM](Images/gc2.png)
+
+We can also use the following JVM arguments in parallel GC:
+
+| JVM Argument   | Description |
+| -------- | ------- |
+| -XX:ParallelGCThreads=<n> | It controls the number of GC threads (n).    |
+| -XX:MaxGCPauseMillis=<t> | It specifies the maximum pause time*.    |
+| -XX:GCTimeRatio=<n>   | t specifies the maximum throughput target**.    |
 
 #### CMS Garbage Collector
 The Concurrent Mark Sweep (CMS) implementation uses multiple garbage collector threads for garbage collection. It's designed for applications that prefer shorter garbage collection pauses, and can afford to share processor resources with the garbage collector while the application is running.
@@ -201,6 +209,9 @@ OpenJDK 64-Bit Server VM warning: Ignoring option UseConcMarkSweepGC;
 support was removed in 14.0
 openjdk 14 2020-03-17
 ```
+![Hotspot JVM](Images/gc3.png)
+
+>> Note: The JVM argument -XX:+UseConcMarkSweepGC has been deprecated because a warning message is issued when it is requested on the command line.
 
 #### G1 Garbage Collector
 G1 (Garbage First) Garbage Collector is designed for applications running on multi-processor machines with large memory space. It's available from the JDK7 Update 4 and in later releases.
@@ -216,6 +227,8 @@ To enable the G1 Garbage Collector, we can use the following argument:
 ```java
 java -XX:+UseG1GC -jar Application.java
 ```
+#### Stop the World Event
+It is a situation when the garbage collector performs the garbage collection (GC) and stops all the application's threads until the GC process is not completed. The process is known as Stop the World (STW) events.
 
 #### Java 8 Changes 
 Java 8u20 has introduced one more JVM parameter for reducing the unnecessary use of memory by creating too many instances of the same String. This optimizes the heap memory by removing duplicate String values to a global single char[] array.
