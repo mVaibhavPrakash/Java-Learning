@@ -209,6 +209,7 @@ Let us look at the figure which illustrates the memory allocation used in the pr
     Provides reusability: It saves time to create a new string if there is already a string with the same value present in the pool. The old string is reused, and its reference is returned.
 
 >> Note:
+
     String interning is a method of storing only one copy of each distinct string value, which must be immutable. In Java, String interning is achieved using the concept of String Pool.
 
 #### Disadvantages of Using String Objects
