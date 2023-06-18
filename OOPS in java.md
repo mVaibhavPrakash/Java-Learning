@@ -4,7 +4,8 @@
 //Classes and Objects - Building Blocks of OOP
 
 L1-00:45 What are classes and objects?
-		A Class is a user-defined-blueprint from which objects are created, which has attributes and behavior.
+	
+	A Class is a user-defined-blueprint from which objects are created, which has attributes and behavior.
 
 How can we create class?
 
@@ -36,6 +37,7 @@ class Fan{
 Class members: isOn [Data member], turnOn() turnOff() [Member functions]
 
 L1-09:07 How to create objects?
+	
 	We create objects with the keyword 'new'.
 
 		```<classname> ref = new <classname>();```
@@ -48,16 +50,19 @@ L1-13:41 How many classes we can create in a java file?
 //modifiers
 
 L2-00:22 There are two types of modifiers present in java
-    1. Access modifiers
+    
+	1. Access modifiers
     2. Non-Access Modifiers.
 
 L2-00:29 What are the Access modifiers in java?
-    Access Modifiers are the keywords in object oriented language, which set the accessibility of classes
+    
+	Access Modifiers are the keywords in object oriented language, which set the accessibility of classes
     or methods or any members
     -> Using public modifier we specify that the Class can be accessed everywhere.
 
 L2-01:13 How many access modifiers are there in java?
-    1. public
+    
+	1. public
     2. private
     3. protected
     4. <default>
@@ -76,13 +81,15 @@ L2-01:13 How many access modifiers are there in java?
 		So their scope is limited to its Package and its subclasses	
 
 L3-00:02 What is a Package?
-    A Package is a mechanism to keep all classes, interfaces and sub-packages;
+    
+	A Package is a mechanism to keep all classes, interfaces and sub-packages;
     which has similar functionalities, at the same place
     Packages provides a folder structure to organize our classes-interfaces, so that one can easily
     search and use them.
 
 L3-01:12 How can we access a Class outside its Package?
-    To use a Class outside its Package we must Import it, using the 'import' keyword.
+    
+	To use a Class outside its Package we must Import it, using the 'import' keyword.
     For example
     import com.basicsstrong.oops.<theclassname>;
 
@@ -94,13 +101,15 @@ L3-01:55 Can we declare a Top level Class private?
 	-> Top level Class can not be private or protected.
 
 L3-03:10 Which access modifier is the least restrictive and which is the most restrictive?
+	
 	Least Restrictive Modifier: Public access modifier
 	-> It is also known as Universal Access Modifier.
 
 Most Restrictive access modifier : private.
 
 L4-00:04 What are non-access modifiers in java?
-    1. Static :
+    
+	1. Static :
     	If a member is defined static, then it is said to be Class member
     	static keyword is used to specify whether the member is a Class member or an instance member.
     2. Final :
@@ -115,92 +124,96 @@ L4-00:04 What are non-access modifiers in java?
     	tasks simultaneously with different threads.
 
 L4-06:35 Can a Class or a method be abstract and final at the same time?
-    A Class or a method cannot be abstract or final at the same time.
+    
+	A Class or a method cannot be abstract or final at the same time.
     -> Final restricts the component to be modified further.
     -> abstract make component available to be modified further.
 
 L4-06:56 What do you mean by abstract classes?
-    A Class with abstract specifier is a abstract class
+    
+	A Class with abstract specifier is a abstract class
     If a Class is abstract it is not fully implemented and if a method is abstract, it does not have
     any implementation
     👉🏻 abstract methods can only be defined in abstract class.
 
 L4-07:32 what is abstract method?
-    A method without any implementation or definition is an Abstract method.
+    
+	A method without any implementation or definition is an Abstract method.
     Abstract method are declared with the keyword abstract.
 
 L4-09:33 Can we define an abstract method in a non-abstract class?
-    We can not declare any abstract method in a non-abstract class.
+    
+	We can not declare any abstract method in a non-abstract class.
 
 L4-09:50 Can an abstract method be declared as private?
-    No, abstract method cannot be declared as private, as they are meant to be used in other classes,
+    
+	No, abstract method cannot be declared as private, as they are meant to be used in other classes,
     so they must be public, or default or protected.
 
 L4-10:48 Can we instantiate abstract classes?
-    		Answer is No, since abstract classes are not fully implemented that is why we cannot create objects
-    		of them.
+    
+	Answer is No, since abstract classes are not fully implemented that is why we cannot create objects
+    of them.
 
 L4-11:29 Can we define top level Class as static?
-    		Answer is No. static keyword is applicable only for Class members.
+    
+	Answer is No. static keyword is applicable only for Class members.
 
 L4-12:09 Why do we define members as static?
-    		Static keyword is used to define the members independent from any instance.
-    		Static members exist independently of any instances created for the class.
-
-    		-> Defining a method static will make it independent of any instance.
-    		We can call static members without creating objects, by just invoking them with the classname..
-
+    
+	Static keyword is used to define the members independent from any instance.
+    Static members exist independently of any instances created for the class
+    -> Defining a method static will make it independent of any instance.
+    We can call static members without creating objects, by just invoking them with the classname.
 
 //variables, Methods, Constructors
 
 L6-00:11 What is a variable? What are the types of variable in java?
-    		Variable is a name which is given to a memory shell. It is a container that used to store data values.
-    		Variable can store primitives or objects.
-
-    		Class can have these variables:
-
-    		Instance Variable [defined inside class, outside the method]
-    		Local Variable 		[defined inside a method or block or constructor]
-    		Class Variables		[defined in Class and outside any method but with static keyword]
-
-    		//What is the difference between Instance variables , Local variables and Static variables?
+    		
+	Variable is a name which is given to a memory shell. It is a container that used to store data values.
+	Variable can store primitives or object	
+	Class can have these variable	
+	Instance Variable [defined inside class, outside the method]
+	Local Variable 		[defined inside a method or block or constructor]
+	Class Variables		[defined in Class and outside any method but with static keywor	
+	//What is the difference between Instance variables , Local variables and Static variable	
 
 L6-04:33 When are static variables loaded in memory?
-    		Static variables are loaded in memory at the time of Class loading. i.e,
-    		When we load the class, the static members are the first to load.
+    
+	Static variables are loaded in memory at the time of Class loading. i.e,
+    When we load the class, the static members are the first to load.
 
 L6-04:53 Are there any global variables in java?
-    		Global variables are generally those variable which can be accessed by other part of program or
-    		outside the class.
-
-    		Java does not allow to have global variables. As it does not fit good with the oops.
+    		
+	Global variables are generally those variable which can be accessed by other part of program or
+    outside the class
+    Java does not allow to have global variables. As it does not fit good with the oops.
 
 L6-05:32 Can we declare final variable without initialization?
-    		Yes, we can declare final variable without initialisation.
-    		-> Such variables are called as Blank Final Variable.
-    			 Blank final variable can be static or non-static..
-
-    		This is how we declare blank final variables:
-
-    				private static final int blank_final;
-
-    		We have to initialize  blank final varables before any usage.
-
-    		static blank final variables can be initialised in static block..
+    		
+	Yes, we can declare final variable without initialisation.
+    -> Such variables are called as Blank Final Variable.
+    	 Blank final variable can be static or non-static.
+    This is how we declare blank final variables
+    		private static final int blank_final
+    We have to initialize  blank final varables before any usage
+    static blank final variables can be initialised in static block.
 
 L6-08:45 Can we make the local variable final?
-    		Yes, we can define a local variable as final.
-    		👉🏻 It is the only modifier which is acceptable to a local variable.
+    
+	Yes, we can define a local variable as final.
+    👉🏻 It is the only modifier which is acceptable to a local variable.
 
 L6-09:08 What is Constructor?
-    		Constructor is a special kind of method which is used to initialise objects.
-    		The name of constructor is same as of its class.
 
-    				class Fan{
-    				    Fan(){
-    				      //this is constructor.
-    				    }
-    				}
+    Constructor is a special kind of method which is used to initialise objects.
+    The name of constructor is same as of its class
+    		```java
+			class Fan{
+    		    Fan(){
+    		      //this is constructor.
+    		    }
+    		}```
 
 L6-09:38 What are the various types of constructors?
     There are three types of constructors..
@@ -209,12 +222,14 @@ L6-09:38 What are the various types of constructors?
     3. Parameterised Constructor : the constructor with arguments is called as parameterised
 
 L6:10:56 When constructors are called?
-    Constructor are called at the time we create objects using 'new' keyword
+    
+	Constructor are called at the time we create objects using 'new' keyword
     👉🏻 If we have not written any constructor in program then it takes default constructor automatically
     and initialise the data members with their default values.
 
 L6-16:06 Can a constructor be final or static or abstract?
-    No, Constructor cannot have any Non-access modifiers
+    
+	No, Constructor cannot have any Non-access modifiers
     -> The constructor can not be final because once we create anything final, then that method cannot
     be modified by other class, and as the Constructor already can not be overridden or modified by any
     class, there is no need of final keyword
@@ -224,23 +239,28 @@ L6-16:06 Can a constructor be final or static or abstract?
     as, they are invoked every time we create objects.
 
 L6-16:57 Can we have return type or any return statement with constructor?
-    No, we cannot have these.
+    
+	No, we cannot have these.
 
 L6-17:06 What is the use of private constructor in Java?
-    private members can only be accessed inside the class, where they are defined. So if we define
+    
+	private members can only be accessed inside the class, where they are defined. So if we define
     constructors private, then we can create objects of the Class only in inside that Class internally.
     No other classes can create object for that
     -> So using private constructor we can restrict the caller from creating objects.
 
 L6-19:19 Can a Constructor return any value ?
-    As we know constructors do not have any return type, So a constructor cannot return any explicit value.
+    
+	As we know constructors do not have any return type, So a constructor cannot return any explicit value.
     However constructor returns the instance of the Class implicitly
 
 L6-19:47 Can an Abstract Class have a constructor?
-    Yes, an abstract Class can have a constructor.
+    
+	Yes, an abstract Class can have a constructor.
 
 L6-20:01 How we define a method in java?
-    Method is block of code which can be invoked by its name whenever required. In java we write method as    
+    
+	Method is block of code which can be invoked by its name whenever required. In java we write method as    
 	```java
 	<modifier> <return type> <method name>(datatype args){
     	//method body
@@ -248,48 +268,53 @@ L6-20:01 How we define a method in java?
 	```
 
 L6-20:30 What is Method signature?
-    The method name and the data type of parameters it have is called as method signature. Like:
+    
+	The method name and the data type of parameters it have is called as method signature. Like:
     Method signature for method is,
     	```java 
 		findSum(int a ,int b).```
 
 L6-21:06 Does return type of the method is a part of method signature?
-    		No, method signature only contain method name and type of arguments.
+    
+	No, method signature only contain method name and type of arguments.
 
 L6-22:02 What are Static methods?
-    		We use static keyword to define static methods. Static methods are used to access static members.
-
-    			Public static int get(){
-    			}
-
-    		-> To call static method:
-    		 				Addition.get();
+    		
+	We use static keyword to define static methods. Static methods are used to access static members
+    	Public static int get(){
+    	
+    -> To call static method:
+     				Addition.get();
 
 L6-22:22 Can we access instance variables inside Static methods?
-    		Answer is No, we cannot access instance variable inside static blocks, static methods.
-    		Static methods and static blocks can only access static members.
+    		
+	Answer is No, we cannot access instance variable inside static blocks, static methods.
+    Static methods and static blocks can only access static members.
 
 L6-23:24 What are method declarations?
-    		When we do not define the body of method, and end it with a semi-colon then that is called method
-    		declaration.
-
-    		-> Method declarations are only used in abstract classes and interfaces.
+    
+	When we do not define the body of method, and end it with a semi-colon then that is called method
+    declaration
+    -> Method declarations are only used in abstract classes and interfaces.
 
 L6-24:15 What are interfaces?
-    		An Interface is actually blueprint of a class, which specifies what a Class must do. (not how)
-    		i.e, Interfaces does not have implementations of methods, There are only method declarations
-    		and all the methods are abstract and public by default.
+    
+	An Interface is actually blueprint of a class, which specifies what a Class must do. (not how)
+    i.e, Interfaces does not have implementations of methods, There are only method declarations
+    and all the methods are abstract and public by default
+    		interface InterfaceDemo{
+    			void method1();
+    			void method2();	//this is method declaration.
+    		}
 
-    				interface InterfaceDemo{
-    					void method1();
-    					void method2();	//this is method declaration.
-    				}
 L6- 25:00 Can interface implement other interfaces?
-An interface can't implement another interface because if any interface is implemented then its methods must be defined 
+
+* An interface can't implement another interface because if any interface is implemented then its methods must be defined 
 and interface never has the definition of any method.
 
-An interface can extend another interface in the same way that a class can extend another class.
+* An interface can extend another interface in the same way that a class can extend another class.
 The extends keyword is used to extend an interface, and the child interface inherits the methods of the parent interface.
+
 Ex- 
 ```java
 interface A {
