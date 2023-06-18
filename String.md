@@ -268,14 +268,14 @@ The JDK 6 update 21 Performance Release, introduced a new VM option:
 ```java
 -XX:+UseCompressedStrings
 ```
-> **When this option is enabled, Strings are stored as byte[], instead of char[] – thus, saving a lot of memory. However, this option was eventually removed in JDK 7, mainly because it had some unintended performance consequences.**
+> *When this option is enabled, Strings are stored as byte[], instead of char[] – thus, saving a lot of memory. However, this option was eventually removed in JDK 7, mainly because it had some unintended performance consequences.*
 
 * #### Compact String – Java 9
 Java 9 has brought the concept of compact Strings back.
 
 This means that whenever we create a String if all the characters of the String can be represented using a byte — **LATIN-1** representation, a byte array will be used internally, such that one byte is given for one character.
 
-> **In other cases, if any character requires more than 8-bits to represent it, all the characters are stored using two bytes for each — UTF-16 representation.**
+> *In other cases, if any character requires more than 8-bits to represent it, all the characters are stored using two bytes for each — UTF-16 representation.*
 
 So basically, whenever possible, it’ll just use a single byte for each character.
 
