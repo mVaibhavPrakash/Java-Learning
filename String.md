@@ -12,8 +12,7 @@ Let us first discuss the memory allocation methods used in Java - Stack Memory A
     Whereas, in the heap memory, non-primitive data types like strings are stored. A reference to this location is held by the stack memory.
 
 Example:
-
-what is string pool in java
+![Hotspot JVM](Images/sp2.webp)
 
 Explanation:
 
@@ -60,9 +59,10 @@ String str2 = "Study";
     The String Pool is empty by default. Hence, when the compiler executes the first line, it creates a string literal "Java" in the String Constant Pool.
     When the compiler executes the second line, it first checks the String Constant Pool. Since the string literal "Java" is already present in the String Pool, its reference is stored in str1.
     As a result of the execution of the third statement, a new string literal "Study" is created in the String Constant Pool (since it is not already present). Its reference is stored in str2.
-    The figure shows the memory allocation of the above code.
 
-#### ways to create strings string literal
+The figure shows the memory allocation of the above code.
+
+![Hotspot JVM](Images/sp3.webp)
 
     Whenever a string literal is created, the compiler checks the String Constant Pool first. If it encounters the same string, then instead of creating a new string, it returns the same instance of the existing string to the variable.
 
@@ -87,8 +87,6 @@ String str1 = new String("Java");
     The first string gets stored in the String Constant Pool, but the second string object gets stored out of the string pool in the Java heap memory.
 
     Here is the memory representation of the same.
-
-ways to create strings using new keyword
 
     However, we can stop this kind of memory allocation to String objects using the String.intern() method in Java.
 
@@ -123,9 +121,10 @@ Explanation:
     The first statement creates a new string literal in the String Constant Pool.
     The second variable str1 holds a reference of the already existing "Java" literal in the String Constant Pool.
     The third statement creates a new string literal in the String Pool as "Code" is not initially present.
-    The following figure illustrates the memory allocation for the same-
 
-##### ways to create strings using string intern method
+The following figure illustrates the memory allocation for the same-
+
+![Hotspot JVM](Images/sp4.webp)
 
 Note:
 
@@ -134,7 +133,7 @@ Note:
 ##### String Pool in Java Flow Diagram
 Let us understand the working of a string pool with a basic diagram.
 
-flow diagram of string pool in java
+![Hotspot JVM](Images/sp5.webp)
 
 Explanation:
 
@@ -197,9 +196,8 @@ true
 
 Explanation:
 
-    Let us look at the figure which illustrates the memory allocation used in the program above.
-
-example of string pool in java
+Let us look at the figure which illustrates the memory allocation used in the program above.
+![Hotspot JVM](Images/sp6.webp)
 
 #### Advantages of String Pool in Java
     
