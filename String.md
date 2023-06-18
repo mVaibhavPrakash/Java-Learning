@@ -12,7 +12,7 @@ Let us first discuss the memory allocation methods used in Java - Stack Memory A
     Whereas, in the heap memory, non-primitive data types like strings are stored. A reference to this location is held by the stack memory.
 
 Example:
-![Hotspot JVM](Images/sp2.webp)
+![Hotspot JVM](Images/sp1.webp)
 
 Explanation:
 
@@ -39,6 +39,7 @@ There are three popular ways of creating strings in Java:
 4. Let us understand each of these three methods and their impact on the String Pool.
 
 1. String literal
+
 This is the simplest and most direct way to declare a string. It is done using double quotes.
 
 Syntax:
@@ -62,11 +63,12 @@ String str2 = "Study";
 
 The figure shows the memory allocation of the above code.
 
-![Hotspot JVM](Images/sp3.webp)
+![Hotspot JVM](Images/sp2.webp)
 
     Whenever a string literal is created, the compiler checks the String Constant Pool first. If it encounters the same string, then instead of creating a new string, it returns the same instance of the existing string to the variable.
 
 2. Using new keyword
+
     We can create new String objects using the new keyword. When we create new string literals using the new keyword, memory is allocated to those String objects in the Java heap memory outside the String Pool.
 
 Syntax:
@@ -86,11 +88,13 @@ String str1 = new String("Java");
 
     The first string gets stored in the String Constant Pool, but the second string object gets stored out of the string pool in the Java heap memory.
 
-    Here is the memory representation of the same.
+Here is the memory representation of the same.
+![Hotspot JVM](Images/sp3.webp)
 
     However, we can stop this kind of memory allocation to String objects using the String.intern() method in Java.
 
 3. Using String.intern() method
+
     Creating strings using the new keyword allocates memory to the string object in the heap but outside the string constant pool. When we use the String.intern() method, JVM puts the string literal in the String Pool (if not already present), and its reference is stored in the variable. However, if the String Constant Pool already contains a string equal to the String object to be created, its reference is returned.
     
 Syntax:
@@ -229,11 +233,11 @@ It is created to decrease the number of string objects created in the memory. Wh
 Yes, a string pool helps to save memory by preserving immutable strings in a pool so that the instances can be reused.
 
 Conclusion
-A string is a set of characters that are always enclosed in double-quotes.
-Strings in Java are immutable in nature.
-This immutability is achieved through String Pool.
-String Pool in Java is a special storage space in Java heap memory. It is also known as String Constant Pool or String Intern Pool.
-Whenever a new string is created, JVM first checks the string pool. If it encounters the same string, then instead of creating a new string, it returns the same instance of the found string to the variable.
-The String.intern() method puts the string in the String pool or refers to another String object from the string pool having the same value.
-String Interning is a method that stores only a copy of each distinct string literal. String Pool is an implementation of the concept of String Interning.
-Java String Pool allows caching of string and reusability.
+    A string is a set of characters that are always enclosed in double-quotes.
+    Strings in Java are immutable in nature.
+    This immutability is achieved through String Pool.
+    String Pool in Java is a special storage space in Java heap memory. It is also known as String Constant Pool or String Intern Pool.
+    Whenever a new string is created, JVM first checks the string pool. If it encounters the same string, then instead of creating a new string, it returns the same instance of the found string to the variable.
+    The String.intern() method puts the string in the String pool or refers to another String object from the string pool having the same value.
+    String Interning is a method that stores only a copy of each distinct string literal. String Pool is an implementation of the concept of String Interning.
+    Java String Pool allows caching of string and reusability.
