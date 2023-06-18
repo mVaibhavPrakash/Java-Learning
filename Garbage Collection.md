@@ -270,6 +270,9 @@ The table describes the arguments that can be used to instruct the JVM.
 | -XX:+UseG1GC	 | G1 Garbage Collector |
 
 #### Some Other Important Arguments
+
+| Option | Description |
+| -------- | ------- |
 | -XX:InitiatingHeapOccupancyPercent=<n> | It controls the heap occupancy after starting the concurrent cycle. Here, n is the percentage of heap space. The default percentage is 45. |
 | -XX:G1MixedGCLiveThresholdPercent=<t> |	If a live object in the OLD region exists with a value greater than or equal to this option, it is excluded from the GC object. Here, t is the time in milliseconds. The default value is 65. |
 | -XX:G1HeapWastePercent=<r> | It specifies how many regions are allowed to be wasted. Here, r is the number of regions. The default value is 10. |
