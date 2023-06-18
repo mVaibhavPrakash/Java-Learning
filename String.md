@@ -122,9 +122,9 @@ str2.intern();
 
 Explanation:
 
-    The first statement creates a new string literal in the String Constant Pool.
-    The second variable str1 holds a reference of the already existing "Java" literal in the String Constant Pool.
-    The third statement creates a new string literal in the String Pool as "Code" is not initially present.
+* The first statement creates a new string literal in the String Constant Pool.
+* The second variable str1 holds a reference of the already existing "Java" literal in the String Constant Pool.
+* The third statement creates a new string literal in the String Pool as "Code" is not initially present.
 
 The following figure illustrates the memory allocation for the same-
 
@@ -141,12 +141,12 @@ Let us understand the working of a string pool with a basic diagram.
 
 Explanation:
 
-    The first statement creates a new string in the String Constant Pool, and str1 holds its reference.
-    The Second statement executes in a similar fashion, and variable str2 holds the reference of "USA" from String Constant Pool.
-    String str3 has the same value as str1, and both variables hold the reference of the same String object stored in the String Pool.
-    == operator is used to compare the addresses of the objects and check whether they refer to the same instance.
-    Here, since str1 and str2 are two different strings or objects, after comparing them with the == operator, it returns false.
-    Whereas, when str1 and str3 are compared using the == operator, it returns true since it is referring to the same object.
+* The first statement creates a new string in the String Constant Pool, and str1 holds its reference.
+* The Second statement executes in a similar fashion, and variable str2 holds the reference of "USA" from String Constant Pool.
+* String str3 has the same value as str1, and both variables hold the reference of the same String object stored in the String Pool.
+* == operator is used to compare the addresses of the objects and check whether they refer to the same instance.
+* Here, since str1 and str2 are two different strings or objects, after comparing them with the == operator, it returns false.
+* Whereas, when str1 and str3 are compared using the == operator, it returns true since it is referring to the same object.
 
 Example of String Pool in Java
 
@@ -208,14 +208,14 @@ Let us look at the figure which illustrates the memory allocation used in the pr
     Java String Pool allows caching of string. Caching here is the process of storing data in a cache. Cache improves performance and reduces memory usage.
     Provides reusability: It saves time to create a new string if there is already a string with the same value present in the pool. The old string is reused, and its reference is returned.
 
-> Note:
+> **Note:**
     >> String interning is a method of storing only one copy of each distinct string value, which must be immutable. In Java, String interning is achieved using the concept of String Pool.
 
 #### Disadvantages of Using String Objects
     Strings have a constant value, and even if they are altered, instead of reflecting the changes in the original string, a new object is created.
     This causes a lot of objects to be created in the heap and wastes a lot of memory if the user keeps on updating the value of the string.
 
-> Note:
+> **Note:**
     >> In order to overcome the drawbacks of the String class, Java provides StringBuffer and StringBuilder classes. They are used to create mutable String objects.
 
 #### FAQs
