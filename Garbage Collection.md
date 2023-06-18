@@ -220,7 +220,7 @@ java -XX:+UseG1GC -jar Application.java
 #### Java 8 Changes 
 Java 8u20 has introduced one more JVM parameter for reducing the unnecessary use of memory by creating too many instances of the same String. This optimizes the heap memory by removing duplicate String values to a global single char[] array.
 
-We can enable this parameter by adding -XX:+UseStringDeduplication as a JVM parameter.
+We can enable this parameter by adding ``-XX:+UseStringDeduplication`` as a JVM parameter.
 
 #### Z Garbage Collector
 ZGC (Z Garbage Collector) is a scalable low-latency garbage collector that debuted in Java 11 as an experimental option for Linux. JDK 14 introduced  ZGC under the Windows and macOS operating systems. ZGC has obtained the production status from Java 15 onwards.
