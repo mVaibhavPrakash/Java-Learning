@@ -255,13 +255,13 @@ Let us look at the figure which illustrates the memory allocation used in the pr
    Since the new String representation will use the UTF-16 encoding only when necessary, the amount of heap memory will be significantly lower, which in turn causes less Garbage Collector overhead on the JVM.  
 
 
-* Strings in Java are internally represented by a char[] containing the characters of the String. And, every char is made up of 2 bytes because Java internally uses UTF-16.
-
-For instance, if a String contains a word in the English language, the leading 8 bits will all be 0 for every char, as an ASCII character can be represented using a single byte.
-
-Many characters require 16 bits to represent them but statistically most require only 8 bits — LATIN-1 character representation. So, there is a scope to improve the memory consumption and performance.
-
-What's also important is that Strings typically usually occupy a large proportion of the JVM heap space. And, because of the way they're stored by the JVM, in most cases, a String instance can take up double space it actually needs.
+> Strings in Java are internally represented by a char[] containing the characters of the String. And, every char is made up of 2 bytes because Java internally uses UTF-16.
+>
+> For instance, if a String contains a word in the English language, the leading 8 bits will all be 0 for every char, as an ASCII character can be represented using a single byte.
+>
+> Many characters require 16 bits to represent them but statistically most require only 8 bits — LATIN-1 character representation. So, there is a scope to improve the memory consumption and performance.
+>
+> What's also important is that Strings typically usually occupy a large proportion of the JVM heap space. And, because of the way they're stored by the JVM, in most cases, a String instance can take up double space it actually needs.
 
 * #### Compressed String – Java 6
 The JDK 6 update 21 Performance Release, introduced a new VM option:
@@ -283,7 +283,8 @@ Now, the question is – how will all the String operations work? How will it di
 
 Well, to tackle this issue, another change is made to the internal implementation of the String. We have a final field coder, that preserves this information.
 
-3.1. String Implementation in Java 9
+##### String Implementation in Java 9
+
 Until now, the String was stored as a char[]:
 ```java
 private final char[] value;
