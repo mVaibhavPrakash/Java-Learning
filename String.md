@@ -234,11 +234,11 @@ Yes, a string pool helps to save memory by preserving immutable strings in a poo
 
 Conclusion
 
-    * A string is a set of characters that are always enclosed in double-quotes.
-    * Strings in Java are immutable in nature.
-    * This immutability is achieved through String Pool.
-    * String Pool in Java is a special storage space in Java heap memory. It is also known as      String Constant Pool or String Intern Pool.
-    * Whenever a new string is created, JVM first checks the string pool. If it encounters the same string, then instead of creating a new string, it returns the same instance of the found string to the variable.
-    * The String.intern() method puts the string in the String pool or refers to another String object from the string pool having the same value.
-    * String Interning is a method that stores only a copy of each distinct string literal. String Pool is an implementation of the concept of String Interning.
-    * Java String Pool allows caching of string and reusability.
+* A string is a set of characters that are always enclosed in double-quotes.
+* Strings in Java are immutable in nature.
+* This immutability is achieved through String Pool.
+* String Pool in Java is a special storage space in Java heap memory. It is also known as      String Constant Pool or String Intern Pool.
+* Whenever a new string is created, JVM first checks the string pool. If it encounters the same string, then instead of creating a new string, it returns the same instance of the found string to the variable.
+* The String.intern() method puts the string in the String pool or refers to another String object from the string pool having the same value.
+* String Interning is a method that stores only a copy of each distinct string literal. String Pool is an implementation of the concept of String Interning.
+* Java String Pool allows caching of string and reusability.
