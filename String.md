@@ -365,3 +365,172 @@ Conclusion
 * The String.intern() method puts the string in the String pool or refers to another String object from the string pool having the same value.
 * String Interning is a method that stores only a copy of each distinct string literal. String Pool is an implementation of the concept of String Interning.
 * Java String Pool allows caching of string and reusability.
+
+### Java StringBuffer class
+    It provides us with a way to use mutable strings in Java. These strings are safe to be used by multiple threads simultaneously. In order to give this advantage to the StringBuffer, the implementation of this class becomes less time efficient.
+
+Syntax:
+
+```java
+StringBuffer a = new StringBuffer("Scaler");
+```
+
+Code:
+
+```java
+public class StringBufferExample {
+
+  public static void main(String[] args) {
+    // Empty StringBuffer object
+    StringBuffer temp = new StringBuffer();
+    // Initial size of object
+    System.out.println(temp.capacity());
+
+    StringBuffer sb = new StringBuffer("Scaler");
+    System.out.println(sb);
+
+    // Updating/Modifying the StringBuffer object value
+    sb.append(" Articles");
+    System.out.println(sb);
+  }
+}
+```
+Output:
+
+```java
+16
+Scaler
+Scaler Articles
+```
+### Java StringBuilder class
+    StringBuilder class also provides us with mutable strings but here we lack thread safety. It cannot be used by multiple threads simultaneously. Since StringBuilder class is not applying this extra feature like StringBuffer, it is faster than StringBuffer class.
+
+Syntax:
+```java
+StringBuilder a = new StringBuilder("Scaler");
+```
+Code:
+```java
+public class StringBuilderExample {
+
+  public static void main(String[] args) {
+    StringBuilder temp = new StringBuilder();
+    // Initial size of object
+    System.out.println(temp.capacity());
+
+    StringBuilder sb = new StringBuilder("Scaler");
+    System.out.println(sb);
+
+    // Updating/Modifying the value of sb
+    sb.append(" Articles");
+    System.out.println(sb);
+  }
+}
+```
+Output:
+```java
+16
+String
+String Articles
+```
+
+### StringBuffer and StringBuilder classes with multiple threads
+In the code below:
+
+* We have created three threads each to manipulate objects of StringBuffer and StringBuilder classes.
+* For sbuilder (object of StringBuilder class), three threads are manipulating it simultaneously namely builderThread1, builderThread2, and builderThread3.
+* Similarly, for sbuffer (object of StringBuffer class), three threads are manipulating it simultaneously namely bufferThread1, bufferThread2, and bufferThread3.
+* Let us see the value of sbuilder and sbuffer objects when these threads are simultaneously operating on them.
+
+Code:
+```java
+public class Main {
+
+  public static void main(String[] args) throws InterruptedException {
+
+    StringBuilder sbuilder = new StringBuilder();
+    
+    StringBuilderScaler builderThread1 = new StringBuilderScaler(sbuilder);
+    StringBuilderScaler builderThread2 = new StringBuilderScaler(sbuilder);
+    StringBuilderScaler builderThread3 = new StringBuilderScaler(sbuilder);
+
+    builderThread1.start();
+    builderThread2.start();
+    builderThread3.start();
+    builderThread1.join();
+    builderThread2.join();
+    builderThread3.join();
+
+    System.out.println("StringBuilder: " + sbuilder.toString());
+
+    StringBuffer sbuffer = new StringBuffer();
+
+    StringBufferScaler bufferThread1 = new StringBufferScaler(sbuffer);
+    StringBufferScaler bufferThread2 = new StringBufferScaler(sbuffer);
+    StringBufferScaler bufferThread3 = new StringBufferScaler(sbuffer);
+
+    bufferThread1.start();
+    bufferThread2.start();
+    bufferThread3.start();
+    bufferThread1.join();
+    bufferThread2.join();
+    bufferThread3.join();
+
+    System.out.println("StringBuffer: " + sbuffer.toString());
+  }
+}
+
+class StringBuilderScaler extends Thread {
+
+  StringBuilder sbuilder;
+
+  public StringBuilderScaler(StringBuilder sb) {
+    sbuilder = sb;
+  }
+
+  @Override
+  public void run() {
+    for (int i = 0; i < 10; i++) {
+      sbuilder.append(i);
+    }
+  }
+}
+
+class StringBufferScaler extends Thread {
+
+  StringBuffer sbuffer;
+
+  public StringBufferScaler(StringBuffer sb) {
+    sbuffer = sb;
+  }
+
+  @Override
+  public void run() {
+    for (int i = 0; i < 10; i++) {
+      sbuffer.append(i);
+    }
+  }
+}
+```
+Ouput on First Run:
+
+```java
+StringBuilder:012345678901234567890123456789
+StringBuffer:012345678901234567890123456789
+```
+Output on Second Run:
+```java
+StringBuilder: 01234567890012346789
+StringBuffer: 012345678901234567890123456789
+```
+Output on Third Run:
+```java
+StringBuilder: 01234567890123450123456789
+StringBuffer: 012345678901234567890123456789
+```
+Explanation:
+
+* The value of sbuilder is varying over different runs of the same program whereas sbuffer value remains the same.
+* This implies when bufferThread1 is operating on sbuffer, then bufferThread2 and bufferThread3 do not try to access or manipulate its value. This holds true in the case of bufferThread2 and bufferThread3 as well.
+* However, this is not the case with StringBuilder class. All the three threads simultaneously access try to access, manipulate and update the value of sbuilder object resulting in varying results.
+* This shows the fact that StringBuilder is thread unsafe whereas StringBuffer is thread-safe.
