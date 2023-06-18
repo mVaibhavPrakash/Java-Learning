@@ -6,30 +6,34 @@
 L1-00:45 What are classes and objects?
 		A Class is a user-defined-blueprint from which objects are created, which has attributes and behavior.
 
-L1-04:30 How can we create class?
-		We can define a Class in java, using keyword "class".
+How can we create class?
 
-			class <ClassName>
-			{
-				//Variables
-				//Methods...
-			}
+We can define a Class in java, using keyword "class"
+	
+```java
+class <ClassName>
+{
+	//Variables
+	//Methods...
+}
+```
 
-		For example:
+For example
+	
+```java
+class Fan{
+	private boolean isOn
 
-			class Fan{
-				private boolean isOn;
+	public void turnOn(){
+	isOn = true;
+	
 
-				public void turnOn(){
-				isOn = true;
-				}
+	public void turnOff(){
+	isOn = false;
+	}
+```
 
-				public void turnOff(){
-				isOn = false;
-				}
-			}
-
- 		Class members: isOn [Data member], turnOn() turnOff() [Member functions]
+Class members: isOn [Data member], turnOn() turnOff() [Member functions]
 
 L1-09:07 How to create objects?
 		We create objects with the keyword 'new'.
@@ -90,18 +94,17 @@ L3-01:12 How can we access a Class outside its Package?
     		import com.basicsstrong.oops.<theclassname>;
 
 L3-01:55 Can we declare a Top level Class private?
-    		Answer is no, A Class can be public or default.
 
-    		Inner class: Class defined in a class.
-
-    		Inner classes can be declared as private or protected as they are the members of the class.
-    		-> Top level Class can not be private or protected.
+Answer is no, A Class can be public or defaul
+Inner class: Class defined in a clas
+Inner classes can be declared as private or protected as they are the members of the class.
+-> Top level Class can not be private or protected.
 
 L3-03:10 Which access modifier is the least restrictive and which is the most restrictive?
-    		Least Restrictive Modifier: Public access modifier
-    				-> It is also known as Universal Access Modifier.
+Least Restrictive Modifier: Public access modifier
+-> It is also known as Universal Access Modifier.
 
-    		Most Restrictive access modifier : private.
+Most Restrictive access modifier : private.
 
 L4-00:04 What are non-access modifiers in java?
     		1. Static :
@@ -665,6 +668,27 @@ L11-03:09 How OOPs is different than Procedural programming?
 		}
 	}  
 	-> Since, BabyDog is not overriding the eat() method, so eat() method of Dog class is invoked.
+
+### Encapsulation
+
+Data Encapsulation can be defined as wrapping the code or methods(properties) and the related fields or variables together as a single unit,making the code more organized. Encapsulation helps to hide data by preventing unauthorized access to the implementation details.
+
+#### How to implement Encapsulation in Java?
+We need to perform two steps to achieve the purpose of Encapsulation in Java.
+
+1. Use the private access modifier to declare all variables/fields of class as private.
+2. Define public getter and setter methods to read and modify/set the values of the abovesaid fields.
+	
+#### Benefits of Encapsulation java
+* Cleaner, more organized and less complex code.
+* More flexible code as can modify a unit independently without changing any other unit.
+* Makes the code more secure.
+* The code can be maintained at any point without breaking the classes that use the code.
+* Key Points to Remember about encapsulation in Java
+
+#### What is the difference between abstraction and encapsulation?
+
+Abstraction is a technique for hiding implementation details. Encapsulation, on the other hand, is a way of hiding data in a single entity or unit and protecting information from the outside.
 
 	\**/ What is Association, Composition and Aggregation in Java?
 	
