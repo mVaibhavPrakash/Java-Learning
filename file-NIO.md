@@ -181,3 +181,6 @@ What is the memory mapped buffer in Java?
 
 What is the difference between ByteBuffer and CharBuffer in Java?
     A ByteBuffer is a buffer that holds (8-bit) byte values and CharBuffer holds (16 bit) char values..
+
+### Convert String to ByteBuffer
+* ByteBuffer.wrap(str.getBytes("UTF-8"))

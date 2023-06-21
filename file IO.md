@@ -31,6 +31,9 @@ L1-02:29 How these streams differ from each other?
 L1-03:13 What happens if any error occurs in case?
     All of the stream classes throw IOException in case of any errors.
 
+## File System
+![Hotspot JVM](Images/file_io.jpg)
+
 L1-03:26 How we can create any file?
     By creating an object of file class, we create a java file object to represent any resource.
       File f = new File("file.txt");
@@ -76,7 +79,7 @@ L2-00:17 What is difference between fileWriter and BufferedWriter?
       bw.flush();
       bw.close();
 
-      In file writer we have to provide additional line separator (\n) to write in new line.
+      In FileWriter we have to provide additional line separator (\n) to write in new line.
       But in BufferedWriter we have a method newLine() to provide line separator.
 
 L2-03:55 When we had these two writers, What is the need of PrintWriter then?
@@ -231,3 +234,56 @@ ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStr
     Yes
 
 Explain hierarchy of InputStream and OutputStream.
+
+
+## How to make file write Thread safe in Java?
+* Use Executie FileLock System.
+
+**Example :**
+```java
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileLock;
+
+class Romio{
+    public static void main(String[] args) {
+        T1 t1 =new T1("T1\n");
+        T1 t2 = new T1("T2\n");
+        T1 t3 = new T1("T3\n");
+        t1.start();
+        t2.start();
+        t3.start();
+}
+
+class T1 extends Thread{
+    String str;
+    T1(String str1){
+        this.str=str1;
+    }
+    @Override
+    public void run(){
+        try{
+            whenWriteStringUsingBufferedWritter_thenCorrect(str);
+        }catch(Exception io){
+            System.out.println("Exception "+this.str);
+        }
+    }
+     public void whenWriteStringUsingBufferedWritter_thenCorrect(String str) 
+  throws IOException {
+    FileOutputStream outputStream = new FileOutputStream("./xxx.txt",true);
+    FileLock fl = outputStream.getChannel().lock();
+    for(int i=0;i<1000;i++){
+        byte[] strToBytes = str.getBytes();
+        outputStream.write(strToBytes);
+    }
+    fl.release();
+    outputStream.close();
+}
+}
+```
+```java
+Output:
+Exception T1
+Exception T3
+1000 Times T2 will be stored in the file
+```
