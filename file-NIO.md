@@ -154,12 +154,12 @@ Selectors are used for handling multiple channels using a single thread.
 
 ## What is difference between IO and NIO?⭐️
 
-* The important distinction between IO and NIO is that,
+The important distinction between IO and NIO is that,
 * Original IO deals with data in streams, whereas NIO deals with data in blocks.
 * IO is stream oriented and NIO is buffer oriented.
 * IO streams are blocking whereas NIO can be blocking or non-blocking.
 
-* Java IO vs. NIO
+### Java IO vs. NIO
 
 Let's see the table showing the main differences between Java IO and NIO:
 
@@ -242,6 +242,7 @@ The selector is used for handling the multiple channels using a single thread. T
 Switching between the threads is expensive for operating system. Therefore, for improving the system efficiency selector is use.
 
 Let's see the illustration of a thread using Selector to handle 3 Channel's:
+
 ![Hotspot JVMImages/](/Images/nio-tutorial8.png)
 
 ### Creating a Selector
