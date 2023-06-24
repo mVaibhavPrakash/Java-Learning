@@ -94,14 +94,16 @@ bw.close();
 >> In **FileWriter** we have to provide additional line separator (\n) to write in new line.
 But in **BufferedWriter** we have a method newLine() to provide line separator.
 
-L2-03:55 When we had these two writers, What is the need of PrintWriter then?
+### When we had these two writers, What is the need of PrintWriter then?
     
-PrintWriter is the most enhanced writer. It overcomes the little limitations that we had with filewriter and bufferedWriter.
+**PrintWriter** is the most enhanced writer. It overcomes the little limitations that we had with filewriter and bufferedWriter.
 
 For example,
 * We were allowed to write char, string types only with those writers.
     * What if we want to write data of different data types?
+
     **PrintWriter** allows us to do so.
+    
     **PrintWriter** can communicate directly to file and also can communicate via any other writer..
     ```java
     PrintWriter pw = new PrintWriter("File.txt");
