@@ -198,5 +198,18 @@ A byteBuffer is either direct or non-direct.
 
 A ByteBuffer is a buffer that holds (8-bit) byte values and CharBuffer holds (16 bit) char values..
 
+## The NIO classes are contained in the packages as given below:
+
+| Package |	Purpose| 
+| --- | --- |
+| java.nio | It is top-level package for NIO system. The various types of buffers are encapsulated by this NIO system. |
+| java.nio.charset | It encapsulates the character sets and also supports encoders and decoders operation that convert characters to bytes and bytes to characters, respectively. |
+| java.nio.charset.spi | It supports the service provider for character sets. |
+| java.nio.channels | It support the channel, which are essentially open the I/O connections. |
+| java.nio.channels.spi | It supports the service providers for channels. |
+| java.nio.file	| It provides the support for files. |
+| java.nio.file.spi	| It supports the service providers for file system. |
+| java.nio.file.attribute | It provides the support for file attributes. |
+
 ## Convert String to ByteBuffer
 * ByteBuffer.wrap(str.getBytes("UTF-8"))
