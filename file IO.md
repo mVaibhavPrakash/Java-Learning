@@ -101,20 +101,18 @@ But in **BufferedWriter** we have a method newLine() to provide line separator.
 For example,
 * We were allowed to write char, string types only with those writers.
     * What if we want to write data of different data types?
-
-    **PrintWriter** allows us to do so.
-    
-    **PrintWriter** can communicate directly to file and also can communicate via any other writer..
-    ```java
-    PrintWriter pw = new PrintWriter("File.txt");
-    PrintWriter pw = new PrintWriter(new FileWriter("File.txt")
-    PrintWriter pw = new PrintWriter("abc.txt");
-    pw.write(100);	//this will write d to file
-    Pw.println(100);	//this will write int 100 and will separate line.
-    pw.println(true);	//this will write boolean true and separate line..
-    pw.flush();
-    pw.close();
-    ```
+        * **PrintWriter** allows us to do so.
+        * **PrintWriter** can communicate directly to file and also can communicate via any other writer..
+        ```java
+        PrintWriter pw = new PrintWriter("File.txt");
+        PrintWriter pw = new PrintWriter(new FileWriter("File.txt")
+        PrintWriter pw = new PrintWriter("abc.txt");
+        pw.write(100);	//this will write d to file
+        Pw.println(100);	//this will write int 100 and will separate line.
+        pw.println(true);	//this will write boolean true and separate line..
+        pw.flush();
+        pw.close();
+        ```
 
 L2-05:05 Why we use flush() and close()?
     Flush() method is used to clear all the data characters stored in the buffer and clear the buffer.
