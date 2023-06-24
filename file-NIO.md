@@ -67,6 +67,7 @@ Methods:
 ## What are NIO Buffers?⭐️
 
 NIO buffers are used to make interaction with NIO channels.
+
 Block of memory into which we can write data, from which we can read data.
 👉🏻 In NIO system this memory block is wrapped with an NIO buffer object.
 
@@ -86,7 +87,9 @@ There is ByteBuffer which is Mostly used buffer type.
 ## How to create ByteBuffer?
 
 To create ByteBuffer, we have to allocate a buffer. For that we invoke allocate() method,
+```java
 ByteBuffer b = ByteBuffer.allocate(capacity);
+```
 to write data, we use put() method.
 
 ## How to transfer data between channels and buffers?
