@@ -114,132 +114,136 @@ For example,
         pw.close();
         ```
 
-L2-05:05 Why we use flush() and close()?
-    Flush() method is used to clear all the data characters stored in the buffer and clear the buffer.
-    It flushes the stream so that we get assured that the data has properly written to file.
+### Why we use flush() and close()?
+    
+* Flush() method is used to clear all the data characters stored in the buffer and clear the buffer.It flushes the stream so that we get assured that the data has properly written to file.
 
-    Close() method is used to close the character stream and it releases system resources associated
-    with the stream.
+* Close() method is used to close the character stream and it releases system resources associated with the stream.
+> Note
+>>flush method is applicable for all the Writers and close() is for all readers and writers..
 
-    Note that, flush method is applicable for all the Writers and close() is for all readers and writers..
+### How to read any file?
 
-L3-00:01 How to read any file?
-    There are two readers to read the file:
-      FileReader
-      BufferedReader
+There are two readers to read the file:
+1. FileReader
+2. BufferedReader
 
-L3-00:13 Difference between FileReader BufferedReader?
-    FileReader reads the data from a file in the forms of characters..
-
+### Difference between FileReader BufferedReader?
+    
+* **FileReader** reads the data from a file in the forms of characters..
+    * ```java
     FileReader fr = new FR("abc.txt");
     char[] ch = new char[(int)f.length()];
-    fr.read(ch);	//this will copy data from file into char array
-
+    fr.read(ch);	//this will copy data from file into char arra
     for(char ch1: ch){
-      Sysout ch1;
+          Sysout ch1;
     }
-
+    ```
     With file reader we read data character by character, not line by line.
     For that, we have BufferedReader.
 
-    BufferedReader allows us to read file by char and by line too.
+* **BufferedReader** allows us to read file by char and by line too.
+```java
+BufferedReader br = new BufferedReader(new FR("abc.txt"));
+String line = br.readLine();
+while(line!=null){
+  System.out.println(line);
+  line = br.readLine();
+}
+br.close();
+```
+    
+BufferedReader is most efficient reader for reading the file because it buffers the input from the specified file.
 
-      BufferedReader br = new BufferedReader(new FR("abc.txt"));
-      String line = br.readLine();
-      while(line!=null){
-        System.out.println(line);
-        line = br.readLine();
-      }
-      br.close();
-
-    BufferedReader is most efficient reader for reading the file because it buffers the input from the
-    specified file.
-
-    -> Compared to FileReader, BufferedReader reads large chunks of data from file at once and
+    Compared to FileReader, BufferedReader reads large chunks of data from file at once and
     keep this data in a buffer.
     When we ask for the next character or line of data, it gets retrieved from that buffer..
     This makes bufferedReader most efficient..
 
-L5-00:06 Explain Hierarchy of Reader-Writer.
+### Explain Hierarchy of Reader-Writer.
 
-When to use ByteStreams?
-    Byte oriented streams process data byte by byte, so byte stream is suitable for processing raw data
-    like binary files.
-    And when we have text files, then the character streams are useful.
+### When to use ByteStreams?
+    
+Byte oriented streams process data byte by byte, so byte stream is suitable for processing raw data
+like binary files.And when we have text files, then the character streams are useful.
 
-When to use what: FileInputStream and FileReader.
-    Both InputStream and Reader are used to read data from the source (either file or socket).
+### When to use what: ``FileInputStream`` and ``FileReader``.
 
-    InputStream is used to read binary data, while Reader is used to read text data, that is,
-    Unicode characters.
+* Both InputStream and Reader are used to read data from the source (either file or socket).
+* InputStream is used to read binary data, while Reader is used to read text data, that is, Unicode characters.
+* We should prefer **Readers** instead of ``InputStreams`` in case of text files.
+    * **Buffered reader** is suggested to use to read text files and ``FileInputStream`` is used to read raw streams of bytes from any source, which can be file or socket in java.
 
-    We should prefer Readers instead of InputStreams in case of text files.
-    Buffered reader is suggested to use to read text files and FileInputStream is used to read raw
-    streams of bytes from any source, which can be file or socket in java.
+## When to use what: ``FileOutputStream`` and ``FileWriter``
 
-When to use what: FileOutputStream and FileWriter
-    To write something to a file, we use FileOutputStream, FileWriter etc.
-    With FileOutputStream class, we can write byte oriented as well as character oriented data.
-    But Note that it is always preferred to use FileWriter/PrintWriter to write character data to file.
+* To write something to a file, we use FileOutputStream, FileWriter etc.
+* With FileOutputStream class, we can write byte oriented as well as character oriented data.
+* But Note that it is always preferred to use FileWriter/PrintWriter to write character data to file.
 
-What are the FilterOutputStream and FilterInputStream?
-    FilterOutputStream is another implementation of OutputStream.
-    It further has different implementation classes: BufferedOutputStream
-                                                     DataOutputStream
-    It is used less individually.!
+### What are the FilterOutputStream and FilterInputStream?
+* ``FilterOutputStream`` is another implementation of ``OutputStream``.
+    * It further has different implementation classes: 
+        * ``BufferedOutputStream``
+        * ``DataOutputStream``
+    * It is used less individually.!
 
-    Similarly, FilterInputStream have subclasses: BufferedInputStream
-                                                  DataInputStream
+* Similarly, ``FilterInputStream`` have subclasses: 
+    * ``BufferedInputStream``
+    * ``DataInputStream``
 
-Which superstructure Class allows reading data from an input byte stream in the format of primitive data
-types?
-    'DataInputStream' Class is used to read primitive data.
-    Methods: readInt(), readByte(), readChar(), readDouble(), readBoolean()
+### Which superstructure Class allows reading data from an input byte stream in the format of primitive data types?
+    
+* `DataInputStream` Class is used to read primitive data.
+    * Methods: ``readInt()``, ``readByte()``, ``readChar()``, ``readDouble()``, ``readBoolean()``
+    * ``DataInputStream`` Class can not communicate directly to files.. we can use this as,
+    ```java
+    DataInputStream dInput = new DataInputStream(new FileInputStream("File.txt"));
+    ```
 
-    DataInputStream Class can not communicate directly to files.. we can use this as,
+* and similarly, ``DataOutputStream`` is used to write Primitives to file.
 
-      DataInputStream dInput = new DataInputStream(new FileInputStream("File.txt"));
+### How BufferedOutputStream is different from BufferedWriter?
+    
+They are almost similar but ``BufferedOutputStream`` is used to write raw bytes whereas
+* BufferedWriter writes characters.
+    * ``BufferedWriter``: Provides buffering for Writer Instances which makes performance fast.
+* ``BufferedOutputStream``: Used for buffering output streams. Internally it uses buffer to store data.
 
-    and similarly, DataOutputStream is used to write Primitives to file.
+* Methods to write data,
+    * ``write(int b)``: for writing specified byte to stream
+    * ``write(byte[] b, int off, int len)``: to write bytes from specified byte array starting with given offset
 
-How BufferedOutputStream is different from BufferedWriter?
-    They are almost similar but BufferedOutputStream is used to write raw bytes whereas
-    BufferedWriter writes characters.
-    BufferedWriter: Provides buffering for Writer Instances which makes performance fast.
-    BufferedOutputStream: Used for buffering output streams. Internally it uses buffer to store data.
+### What is difference between InputStreamReader and BufferedReader?
 
-    Methods to write data,
-    write(int b): for writing specified byte to stream
-    write(byte[] b, int off, int len): to write bytes from specified byte array starting with given offset
+* ``InputStreamReader`` creates a new stream object that can be used to read data from the specified source.
+    * It reads bytes and decodes them into characters.
+    
+* ``BufferedReader`` is an "abstraction" that reads text from a character-input stream.
+    * It 'buffers' characters so as to provide efficient reading of characters and lines.
+    * ``BufferedReader`` reads a couple of characters from the specified stream and stores it in a buffer.
+        * This makes input faster.
+* ``InputStreamReader`` reads only one character from specified stream and remaining characters still remain in the stream.
 
-What is difference between InputStreamReader and BufferedReader?
-    -> InputStreamReader creates a new stream object that can be used to read data from the specified source.
-    It reads bytes and decodes them into characters.
-    BufferedReader is an "abstraction" that reads text from a character-input stream.
-    It 'buffers' characters so as to provide efficient reading of characters and lines.
+### What do you know about add-on classes?
 
-    -> BufferedReader reads a couple of characters from the specified stream and stores it in a buffer.
-    This makes input faster.
-    InputStreamReader reads only one character from specified stream and remaining characters still remain
-    in the stream.
+Add-on classes provides additional properties to the existing threads.
+    
+Examples of classes: BufferedOutputStream , BufferedInputStream ,
+BufferedWriter – buffers the stream and improves performance.
 
-What do you know about add-on classes?
-    Add-on classes provides additional properties to the existing threads.
-    Examples of classes: BufferedOutputStream , BufferedInputStream ,
-    BufferedWriter – buffers the stream and improves performance.
+### What class-add-on allows you to speed up reading / writing by using a buffer?
 
-What class-add-on allows you to speed up reading / writing by using a buffer?
-    java.io.BufferedInputStream (InputStream in) || BufferedInputStream (InputStream in, int size),
+* ``java.io.BufferedInputStream (InputStream in)`` || ``BufferedInputStream (InputStream in, int size)``,
 
-    java.io.BufferedOutputStream (OutputStream out) || BufferedOutputStream (OutputStream out, int size),
+* ``java.io.BufferedOutputStream (OutputStream out)`` || ``BufferedOutputStream (OutputStream out, int size)``,
 
-    java.io.BufferedReader (Reader r) || BufferedReader (Reader in, int sz),
+* ``java.io.BufferedReader (Reader r)`` || ``BufferedReader (Reader in, int sz)``,
 
-    java.io.BufferedWriter (Writer out) || BufferedWriter (Writer out, int sz)
+* ``java.io.BufferedWriter (Writer out)`` || ``BufferedWriter (Writer out, int sz)``
 
-What classes allow you to convert byte streams to character and back?
-    OutputStreamWriter
-    InputStreamReader
+### What classes allow you to convert byte streams to character and back?
+* OutputStreamWriter
+* InputStreamReader
 
 Will this code compile?
 ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("newFile.txt")));
