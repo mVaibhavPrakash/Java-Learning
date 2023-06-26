@@ -123,6 +123,49 @@ public class Demo {
 ```
 This will write file1 data to file2.
 
+## Reading and Writing with Java.nio Classes
+
+Using the java.nio classes:
+```java
+String directory = System.getProperty("user.home");
+String fileName = "sample.txt";
+
+String content = "This is a sample text.";
+Path path = Paths.get(directory, fileName);
+
+try {
+    Files.write(path, content.getBytes(), StandardOpenOption.CREATE);
+} catch (IOException e) {
+    // exception handling
+}
+
+try {
+    List<String> list = Files.readAllLines(path);
+    list.forEach(line -> System.out.println(line));
+} catch (IOException e) {
+    // exception handling
+}
+```
+
+Another way to retrieve the content via the Files class, which is more important if you're not reading text data, is to use the ``readAllBytes`` method to read the data in to a byte array:
+
+```java
+try { 
+    byte[] data = Files.readAllBytes(path);
+    System.out.println(new String(data));
+} catch (IOException e) {
+    // exception handling
+}
+```
+
+* In case you are interested in using **streams** with ``java.nio``, you can also use the below methods provided by the Files class, which work just like the streams we covered earlier in the article:
+
+```java
+Files.newBufferedReader(path)
+Files.newBufferedWriter(path, options)
+Files.newInputStream(path, options)
+Files.newOutputStream(path, options)
+```
 ## Can we transfer data between channels?⭐️
     
 Yes. In Java NIO we can directly transfer the data from one channel to another.
@@ -142,15 +185,6 @@ into the FileChannel.
 * **'Gathering write'** is writing the data from a multiple buffers into a single channel.
 
 * We have ScatteringByteChannel, and GatheringByteChannel channels for this.
-
-## What Selectors are for?
-    
-Selectors are used for handling multiple channels using a single thread.
-
-* Selectors are created as,
-    ``Selector selector = Selector.open();``
-    -> invoke the register() method on various channels objects to register our interest in various
-    I/O events.
 
 ## What is difference between IO and NIO?⭐️
 
@@ -250,8 +284,11 @@ Let's see the illustration of a thread using Selector to handle 3 Channel's:
 We can create a selector by calling ``Selector.open()`` method, as given below:
 
 ```java
-Selector selector = Selector.open();  
+Selector selector = Selector.open();
 ```
+    invoke the register() method on various channels objects to register our interest in various
+    I/O events.
+
 ## What do threads do in the mean time?
 
 Threads spend their time performing IO on other channels.
