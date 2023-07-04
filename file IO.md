@@ -253,7 +253,7 @@ Explain hierarchy of InputStream and OutputStream.
 
 
 ## How to make file write Thread safe in Java?
-* Use Executie FileLock System.
+* Use Executie FileLock System(It will not let other thread to update file even if previous lock is removed).
 
 **Example :**
 ```java
@@ -302,4 +302,47 @@ Output:
 Exception T1
 Exception T3
 1000 Times T2 will be stored in the file
+```
+
+* Use class level Syncronization(It will allow thread to update file once previous thread completes its execution)
+
+```java
+class Romio{
+    public static void main(String[] args) {
+        T1 t1 =new T1("T1\n");
+        T1 t2 = new T1("T2\n");
+        T1 t3 = new T1("T3\n");
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+}
+
+class T1 extends Thread{
+    String str;
+    T1(String str1){
+        this.str=str1;
+    }
+    @Override
+    public void run(){
+        try{
+            whenWriteStringUsingBufferedWritter_thenCorrect(str);
+        }catch(Exception io){
+            System.out.println("Exception "+this.str);
+        }
+    }
+     public void whenWriteStringUsingBufferedWritter_thenCorrect(String str) 
+  throws IOException {
+    synchronized(T1.class){
+    FileOutputStream outputStream = new FileOutputStream("./xxx.txt",true);
+    FileChannel fl = outputStream.getChannel();
+    for(int i=0;i<1000;i++){
+        ByteBuffer bf = ByteBuffer.wrap(str.getBytes("UTF-8"));
+        fl.write(bf);
+    }
+    outputStream.flush();
+    outputStream.close();
+}
+}
+}
 ```
