@@ -285,3 +285,9 @@ As shown, we just need to introduce the parameters, outputFile and live, into th
 [How to Monitor your Java Application’s JVM](https://marknienaber.medium.com/how-to-monitor-your-java-applications-jvm-70d7bddea668)
 
 [Java Thread Deadlock Example and Thread Dump Analysis using VisualVM](https://avaldes.com/java-thread-deadlock-example-and-thread-dump-analysis-using-visualvm/)
+
+[Realtime logs analysis using Splunk](https://www.youtube.com/watch?v=VO20SgiTTOU&list=PLVz2XdJiJQxz_55RIJL8mjO6nx_T87LVD&index=38)
+
+[Spring Boot - Splunk Alerts !| Creating and Scheduling Alerts |](https://www.youtube.com/watch?v=eCAabhr5UNA&list=PLVz2XdJiJQxz_55RIJL8mjO6nx_T87LVD&index=39)
+
+[JIRA Project Management with real-world example](https://www.youtube.com/watch?v=EzyA20UofkE&list=PLVz2XdJiJQxz_55RIJL8mjO6nx_T87LVD&index=17)
