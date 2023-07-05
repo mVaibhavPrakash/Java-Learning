@@ -282,6 +282,8 @@ If we open JConsole and connect to a running Java process, we can navigate to th
 
 As shown, we just need to introduce the parameters, outputFile and live, into the p0 and p1 text fields in order to perform the dumpHeap operation.
 
+[VisualVM Documentation and Resources](https://htmlpreview.github.io/?https://raw.githubusercontent.com/visualvm/visualvm.java.net.backup/master/www/docindex.html)
+
 [How to Monitor your Java Application’s JVM](https://marknienaber.medium.com/how-to-monitor-your-java-applications-jvm-70d7bddea668)
 
 [Java Thread Deadlock Example and Thread Dump Analysis using VisualVM](https://avaldes.com/java-thread-deadlock-example-and-thread-dump-analysis-using-visualvm/)
