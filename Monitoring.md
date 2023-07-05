@@ -1,0 +1,2 @@
+[How to Monitor your Java Application’s JVM](https://marknienaber.medium.com/how-to-monitor-your-java-applications-jvm-70d7bddea668)
+[Java Thread Deadlock Example and Thread Dump Analysis using VisualVM](https://avaldes.com/java-thread-deadlock-example-and-thread-dump-analysis-using-visualvm/)
