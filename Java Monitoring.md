@@ -281,3 +281,6 @@ If we open JConsole and connect to a running Java process, we can navigate to th
 ![Hotspot JVM](Images/mem2.webp)
 
 As shown, we just need to introduce the parameters, outputFile and live, into the p0 and p1 text fields in order to perform the dumpHeap operation.
+
+[How to Monitor your Java Application’s JVM](https://marknienaber.medium.com/how-to-monitor-your-java-applications-jvm-70d7bddea668)
+[Java Thread Deadlock Example and Thread Dump Analysis using VisualVM](https://avaldes.com/java-thread-deadlock-example-and-thread-dump-analysis-using-visualvm/)
