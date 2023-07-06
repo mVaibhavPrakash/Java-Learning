@@ -56,6 +56,7 @@ ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newSingleThreadExec
 ```
 
 ### Work Stealing Thread Pool Executor
+
 Creates a thread pool that maintains enough threads to support the given parallelism level. Here, parallelism level means the maximum number of threads that will be used to execute a given task at a single point in multi-processor machines.
 
 ```java
