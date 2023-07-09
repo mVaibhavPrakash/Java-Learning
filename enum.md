@@ -1,16 +1,97 @@
+# POJO Class
 
-L1-01:00 What is enum?
-    Enum is a special type in java that is used to define collection of constants.
-    Enum of colours:
+Stands for Plain Old Java Object
+* Contains variables and its getter and setter methods
+* Class should be public
+* Public default constructor
+* No annotations like @Table, @Entity, @Id etc
+* It should not extend any class or implement any interface.
 
-      enum Color{
-	       Red,Green,Blue,White,Black;
-      }
+Example :
+```java
+public class Employee
+{
+    // default field
+    String name;
+  
+    // public field
+    public String id;
+  
+    // private salary
+    private double salary;
+  
+    //arg-constructor to initialize fields
+    public Employee(String name, String id, 
+                             double salary)
+    {
+        this.name = name;
+        this.id = id;
+        this.salary = salary;
+    }
+  
+    // getter method for name
+    public String getName()
+    {
+        return name;
+    }
+  
+    // getter method for id
+    public String getId()
+    {
+        return id;
+    }
+  
+    // getter method for salary
+    public Double getSalary()
+    {
+        return salary;
+    }
+}
+```
 
-      This is how we declare enum.
-      -> Semicolon is not mandatory if we are having only constants in enum.
-      -> By using enum, we can create our own data type.
-          👉🏻 Data type of Red is 'Color'.
+* POJO is an object which encapsulates Business Logic. 
+* The following image shows a working example of the POJO class. Controllers interact with your business logic which in turn interact with POJO to access the database. 
+* In this example, a database entity is represented by POJO. This POJO has the same members as the database entity.POJO is an object which encapsulates Business Logic. The following image shows a working example of the POJO class. Controllers interact with your business logic which in turn interact with POJO to access the database. In this example, a database entity is represented by POJO. This POJO has the same members as the database entity.
+![Hotspot JVM](Images/pojo.jpg)
+
+# Java Beans
+
+Beans are special type of Pojos. There are some restrictions on POJO to be a bean.
+
+* All JavaBeans are POJOs but not all POJOs are JavaBeans.
+* Serializable i.e. they should implement Serializable interface. Still, some POJOs who don’t implement a Serializable interface are called POJOs because Serializable is a marker interface and therefore not of many burdens.
+* Fields should be private. This is to provide complete control on fields.
+* Fields should have getters or setters or both.
+* A no-arg constructor should be there in a bean.
+* Fields are accessed only by constructor or getter setters.
+
+## POJO vs Java Bean
+
+| POJO | Java Bean |
+| --- | --- |
+| It doesn’t have special restrictions other than those forced by Java language. | It is a special POJO which have some restrictions.
+| It doesn’t provide much control on members. | It provides complete control on members. |
+| It can implement Serializable interface. | It should implement serializable interface. |
+| Fields can be accessed by their names. | Fields are accessed only by getters and setters. |
+| Fields can have any visibility. | Fields have only private visibility. |
+| There may/may-not be a no-arg constructor. | It must have a no-arg constructor. |
+| It is used when you don’t want to give restriction on your members and give user complete access of your entity. | It is used when you want to provide user your entity but only some part of your entity. |
+
+# Enum
+
+Enum is a special type in java that is used to define collection of constants.
+
+Enum of colours:
+```java
+enum Color{
+     Red,Green,Blue,White,Black;
+}
+```
+
+This is how we declare enum.
+* Semicolon is not mandatory if we are having only constants in enum.
+* By using enum, we can create our own data type.
+    * 👉🏻 Data type of Red is 'Color'.
 
 L1-01:40 Where can we declare 'enum' type?
     Enum can be declared outside the class, and also inside the class.
@@ -21,24 +102,13 @@ L1-01:55 How to access Enum constants?
 
       System.out.println(Color.Red);
 
-L1-02:14 How to get all constants of enum?
-    For that we have values() method, that can be invoked with the enum name or enum instance.
+### Whats difference between the enum, Enum, and Enumeration?
 
-    Color[] colors = Color.values();
-    for(Color c : colors){
-	     System.out.println(c);
-     }
-
-    👉🏻 Enum provides values() method implicitly. It is not present in Enum Class or Object class.
-
-L1-02:41 Whats difference between the enum, Enum, and Enumeration?
-    1. enum: It is a keyword to declare group of constants.
-
-    2. Enum: It is base Class for all enums.
-       👉🏻 Every 'enum' is direct child Class of Enum class.
-
-    3. Enumeration: It is an Interface present in java.util Package.
-                    It is a cursor that is used to get objects one by one from collection.
+1. enum: It is a keyword to declare group of constants.
+2. Enum: It is base Class for all enums.
+    * 👉🏻 Every 'enum' is direct child Class of Enum class.
+3. Enumeration: It is an Interface present in java.util Package.
+    * It is a cursor that is used to get objects one by one from collection.
 
 L1-05:33 Can an 'enum' be declared as final?
     No. enum is implicitly final. They can not be declared final explicitly.
@@ -174,3 +244,97 @@ L2-10:03 What are benefits of using 'enum' in java?
     👉🏻 'enum' has its own namespace.
 
     👉🏻 We can use 'enum' with switch case..
+
+## Methods in Enum
+
+1. values()    -> Returns array of each enum
+2. ordinals()  -> Returns values assigned to each enum( by defaults its index number of num)
+3. valueOf()
+4. name()
+Our enum class inherites all these methods from java.lang.Enum; 
+
+Example:
+```java
+public enum Week{
+    SUN,
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT
+}
+
+public class Main{
+    public static void main(String args[]){
+        for(Week week : Week.values()){
+            System.out.println(week.ordinals());
+        }
+        // OP : 0 1 2 3 4 5 6
+    }
+} 
+```
+
+### Override in Enum
+
+```java
+public enum myEnum{
+    RED{
+        @Override
+        public void print(){
+            System.out.println("I am Red");
+        }
+    },
+    BLUE,
+    BLACK;
+
+    public void print(){
+        System.out.println("I am color");
+    }
+}
+
+public class Main{
+    public static void main(String args[]){
+        myEnum col1 = myEnum.BLUE;
+        col1.print();
+        myEnum col2 = myEnum.RED;
+        col2.print();
+        myEnum col3 = myEnum.BLACK;
+        col3.print();
+    }
+}
+OUTPUT:
+I am color
+I am Red
+I am Color
+```
+
+### astract method in Enum
+
+```java
+public enum myEnum{
+    RED{
+        @Override
+        public void print(){
+            System.out.println("Red");
+        }
+    },
+    BLUE{
+        @Override
+        public void print(){
+            System.out.println("Blue");
+        }
+    },
+    BLACK{
+        @Override
+        public void print(){
+            System.out.println("Black");
+        }
+    };
+    
+    abstract public void print();
+}
+```
+
+> NOTE: 
+>> Every constant in Enum class has to override the abstract method
