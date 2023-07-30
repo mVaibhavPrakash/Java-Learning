@@ -46,9 +46,10 @@ while throws keyword is used in method declaration, it denotes which exception c
 throw is followed by an instance while throws is followed by exception class name.
 
 ## How exception is propagated? What is default exception handling?⭐️
-    An exception is first thrown from the top of the stack, if it is not caught,
-    it drops down the call stack to the previous method and so on until they are caught or until they reach the very bottom of the call stack that means up to main method.
-    This is called exception propagation.
+
+An exception is first thrown from the top of the stack, if it is not caught,
+it drops down the call stack to the previous method and so on until they are caught or until they reach the very bottom of the call stack that means up to main method.
+This is called exception propagation.
 
 ## What is Exception chaining in Java?
 

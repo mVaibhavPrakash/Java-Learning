@@ -1,11 +1,23 @@
-let sum = (a)=>{
-    return function(b){
-        if(b){
-            return sum(a+b);
-        }
-        return a;
+const obj = {
+  a: 10,
+  b: {
+    c: 20,
+  },
+  d: [30, 40],
+};
+
+function fun(obj) {
+  if (typeof obj !== 'object') {
+    return obj;
+  } else {
+    let array = Array.isArray(obj) ? [] : {};
+    for (let key in obj) {
+      array[key] = fun(obj[key]);
     }
+    return array;
+  }
 }
 
-let a = sum(1)(2)(3)();
-console.log(a);
+let obj1 = fun(obj);
+obj.a=50;
+console.log(obj, obj1);

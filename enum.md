@@ -93,14 +93,14 @@ This is how we declare enum.
 * By using enum, we can create our own data type.
     * 👉🏻 Data type of Red is 'Color'.
 
-L1-01:40 Where can we declare 'enum' type?
-    Enum can be declared outside the class, and also inside the class.
-    Note: Inside method we cannot create enum.
+## Where can we declare 'enum' type?
 
-L1-01:55 How to access Enum constants?
-    Every 'enum' constant is static, so We access 'enum' constants using the Enum name.
+Enum can be declared outside the class, and also inside the class.
+> Note: Inside method we cannot create enum.
 
-      System.out.println(Color.Red);
+## How to access Enum constants?
+Every 'enum' constant is static, so We access 'enum' constants using the Enum name.
+  ``System.out.println(Color.Red);``
 
 ### Whats difference between the enum, Enum, and Enumeration?
 
@@ -230,13 +230,15 @@ L2-07:33 Can we use Enum in switch case in Java?
       		            System.out.println("Work Work Work.");
                   }
 
-L2-08:07 Is Enum serializable in java?
-    Yes, Java enums are automatically serializable as Enum Class implements Serializable interface.
+## Is Enum serializable in java?
 
-L2-08:32 How to convert a String to Enum in Java?
-    The String can be converted to 'enum' by using valueOf() method.
-    The 'enum' type provides valueOf() method which takes a String as an argument and returns
-    corresponding 'enum' object.
+Yes, Java enums are automatically serializable as Enum Class implements Serializable interface.
+
+## How to convert a String to Enum in Java?
+
+The String can be converted to 'enum' by using valueOf() method.
+The 'enum' type provides valueOf() method which takes a String as an argument and returns
+corresponding 'enum' object.
 
 L2-10:03 What are benefits of using 'enum' in java?
     👉🏻 'enum' are type safe, We cannot assign anything else other than those predefined constants of enum.
