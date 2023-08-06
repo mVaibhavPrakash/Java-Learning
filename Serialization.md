@@ -173,8 +173,7 @@ emp=(Employee)oin.readObject();
 |---|---|---|
 | Methods | It is a marker interface it doesn’t have any method. | It’s not a marker interface. It has method’s called writeExternal() and readExternal()| 
 | Default Serialization process | YES, Serializable provides its own default serialization process, we just need to implement Serializable interface. | NO, we need to override writeExternal() and readExternal() for serialization process to happen.  |
-| Customize serialization process | We can customize default serialization process by defining following methods in our class >readObject() and writeObject()  
-Note: We are not overriding these methods, we are defining them in our class. | Serialization process is completely customized. We need to override Externalizable interface’s writeExternal() and readExternal() methods. |
+| Customize serialization process | We can customize default serialization process by defining following methods in our class >readObject() and writeObject() . Note: We are not overriding these methods, we are defining them in our class. | Serialization process is completely customized. We need to override Externalizable interface’s writeExternal() and readExternal() methods. |
 | Control over Serialization | It provides less control over Serialization as it’s not mandatory to define readObject() and writeObject() methods. | Externalizable provides you great control over serialization process as it is important to override  writeExternal() and readExternal() methods. |
 | Constructor call during deSerialization | Constructor is not called during deSerialization | Constructor is called during deSerialization. |
 
