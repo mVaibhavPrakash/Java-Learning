@@ -805,7 +805,7 @@ class GFG extends Thread {
 }
 ```
 Output:
-![Exception](/Images/exception-handling-of-java.png)
+![Exception](/Images/deadlockoccurence.png)
 
 
 #### Output explanation:
@@ -953,7 +953,7 @@ class GFG extends Thread {
 }
 ```
 Output
-![ExceptionHandling](/Images/exception-handling-of-java2.png)
+![ExceptionHandling](/Images/deadlockprevention.png)
 
 ### How immutability simplify the concurrency?
 
