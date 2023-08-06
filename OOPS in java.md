@@ -296,25 +296,26 @@ L6-23:24 What are method declarations?
     declaration
     -> Method declarations are only used in abstract classes and interfaces.
 
-L6-24:15 What are interfaces?
+# What are interfaces?
     
-	An Interface is actually blueprint of a class, which specifies what a Class must do. (not how)
-    i.e, Interfaces does not have implementations of methods, There are only method declarations
-    and all the methods are abstract and public by default
-    	interface InterfaceDemo{
-    		void method1();
-    		void method2();	//this is method declaration.
-    	}
+An Interface is actually blueprint of a class, which specifies what a Class must do. (not how)
+i.e, Interfaces does not have implementations of methods, There are only method declarations
+and all the methods are abstract and public by default. **Also interfcaes are public by default**
+```java
+interface InterfaceDemo{
+	void method1();
+	void method2();	//this is method declaration.
+}
+```
 
-L6- 25:00 Can interface implement other interfaces?
+## Can interface implement other interfaces?
 
-* An interface can't implement another interface because if any interface is implemented then its methods must be defined 
-and interface never has the definition of any method.
+* An interface can't implement another interface because if any interface is implemented then its methods must be defined and interface never has the definition of any method.
 
 * An interface can extend another interface in the same way that a class can extend another class.
 The extends keyword is used to extend an interface, and the child interface inherits the methods of the parent interface.
 
-Ex- 
+Example- 
 ```java
 interface A {
 	public void test();
@@ -349,16 +350,107 @@ public class Main {
       d.test2();
       d.test3();
    }
- }```
+ }
+ ```
 
-L6-25:57 What is a native method?
-    		A native method is a method which is implemented in a non-java language, and is targeted for a
-    		single machine type.
+## POINTS To REMEMBER ABOUT INTERFACE
 
-L6-26:35 Can we define any method as final?
-    Yes. Methods can be made as final.
-    -> You can define any method final if you want to restrict others to modify the implementation of the
-     method.
+### Why interface method can't be Protected
+
+**In general, the protected members can be accessed in the same class or, the class inheriting it. But, we do not inherit an interface we will implement it.**
+
+Therefore, the members of an interface cannot be protected. If you try to declare the members of an interface protected, a compile-time error is generated saying *modifier protected not allowed here*.
+
+> Classes and interfaces themselves can have only two access modifiers when declared outside any other class. 
+1. public 
+2. default (when no access modifier is specified)
+>> **Note**: Nested interfaces and classes can have all access modifiers.
+>> **Note**: We cannot declare class/interface with private or protected access modifiers.
+
+> The Java access modifiers private and protected cannot be assigned to a class. Only to constructors, methods and fields inside classes. Classes can only have the default (package) and public access modifier assigned to them.
+
+### As of Java7 you can have only public, abstract as modifiers for the methods of an interface.
+
+```java
+interface MyInterface{
+   public abstract void display();
+   public abstract void setName(String name);
+   public abstract void setAge(int age);
+}
+```
+
+Using any other modifier with the methods of an interface would lead to a compile time error.
+
+### From Java8 onwards interfaces allow default methods and static methods.
+
+* ``Static methods`` − A static method is declared using the static keyword and it will be loaded into the memory along with the class. You can access static methods using class name without instantiation.
+You need to call static method of an interface using the name of the interface.
+
+* ``Default methods`` − A default method is a default implementation of a method of an interface, if you have default method in an interface, there is no need to implement it in the classes that already implement this interface.
+
+A default method is also known as defender method or virtual extension method. You can define a default method using the default keyword as −
+```java
+default void display() {
+   System.out.println("This is a default method");
+}
+```
+
+### From Java9 onwards interfaces allow private and private static methods.
+
+Example
+```java
+interface MyInterface {
+   public abstract void demo();
+   public default void defaultMethod() {
+      privateMethod();
+      staticPrivateMethod();
+      System.out.println("This is a default method of the interface");
+   }
+
+   public static void staticMethod() {
+      staticPrivateMethod();
+      System.out.println("This is a static method of the interface");
+   }
+
+   private void privateMethod(){
+      System.out.println("This is a private method of the interface");
+   }
+
+   private static void staticPrivateMethod(){
+      System.out.println("This is a static private method of the interface");
+   }
+}
+
+public class InterfaceMethodsExample implements MyInterface {
+   public void demo() {
+      System.out.println("Implementation of the demo method");
+   }
+
+   public static void main(String[] args){
+      InterfaceMethodsExample obj = new InterfaceMethodsExample();
+      obj.defaultMethod();
+      obj.demo();
+      MyInterface.staticMethod();
+   }
+}
+Output
+This is a private method of the interface
+This is a static private method of the interface
+This is a default method of the interface
+Implementation of the demo method
+This is a static private method of the interface
+This is a static method of the interface
+```
+
+# What is a native method?
+
+A native method is a method which is implemented in a non-java language, and is targeted for a
+single machine type.
+
+# Can we define any method as final?
+
+Yes. Methods can be made as final.
+-> You can define any method final if you want to restrict others to modify the implementation of the method.
 
 L6-26:53 Can we create object for final class?
     Yes, we can definitely create an object for final class.
