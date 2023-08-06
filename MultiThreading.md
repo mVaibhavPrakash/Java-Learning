@@ -590,7 +590,9 @@ There are many ways using which we can generate Thread dump – Using Profiler, 
 #### Java Timer Example
 
 Java Timer class is thread safe and multiple threads can share a single Timer object without need for external synchronization. 
+
 Timer class uses ``java.util.TaskQueue`` to add tasks at given regular interval and at any time there can be only one thread running the TimerTask, for example if you are creating a Timer to run every 10 seconds but single thread execution takes 20 seconds, then Timer object will keep adding tasks to the queue and as soon as one thread is finished, it will notify the queue and another thread will start executing. 
+
 Java Timer class uses Object wait and notify methods to schedule the tasks. 
 
 Here is a simple program for Java Timer and TimerTask example.
@@ -660,9 +662,13 @@ TimerTask cancelled
 Timer task finished at:Wed Dec 26 19:18:39 PST 2012
 ```
 The output confirms that if a task is already executing, Timer will wait for it to finish and once finished, it will start again the next task from the queue. 
+
 Java Timer object can be created to run the associated tasks as a daemon thread. Timer cancel() method is used to terminate the timer and discard any scheduled tasks, however it doesn’t interfere with the currently executing task and let it finish. 
+
 If the timer is run as daemon thread, whether we cancel it or not, it will terminate as soon as all the user threads are finished executing. 
+
 Timer class contains several schedule() methods to schedule a task to run once at given date or after some delay. 
+
 There are several scheduleAtFixedRate() methods to run a task periodically with certain interval. While scheduling tasks using Timer, you should make sure that time interval is more than normal thread execution, otherwise tasks queue size will keep growing and eventually task will be executing always.
 
 ### What is context switching in multithreading ?
