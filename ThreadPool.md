@@ -509,7 +509,7 @@ public class SquareCalculator {
 }
 ```
 
-The bit of code that actually performs the calculation is contained within the call() method, and supplied as a lambda expression. As we can see, there's nothing special about it, except for the sleep() call mentioned earlier.
+The bit of code that actually performs the calculation is contained within the ``call()`` method, and supplied as a lambda expression. As we can see, there's nothing special about it, except for the ``sleep()`` call mentioned earlier.
 
 It gets more interesting when we direct our attention to the use of Callable and ExecutorService.
 
@@ -519,7 +519,7 @@ Creating an instance of Callable doesn't take us anywhere; we still have to pass
 
 There are a few ways we can access an ExecutorService instance, and most of them are provided by the utility class Executors‘ static factory methods. In this example, we used the basic newSingleThreadExecutor(), which gives us an ExecutorService capable of handling a single thread at a time.
 
-Once we have an ExecutorService object, we just need to call submit(), passing our Callable as an argument. Then submit() will start the task and return a FutureTask object, which is an implementation of the Future interface.
+Once we have an ExecutorService object, we just need to call ``submit()``, passing our Callable as an argument. Then ``submit()`` will start the task and return a FutureTask object, which is an implementation of the Future interface.
 
 #### Consuming Futures
 
@@ -527,7 +527,7 @@ Up to this point, we've learned how to create an instance of Future.
 
 In this section, we'll learn how to work with this instance by exploring all the methods that are part of Future‘s API.
 
-##### Using isDone() and get() to Obtain Results
+##### Using ``isDone()`` and ``get()`` to Obtain Results
 
 Now we need to call calculate(), and use the returned Future to get the resulting Integer. Two methods from the Future API will help us with this task.
 
@@ -559,7 +559,7 @@ Integer result = future.get(500, TimeUnit.MILLISECONDS);
 
 The difference between ``get(long, TimeUnit)`` and ``get()`` is that the former will throw a TimeoutException if the task doesn't return before the specified timeout period.
 
-##### Canceling a Future With cancel()
+##### Canceling a Future With ``cancel()``
 
 Suppose we triggered a task, but for some reason, we don't care about the result anymore. We can use Future.cancel(boolean) to tell the executor to stop the operation and interrupt its underlying thread:
 ```java
@@ -642,23 +642,23 @@ future1 is not done and future2 is not done
 
 This is looking much better now. We can see that the 2 tasks start and finish running simultaneously, and the whole process takes around 1 second to complete.
 
-There are other factory methods that can be used to create thread pools, like Executors.newCachedThreadPool(), which reuses previously used Threads when they're available, and Executors.newScheduledThreadPool(), which schedules commands to run after a given delay.
+There are other factory methods that can be used to create thread pools, like Executors.``newCachedThreadPool()``, which reuses previously used Threads when they're available, and ``Executors.newScheduledThreadPool()``, which schedules commands to run after a given delay.
 
 For more information about ExecutorService, read our article dedicated to the subject.
 
 #### Overview of ForkJoinTask
 
-ForkJoinTask is an abstract class which implements Future, and is capable of running a large number of tasks hosted by a small number of actual threads in ForkJoinPool.
+``ForkJoinTask`` is an abstract class which implements Future, and is capable of running a large number of tasks hosted by a small number of actual threads in ``ForkJoinPool``.
 
-In this section, we'll quickly cover the main characteristics of ForkJoinPool. For a comprehensive guide about the topic, check out our Guide to the Fork/Join Framework in Java.
+In this section, we'll quickly cover the main characteristics of ``ForkJoinPool``. For a comprehensive guide about the topic, check out our Guide to the Fork/Join Framework in Java.
 
-The main characteristic of a ForkJoinTask is that it will usually spawn new subtasks as part of the work required to complete its main task. It generates new tasks by calling fork(), and it gathers all results with join(), thus the name of the class.
+The main characteristic of a ``ForkJoinTask`` is that it will usually spawn new subtasks as part of the work required to complete its main task. It generates new tasks by calling ``fork()``, and it gathers all results with ``join()``, thus the name of the class.
 
-There are two abstract classes that implement ForkJoinTask: RecursiveTask, which returns a value upon completion, and RecursiveAction, which doesn't return anything. As their names imply, these classes are to be used for recursive tasks, such as file-system navigation or complex mathematical computation.
+There are two abstract classes that implement ``ForkJoinTask``: ``RecursiveTask``, which returns a value upon completion, and RecursiveAction, which doesn't return anything. As their names imply, these classes are to be used for recursive tasks, such as file-system navigation or complex mathematical computation.
 
 Let's expand our previous example to create a class that, given an Integer, will calculate the sum squares for all of its factorial elements. So for instance, if we pass the number 4 to our calculator, we should get the result from the sum of 4² + 3² + 2² + 1², which is 30.
 
-First, we need to create a concrete implementation of RecursiveTask and implement its compute() method. This is where we'll write our business logic:
+First, we need to create a concrete implementation of RecursiveTask and implement its ``compute()`` method. This is where we'll write our business logic:
 
 ```java
 public class FactorialSquareCalculator extends RecursiveTask<Integer> {
