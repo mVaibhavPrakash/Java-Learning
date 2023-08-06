@@ -222,7 +222,7 @@ There is no sleep method with no argument..with sleep there must be the interval
 
 | Property |	yield()	| join()	| sleep() |
 |---|---|---|---|
-| Purpose	We use yield(), if a thread is willing to pass its execution (set its status back to Ready state) to give a chance to other remaining threads in the ready state. |	We use join() method when a thread is willing to wait until the completion of a different thread. |	sleep() method is used if a thread does not want to perform operation for a definite amount of time.|
+| Purpose |	We use yield(), if a thread is willing to pass its execution (set its status back to Ready state) to give a chance to other remaining threads in the ready state. |	We use join() method when a thread is willing to wait until the completion of a different thread. |	sleep() method is used if a thread does not want to perform operation for a definite amount of time.|
 | Is it overloaded? |	No |	Yes	| Yes |
 | Is it final? | No | Yes | No |
 | Static method? | Yes	| No | Yes |
