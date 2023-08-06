@@ -804,7 +804,8 @@ class GFG extends Thread {
     }
 }
 ```
-Output:
+#### Output:
+
 ![Exception](/Images/deadlockoccurence.png)
 
 
@@ -952,7 +953,8 @@ class GFG extends Thread {
     }
 }
 ```
-Output
+#### Output
+
 ![ExceptionHandling](/Images/deadlockprevention.png)
 
 ### How immutability simplify the concurrency?
