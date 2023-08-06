@@ -76,9 +76,9 @@ we need to call start() method on it
 3. Running state : If thread scheduler allocates cpu time, then the thread will be in running state.
 
 4. Blocking/ Waiting / sleeping states : In this state the thread can be made temprorily inactive for a short period of time, the above state in any of the following ways:
-  1. The thread waits to acquire lock of an object.
-  2. The thread waits for another thread to complete.
-  3. The thread waits for notification of other thread.
+    1. The thread waits to acquire lock of an object.
+    2. The thread waits for another thread to complete.
+    3. The thread waits for notification of other thread.
 
 5. Dead State : A thread is in dead state when thread’s run method execution is complete. It dies automatically when thread’'s run method execution is completed and the thread object will be garbage collected.
 
