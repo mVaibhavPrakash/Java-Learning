@@ -423,9 +423,49 @@ for(Future<String> future : futures){
 executorService.shutdown();
 ```
 
-#### Runnable vs. Callable
+### Callable Interface
 
-The Runnable interface is very similar to the Callable interface. The Runnable interface represents a task that can be executed concurrently by a thread or an ExecutorService. The Callable can only be executed by an ExecutorService. Both interfaces only has a single method. There is one small difference between the Callable and Runnable interface though. The difference between the Runnable and Callable interface is more easily visible when you see the interface declarations.
+The Java Callable interface, ``java.util.concurrent.Callable``, represents an ``asynchronous task`` which can be executed by a separate thread. For instance, it is possible to submit a Callable object to a Java ExecutorService which will then execute it asynchronously.
+
+#### Java Callable Interface Definition
+
+The Java Callable interface is quite simple. It contains a single method named call(). Here is how the Callable interface looks (approximately):
+
+```java
+public interface Callable<V> {
+
+    V call() throws Exception;
+
+}
+```
+
+> **The ``call()`` method is called in order to execute the asynchronous task.** The ``call()`` method can return a result. If the task is executed asynchronously, the result is typically propagated back to the creator of the task via a Java Future. This is the case when a Callable is submitted to an ExecutorService for concurrent execution.
+
+The ``call()`` method can also thrown an Exception in case the task fails during execution.
+
+#### Implementing Callable
+Here is a simple example of implementing the Java Callable interface:
+
+```java
+public class MyCallable implements Callable<String> {
+
+    @Override
+    public String call() throws Exception {
+        return String.valueOf(System.currentTimeMillis());
+    }
+}
+```
+This implementation is very simple. It has the generic type set to a Java String. The result of that is that the call() method will return a String. The call() implementation just returns a String representation of the current time in milliseconds. In a real application the task would probably be a more complex, or larger, set of operations.
+
+Quite often, IO operations like reading from or writing to disk or network, are good candidates for tasks that can be executed concurrently. IO operations often have long waiting times in between reading and writing blocks of data. By executing such tasks in a separate thread, you avoid blocking your main application thread unnecessarily.
+
+#### Callable vs. Runnable
+
+The Java Callable interface is similar to the Java Runnable interface, in that both of them represents a task that is intended to be executed concurrently by a separate thread.
+
+The main difference between the Runnable ``run()`` method and the Callable ``call()`` method is that the ``call()`` method can ``return an Object`` from the method call. Another difference between ``call()`` and ``run()`` is that ``call()`` can ``throw an exception``, whereas ``run()`` ``cannot (except for unchecked exceptions - subclasses of RuntimeException)``.
+
+    If you need to submit a task to a Java ExecutorService and you need a result from the task, then you need to make your task implement the Callable interface. Otherwise your task can just implement the Runnable interface.
 
 Here is first the Runnable interface declaration:
 
@@ -441,10 +481,6 @@ public interface Callable{
     public Object call() throws Exception;
 }
 ```
-
-The main difference between the Runnable run() method and the Callable call() method is that the call() method can return an Object from the method call. Another difference between call() and run() is that call() can throw an exception, whereas run() cannot (except for unchecked exceptions - subclasses of RuntimeException).
-
-If you need to submit a task to a Java ExecutorService and you need a result from the task, then you need to make your task implement the Callable interface. Otherwise your task can just implement the Runnable interface.
 
 #### Cancel Task
 
