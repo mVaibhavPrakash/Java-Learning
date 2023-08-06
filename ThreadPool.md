@@ -698,3 +698,118 @@ FactorialSquareCalculator calculator = new FactorialSquareCalculator(10);
 
 forkJoinPool.execute(calculator);
 ```
+
+### Explicit Locking
+
+Explicit locking mechanism can be used to coordinate access to shared resources in a multi-threaded environment.
+
+The ``Lock interface``, which is declared in the java.util.concurrent.locks package, defines the explicit locking operations.
+
+The ``ReentrantLock class``, in the same package, is the concrete implementation of the Lock interface.
+
+The Lock interface is declared as follows:
+
+```java
+public interface Lock {
+  void lock();
+
+  Condition newCondition();
+
+  void lockInterruptibly() throws InterruptedException;
+
+  boolean tryLock();
+
+  boolean tryLock(long time, TimeUnit unit) throws InterruptedException;
+
+  void unlock();
+}
+```
+
+``lock()`` method acquires a lock behaves the same as the use of the synchronized keyword.
+
+We must release the lock by calling the ``unlock()`` method of the Lock interface after we are done with the lock.
+
+```java
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+/*from w w  w.j  a v a  2s.c  om*/
+public class Main {
+  // Instantiate the lock object
+  private Lock myLock = new ReentrantLock();
+
+  public void updateResource() {
+
+    try {
+      // Acquire the lock
+      myLock.lock();
+    } finally {
+      // Release the lock
+      myLock.unlock();
+    }
+  }
+}
+```
+
+#### Example
+
+```java
+import java.util.concurrent.locks.Lock; //import Lock interface 
+ import java.util.concurrent.locks.ReentrantLock; // import ReentrantLock class 
+ class Account 
+ { 
+      private double balance=5000; 
+      private Lock lockObj = new ReentrantLock(); //Create a lock 
+      public double getBalance() 
+      { 
+        return balance; 
+      } 
+      public void deposit(double amount ) 
+      { 
+        lockObj.lock(); //lock his object 
+        try 
+        { 
+            System.out.println( Thread.currentThread().getName() +" Read Balance : " + balance); 
+            double newBalance = balance + amount; 
+            Thread.sleep(1000); 
+            balance = newBalance; 
+        } 
+        catch(InterruptedException ex){
+            
+        } 
+        finally 
+        { 
+             lockObj.unlock(); //unlock this 0bject 
+        } 
+      } 
+ } 
+  class AddAmountTask implements Runnable 
+ {   
+    Account acct; 
+    AddAmountTask(Account ac) 
+    { 
+        acct = ac; 
+    } 
+    public void run() 
+    { 
+           acct.deposit(100); 
+    } 
+ } 
+ class ExlicitLock 
+ { 
+    public static void main(String[] args) 
+    { 
+        Account a = new Account(); //shared resource 
+        AddAmountTask t = new AddAmountTask(a); 
+        Thread t1 = new Thread(t); 
+        Thread t2 = new Thread(t); 
+        Thread t3 = new Thread(t); 
+        t1.start(); t2.start(); t3.start(); 
+        try 
+        { 
+            t1.join(); t2.join(); t3.join(); 
+        } 
+        catch(InterruptedException ex){} 
+        System.out.println("Total Balance in Account is : " + a.getBalance()); 
+    } 
+ }
+```
