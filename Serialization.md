@@ -1,150 +1,143 @@
+### What is serialization?⭐️
 
-What is serialization?⭐️
+Serialization is a mechanism of converting the state of an object into a byte stream.
 
-  Serialization is a mechanism of converting the state of an object into a byte stream.
-
-What is Deserialization?⭐️
+### What is Deserialization?⭐️
   
-  Deserialization is reverse of serialization. The reverse process of creating object from sequence of bytes is called deserialization.
+Deserialization is reverse of serialization. The reverse process of creating object from sequence of bytes is called deserialization.
 
-How to make a Java class Serializable?
+### How to make a Java class Serializable?
 
-	By implementing Serializable interface.
+By implementing Serializable interface.
 
-How many methods Serializable has? If no method then what is the purpose of Serializable interface?
+### How many methods Serializable has? If no method then what is the purpose of Serializable interface?
   
-  It is a marker interface.The main purpose of using marker interface is to tell the compiler that treat differently the  object of the class which implemented marker interface.they are used to indicate something to compiler or JVM.
+It is a marker interface.The main purpose of using marker interface is to tell the compiler that treat differently the  object of the class which implemented marker interface.they are used to indicate something to compiler or JVM.
 
-Which methods are used during Serialization and DeSerialization process in Java?
+### Which methods are used during Serialization and DeSerialization process in Java?
 
-  we call ObjectOutputStream.writeObject(saveThisobject) and to deserialize that object we call ObjectInputStream.readObject() method. Call to writeObject() method trigger serialization process in java. one important thing to note about readObject() method is that it is used to read bytes from the persistence and to create object from those bytes and its return an Object which needs to be type cast to correct type.
+We call ``ObjectOutputStream.writeObject(saveThisobject)`` and to deserialize that object we call ``ObjectInputStream.readObject()`` method. 
 
-What if we want to serialize or deserialize primitives?
+Call to ``writeObject()`` method trigger serialization process in java. 
 
-  For every primitive corresponding method is there like writeInt(), readInt(), writeFloat() etc.
+One important thing to note about ``readObject()`` method is that it is used to read bytes from the persistence and to create object from those bytes and its return an Object which needs to be type cast to correct type.
 
-Write a program to serialize and deserialize an object.⭐️
+### What if we want to serialize or deserialize primitives?
 
-Can we serialize more than one object and write on same File?
+For every primitive corresponding method is there like writeInt(), readInt(), writeFloat() etc.
 
-  Yes
+### Write a program to serialize and deserialize an object.⭐️
 
-What does transient mean? why we use transient keyword?
+### Can we serialize more than one object and write on same File?
 
-  //While serializing you want some of the members not to serialize? How do you achieve it?
-  Transient mean not to serialize.
+Yes
 
-What if we make static variable transient?
+### What does transient mean? why we use transient keyword?
 
-  Static variables are not part of object state.
-  serialization is for objects.So static variables are not serialized.Thus no use of using transient.
+//While serializing you want some of the members not to serialize? How do you achieve it?
+Transient mean not to serialize.
 
-Which kind of variables is not serialized during Java Serialization?⭐️
+### What if we make static variable transient?
 
-  transient and static variables.
+Static variables are not part of object state.
+Serialization is for objects.So static variables are not serialized.Thus no use of using transient.
 
-What if we make final variable transient?⭐️
+### Which kind of variables is not serialized during Java Serialization?⭐️
 
-  It is useless to make a final variable transient.
-  final variables participate in serialization directly by the value
-  hence declaring a final variable as transient has no meaning.They will anyhow participate.
+transient and static variables.
 
-What do you have to take care if file to read is having more than one object?
+### What if we make final variable transient?⭐️
 
-  The order in which they were serialized.
-  It should be same while deserializing. Otherwise we will get ClassCastException.
+* It is useless to make a final variable transient.
+* final variables participate in serialization directly by the value hence declaring a final variable as transient has no meaning.They will anyhow participate.
 
-What if a member of class doesn't implement Serializable interface?
-  //what is object graph?⭐️
+### What do you have to take care if file to read is having more than one object?
 
-  If you try to serialize an object of a class which implements Serializable,
-  but the object includes a reference to a non- Serializable class then a ‘NotSerializableException’ will be thrown
-  at runtime
-  whenever we are serializing an object, set of all objects which are reachable
-  from that object will be serialized automatically.
-  this gp of objects is called object graph
-  In object graph every object should be serializable.
-  otherwise we will get ‘NotSerializableException’.
+* The order in which they were serialized.
+* It should be same while deserializing. Otherwise we will get ClassCastException.
 
-//Customized serialization
+### What if a member of class doesn't implement Serializable interface?
 
-Can we customize Serialization process in Java?⭐️
+//what is object graph?⭐️
 
-  yes. We can customize behavior of object in serialization and deserialization
-  by implementing two methods in serializable class:
+If you try to serialize an object of a class which implements Serializable,
+but the object includes a reference to a non- Serializable class then a ‘NotSerializableException’ will be thrown at runtime whenever we are serializing an object, set of all objects which are reachable from that object will be serialized automatically. this gp of objects is called object graph.
 
-  private void writeObject(ObjectOutputStream os) throws Exception
-  private void readObject(ObjectInputStream is) throws Exception
+In object graph every object should be serializable. otherwise we will get ‘NotSerializableException’.
 
-  we can do any kind of pre or post processing task inside these methods.
+### Can we customize Serialization process in Java?⭐️
 
-  These methods are callback methods, we can not call these methods as you can see
-  they are private to avoid being inherited, overridden or overloaded, these are automatically called by jvm.
+Yes. We can customize behavior of object in serialization and deserialization
+by implementing two methods in serializable class:
 
-What is the need of customized serialization?
+1. private void ``writeObject(ObjectOutputStream os)`` throws Exception
+2. private void ``readObject(ObjectInputStream is)`` throws Exception
 
-  To do any kind of pre or post processing task like encryption and decryption of fields which should be secured. or we can say to recover loss of information because of transient fields.
+We can do any kind of pre or post processing task inside these methods.
 
-what if the child of serializable does not implement serializable and we try to serialize or deserialize object of that class?
+These methods are callback methods, we can not call these methods as you can see
+they are private to avoid being inherited, overridden or overloaded, these are automatically called by jvm.
 
-	All the child of serializable are by default serializable. Its inherited in child.
+### What is the need of customized serialization?
 
-If a class is Serializable but its super class is not, what will be the state of the instance variables inherited from super class after deserialization?
+To do any kind of pre or post processing task like encryption and decryption of fields which should be secured. or we can say to recover loss of information because of transient fields.
 
-  If any variable is inherited from parent then jvm ignores the value and write the default value on file.Deserialization:
-  jvm checks is the parent is serializable or not, if not then
-  Jvm executes instance control flow and for that jvm always calls the no argument constructor.
-  (can be default generated by compiler or provided by us)
+### What if the child of serializable does not implement serializable and we try to serialize or deserialize object of that class?
 
-What if the parent is not serializable and is not having no arg constructor?
+All the child of serializable are by default serializable. Its inherited in child.
 
-  If no arg constructor is not there we will get InvalidClassException.
+### If a class is Serializable but its super class is not, what will be the state of the instance variables inherited from super class after deserialization?
 
-Suppose super class of a new class implement Serializable interface, how can we avoid new class to being serialized?
+If any variable is inherited from parent then jvm ignores the value and write the default value on file.Deserialization:
+jvm checks is the parent is serializable or not, if not then
+Jvm executes instance control flow and for that jvm always calls the no argument constructor.
+(can be default generated by compiler or provided by us)
 
-  To avoid Java serialization you can implement writeObject() and readObject() method in our serializable Class
-  and throw NotSerializableException from those method.
+### What if the parent is not serializable and is not having no arg constructor?
+
+If no arg constructor is not there we will get InvalidClassException.
+
+### Suppose super class of a new class implement Serializable interface, how can we avoid new class to being serialized?
+
+To avoid Java serialization you can implement writeObject() and readObject() method in our serializable Class and throw NotSerializableException from those method.
 
 //externalization
 
-What is Externalizable? the difference between Serializable and Externalizable interface in Java?⭐️
+### What is Externalizable? the difference between Serializable and Externalizable interface in Java?⭐️
 
-  Externalizable is an interface.(Not Marker)
-  in serialization everything a taken care by jvm and programmer does not have any control..
-	With serialization its not possible to save a part of file which can create performance problems
-	so we have externalization.
-  with externalization programmer have control instead of jvm,
-	based on our requirement we can save a part or the full object.
+* Externalizable is an interface.(Not Marker)
+* In serialization everything a taken care by jvm and programmer does not have any control..
+  * With serialization its not possible to save a part of file which can create performance problems so we have externalization.
+* With externalization programmer have control instead of jvm, based on our requirement we can save a part or the full object.
 
-  In externalization interface there are 2 methods:
+### In externalization interface there are 2 methods:
 
-  1.public void writeExternal(ObjectOutput oo) throws IOException   //ObjectOutput : Parent of ObjectOutputStream
-  2.public void ReadExternal(ObjectInput io) throws IOException
+1. ``public void writeExternal(ObjectOutput oo) throws IOException``   //ObjectOutput : Parent of ObjectOutputStream
+2. ``public void ReadExternal(ObjectInput io) throws IOException``
 
-  at the time of deserialization jvm again needs to create the object since the file only has a part of object it does not have the object and for that it needs no arg constructor
-  thus externalizable class should contain public no arg constructor
+at the time of deserialization jvm again needs to create the object since the file only has a part of object it does not have the object and for that it needs no arg constructor
+thus externalizable class should contain public no arg constructor
 
-Can we use transient keyword with externalization?
+### Can we use transient keyword with externalization?
 
-  Yes, but it has no affect.
-  Its not required.
+Yes, but it has no affect.
+Its not required.
 
-What is serialVersionUID and use of serialVersionUID?⭐️
+### What is serialVersionUID and use of serialVersionUID?⭐️
 
-  jvm saves a unique identifier with every object based on the class file of the object while serializing.
-  On receiver's machine while deserializing the jvm again generates the unique identifier for the same local class.
-  If both does not match we will get InvaliClassException.else object will be deserialized.
-  This unique identifier is serialVersion UID.
+* JVM saves a unique identifier with every object based on the class file of the object while serializing.
+* On receiver's machine while deserializing the jvm again generates the unique identifier for the same local class.
+* If both does not match we will get InvaliClassException.else object will be deserialized.
+* This unique identifier is serialVersion UID.
 
-What are the drawbacks of using default serialVersion UID generated by jvm?
+### What are the drawbacks of using default serialVersion UID generated by jvm?
 
-  The both machines which are serializing and deserializing the object have to use same machine that is same operating
-  system, same java version, same vendor as to generate same serialVersion UID.
-  Both sender and receiver have to use same version of class file, after serialization any change in
-  that file at receiver side will lead to creation of different ID.Thus deserialization will not be performed.
-  Jvm uses complex process to generate serialVersionUID , which may affect performance.
+The both machines which are serializing and deserializing the object have to use same machine that is same operating system, same java version, same vendor as to generate same serialVersion UID.
+Both sender and receiver have to use same version of class file, after serialization any change in
+that file at receiver side will lead to creation of different ID.Thus deserialization will not be performed.
 
-  so we can have our own serialVersionUID:
-  private static final long serialVersionUID = 1L;
+JVM uses complex process to generate serialVersionUID , which may affect performance.
+so we can have our own serialVersionUID:
+``private static final long serialVersionUID = 1L;``
 
 
