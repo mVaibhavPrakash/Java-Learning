@@ -68,9 +68,7 @@ ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newWorkStealingPool
 | Method | Description |
 | --- | --- |
 | newFixedThreadPool(int) | Creates a fixed size thread pool. |
-| newCachedThreadPool() | Creates a thread pool that creates new 
-                                  threads as needed, but will reuse previously 
-                                  constructed threads when they are available |
+| newCachedThreadPool() | Creates a thread pool that creates new threads as needed, but will reuse previously constructed threads when they are available |
 | newSingleThreadExecutor() | Creates a single thread. |
 
 In case of a fixed thread pool, if all threads are being currently run by the executor then the pending tasks are placed in a queue and are executed when a thread becomes idle.
