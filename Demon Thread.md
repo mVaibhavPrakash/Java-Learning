@@ -1,3 +1,10 @@
+
+## How many types of threads are there in Java?
+    
+Java offers two types of threads:
+1. user threads
+2. daemon threads.
+
 # What is Daemon Thread in Java?
 
 Daemon thread in Java is a low-priority thread that performs background operations such as garbage collection, finalizer, Action Listeners, Signal dispatches, etc.
@@ -30,7 +37,10 @@ As a result, if there is no user thread, JVM stops the daemon thread.
 | 1. | public void setDaemon(boolean status) | This method marks whether the current thread as a daemon thread or a user thread. |
 | 2. | public final boolean isDaemon() | This method is used to determine whether or not the current thread is a daemon. If the thread is Daemon, it returns true. Otherwise, false is returned. |
 
-## Daemon Thread in Java Examples
+## How to create Daemon Thread in Java
+
+By default all threads are non daemon. We can make non daemon thread daemon using setDaemon() method. we call setDaemon() only before start() method. If we call setDaemon() after start() method an IllegalThreadStateException will be thrown.
+
 
 1. ``SetDaemon()`` and ``isDaemon()`` methods are demonstrated in below Java program.
 
@@ -122,6 +132,7 @@ Is it Daemon: false
 ```
 
 ### Exceptions in a Daemon Thread in Java
+
 | No. |	Exceptions |	Description |
 | --- | --- | --- |
 | 1.	| IllegalThreadStateException. |	If you call the setDaemon() method after the thread has started, it will throw an exception. |
@@ -138,6 +149,10 @@ With the aid of the table below, learn more about the distinctions between Daemo
 | Life is dependent on user threads	| Life is independent |
 | Daemon threads are created by JVM | 	An application creates its own user threads. |
 | provides service to the user thread which runs in the background |	Used for foreground tasks |
+
+## Can we make main() thread as daemon?
+
+Main thread is always non daemon. We cannot make it daemon.
 
 ### Conclusion
 
