@@ -466,7 +466,7 @@ If you want to shut down the ExecutorService immediately, you can call the shutd
 
 ``executorService.shutdownNow();``
 
-##### awaitTermination()
+##### ``awaitTermination()``
 
 The ExecutorService awaitTermination() method will block the thread calling it until either the ExecutorService has shutdown completely, or until a given time out occurs. The awaitTermination() method is typically called after calling shutdown() or shutdownNow(). Here is an example of calling ExecutorService awaitTermination():
 
