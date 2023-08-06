@@ -561,7 +561,7 @@ The difference between ``get(long, TimeUnit)`` and ``get()`` is that the former 
 
 ##### Canceling a Future With ``cancel()``
 
-Suppose we triggered a task, but for some reason, we don't care about the result anymore. We can use Future.cancel(boolean) to tell the executor to stop the operation and interrupt its underlying thread:
+Suppose we triggered a task, but for some reason, we don't care about the result anymore. We can use ``Future.cancel(boolean)`` to tell the executor to stop the operation and interrupt its underlying thread:
 ```java
 Future<Integer> future = new SquareCalculator().calculate(4);
 
@@ -574,7 +574,7 @@ It's also possible that a call to ``cancel()`` fails. In that case, the returned
 
 #### More Multithreading With Thread Pools
 
-Our current ``ExecutorService`` is single threaded, since it was obtained with the Executors.newSingleThreadExecutor. To highlight this single thread, let's trigger two calculations simultaneously:
+Our current ``ExecutorService`` is single threaded, since it was obtained with the ``Executors.newSingleThreadExecutor``. To highlight this single thread, let's trigger two calculations simultaneously:
 ```java
 SquareCalculator squareCalculator = new SquareCalculator();
 
