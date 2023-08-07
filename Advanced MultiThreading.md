@@ -40,9 +40,23 @@ ExecutorService executor = Executors.newSingleThreadScheduledExecutor()
 ExecutorService executor = Executors.newWorkStealingPool();
 ```
 
+### ExecutorService methods
+
+1. ``invokeAny()``
+
+``The invokeAny()`` method *takes a collection of Callable objects, or subinterfaces of Callable*. Invoking this method does not return a Future, but returns the result of one of the Callable objects. You have no guarantee about which of the Callable's results you get. Just one of the ones that finish.
+
+2. ``invokeAll()``
+
+The ``invokeAll()`` method *invokes all of the Callable objects you pass to it in the collection passed as parameter*. The invokeAll() returns a list of Future objects via which you can obtain the results of the executions of each Callable.
+
+Keep in mind that a task might finish due to an exception, so it may not have "succeeded". There is no way on a Future to tell the difference.
+
+3. ``submit()`` and ``execute()`` are defined in below example
+
 ### How do you execute a callable from executorservice?
 
-We pass the callable task inside the submit method and invoke the submit on the created ExecutorService.
+We pass the callable task inside the ``submit`` method and invoke the submit on the created ExecutorService.
 
 Code :
 ```java
@@ -66,7 +80,9 @@ public class Main {
 
 ### How do you execute runnable task from executorservice?
 
-We pass the runnable in the execute method and invoke it on the ExecutorService.
+We pass the runnable in the ``submit/execute`` method and invoke it on the ExecutorService.
+
+> Note  ``execute()`` method will not return any Future object and is used only with ``Runnable``
 
 Code :
 
@@ -85,6 +101,16 @@ public class Main {
         System.out.println("Result of the Future - " + runnableFuture.get());
 
         executorService.shutdown();
+
+        ExecutorService executorService1 = Executors.newSingleThreadExecutor();
+
+        executorService1.execute(new Runnable() {
+            public void run() {
+                System.out.println("Asynchronous task");
+            }
+        });
+
+        executorService1.shutdown();
 
     }
 }
