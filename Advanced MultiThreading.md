@@ -244,7 +244,6 @@ adjustable expected concurrency for updates. Major classes are ConcurrentHashMap
 * CopyOnWriteArrayList is to be used in a Thread based environment where read operations are very frequent and update operations are rare.
 * Iterator of CopyOnWriteArrayList will never throw ConcurrentModificationException.
 * Any type of modification to CopyOnWriteArrayList will not reflect during iteration since the iterator was created.
-* List modification methods like remove, set and add are not supported in the iteration. This method will throw UnsupportedOperationException.
 * null can be added to the list.
 
 #### Explain ``CopyOnwriteArraySet``.
@@ -256,7 +255,6 @@ It shares some properties of Set and also has its own properties as listed:
 * The internal implementation of ``CopyOnWriteArraySet`` is ``CopyOnWriteArrayList`` only.
 * Multiple Threads are able to perform update operations simultaneously but for every update operation, a separate cloned copy is created. As for every update a new cloned copy will be created which is costly. Hence if multiple update operations are required then it is not recommended to use CopyOnWriteArraySet.
 * While one thread iterating the Set, other threads can perform updation, here we won’t get any runtime exception like ConcurrentModificationException.
-* An Iterator of CopyOnWriteArraySet class can perform only read-only and should not perform the deletion, otherwise, we will get Run-time exception UnsupportedOperationException.
 * Use CopyOnWriteArraySet in applications in which set sizes generally stay small, read-only operations vastly outnumber mutative operations, and you need to prevent interference among threads during traversal.
 * CopyOnWriteArraySet helps in minimizing programmer-controlled synchronization steps and moving the control to inbuilt, well-tested APIs.
 
