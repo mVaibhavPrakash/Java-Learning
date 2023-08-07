@@ -28,6 +28,25 @@ However there are many methods to retrieve keys and values as collection.
 * Collections is a utility class that has some set of operations you perform on Collection.
 * Collection does not have all static methods in it, but Collections consist of methods that are all static.
 
+| Collection | Collections |
+| --- | --- |
+| It is an interface. | It is a utility class. |
+| It is utilized to represent a group of individual objects in the form of a single unit.  | It specifies several utility methods that are used to work on the collection. |
+| The Collection is an interface that includes a static method since the launch of Java8. The Interface can contain default and abstract methods. | It contains static methods only. |
+| It extends the iterable interface. | It extends the Object class |
+
+## Iterable interface Vs Iterator
+
+* ``Iterable interface`` belongs to the java.lang package. It represents a data structure that can be iterated over.
+* The Iterable interface provides a method that produces an Iterator. 
+
+| Iterable	| Iterator |
+| --- | --- |
+| Represents a collection that can be iterated over using a for-each loop | Represents an interface that can be used to iterate over a collection |
+| When implementing an Iterable, we need to override the iterator() method	| When implementing an Iterator, we need to override the hasNext() and next() methods |
+| Doesn't store the iteration state |	Stores the iteration state |
+| Removing elements during the iteration isn't allowed	| Removing elements during the iteration is allowed |
+
 ## Why Collection Interface does not extend Serializable and Cloneable interfaces?
 
 'There is no need to do it!'
