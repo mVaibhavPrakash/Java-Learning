@@ -200,21 +200,27 @@ There are several scheduleAtFixedRate() methods to run a task periodically with 
 
 Context Switching is the process of storing and restoring of CPU state so that Thread execution can be resumed from the same point at a later point of time. Context Switching is the essential feature for multitasking operating system and support for multi-threaded environment.
 
-What is fork join pool?⭐️
-  fork join
+### What is fork join pool?⭐️
 
-What is completable future?
-  completable Future
+* ForkJoinPool is a thread pool that uses a divide-and-conquer strategy to execute tasks recursively.
+* It is used by JVM languages such as Kotlin and Akka to build message-driven applications.
+* ForkJoinPool executes tasks in parallel, enabling efficient use of computer resources.
+* The work-stealing algorithm optimizes resource utilization by allowing idle threads to steal tasks from busy ones.
+* Tasks are stored in a double-ended queue, with the LIFO strategy used for storage and FIFO for stealing.
+* The main classes in the ForkJoinPool framework include ForkJoinPool, RecursiveAction, and RecursiveTask:
+    * RecursiveAction is used to compute recursive actions and doesn't return any values.
+    * RecursiveTask is similar but returns a value.
+    * The compute() method is overridden in both classes to implement custom logic.
+    * The fork() method invokes the compute() method and breaks down the task into smaller subtasks.
+    * The join() method waits for subtasks to complete and merges their results.
+    * ForkJoinPool is commonly used with parallel streams and CompletableFuture.
 
 ### What is FutureTask Class?
 
-FutureTask is the base implementation class of Future interface
-and we can use it with Executors for asynchronous processing.
-Most of the time we don’t need to use FutureTask class but it comes real handy
-if we want to override some of the methods of Future interface and want to keep most of the base implementation.
-We can just extend this class and override the methods according to our requirements.
+FutureTask is the base implementation class of Future interface and we can use it with Executors for asynchronous processing.
 
-//Concurrent Collection And Concurrent Utilities
+Most of the time we don’t need to use FutureTask class but it comes real handy if we want to override some of the methods of Future interface and want to keep most of the base implementation.
+We can just extend this class and override the methods according to our requirements.
 
 ### What are Concurrent Collection Classes?
 
