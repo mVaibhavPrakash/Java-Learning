@@ -260,6 +260,8 @@ try(FileWriter output = new FileWriter("data/props.properties")){
 We can add a null element in HashSet but not in treeSet.
 👉🏻 TreeSet uses compareTo() method to compare objects with each other, if any element will be null by any chance, it will throw NullPointerException.
 
+> Note : Any collection implementing sorting can't accept null values.
+
 ## What is difference between poll() and remove() methods of Queue?
 
 Both of these methods are used to remove element and returns the head of the queue. 
