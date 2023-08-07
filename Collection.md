@@ -132,6 +132,10 @@ We can create a read only collection by using unmodifiableCollection method of C
 There is a method in Collections class ->
 ``synchronizedCollection(Collection c)`` : used to get a synchronized or thread-safe collection.
 
+## How can we make HashMap thread-safe?
+
+You can make HashMap thread safe by wrapping it with ``Collections.synchronizedMap()``.
+
 ## Whats difference between TreeSet and LinkedHashSet and HashSet?
 
 * These are the implementations of Set.
