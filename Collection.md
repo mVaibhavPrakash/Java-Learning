@@ -279,127 +279,148 @@ Whats difference between TreeSet and LinkedHashSet and HashSet?
     and TreeSet uses compareTo() method for maintaining ordering.
     This was all about differences between them.
 
-Can we add a null element to TreeSet and HashSet?
+## Can we add a null element to TreeSet and HashSet?
 
-    We can add a null element in HashSet but not in treeSet.
+We can add a null element in HashSet but not in treeSet.
+👉🏻 TreeSet uses compareTo() method to compare objects with each other, if any element will be null by any chance, it will throw NullPointerException.
 
-    👉🏻 TreeSet uses compareTo() method to compare objects with each other, if any element will be null
-    by any chance, it will throw NullPointerException.
+## What is difference between poll() and remove() methods of Queue?
 
-What is difference between poll() and remove() methods of Queue?
+Both of these methods are used to remove element and returns the head of the queue. 
+The difference is,
+-> if the queue is empty and we call the remove() method, then it will throw exception,
+but if we call poll() method, it will return null.
 
-    Both of these methods are used to remove element and returns the head of the queue. The difference is,
+## What is the difference between remove() method of Collection and remove() method of Iterator?
 
-    -> if the queue is empty and we call the remove() method, then it will throw exception,
-    but if we call poll() method, it will return null.
+``Collection.remove()`` is used for removing object from collection, while not iterating.
+-> When we use this remove() method to remove element at the time of iteration then it may throw
+ConcurrentModificationException.
 
-What is the difference between remove() method of Collection and remove() method of Iterator?
+-> Iterator.remove() is advised to use for remove element while iterating.
 
-    Collection.remove() is used for removing object from collection, while not iterating.
+## Can we use a Custom object as a key in HashMap? If yes then How?
 
-    -> When we use this remove() method to remove element at the time of iteration then it may throw
-    ConcurrentModificationException.
+Yes! we may create custom object key for HashMap.
+-> for that we need to override the equals() and hashcode() method to the Class which we want to use as key.
 
-    -> Iterator.remove() is advised to use for remove element while iterating.
+## Why it is suggetsed to have immutable objects as keys in hashMap?why string is popular hasmap key in java?
 
-How HashMap works in Java?
+if we want to use custom object as key, we need to ensure that the hashcode() of the key of hashMap does not change. If it happens then it is impossible to get object value from that key.
 
-Whats the difference between HashMap and HashTable?
+## What is the contract of equals() and hashCode() method?
 
-Can we use a Custom object as a key in HashMap? If yes then How?
+👉🏻 If two objects are equal, then they must have the same hashcode.
+👉🏻 if two objects have the same hash code, then they may or may not be equal.
+> //Equal objects must produce same hashcode
+   //a.equals(b) -> true    then  a.hashCode() = b.hashCode()
+//unequal objects need not produce same hashcode
+//a.equals(b) -> false    then  a.hashCode() = b.hashCode() -> true
+//a.equals(b) -> false    then  a.hashCode() = b.hashCode() -> false
 
-    Yes! we may create custom object key for HashMap.
-    -> for that we need to override the equals() and hashcode() method to the Class which we want to use
-    as key.
+## What is the NavigableMap?
 
-Why it is suggetsed to have immutable objects as keys in hashMap?
+The ``NavigableMap interface`` is a member of the ``Java Collection Framework``. It belongs to ``java.util`` package and It is an extension of ``SortedMap`` which provides convenient navigation methods like ``lowerKey``, ``floorKey``, ``ceilingKey`` and ``higherKey``, and along with this popular navigation method. It also provide ways to create a Sub Map from existing Map in Java e.g. headMap whose keys are less than the specified key, tailMap whose keys are greater than the specified key, and a subMap which strictly contains keys which fall between toKey and fromKey. 
+**An example class that implements NavigableMap is TreeMap.**
 
-  //why string is popular hasmap key in java?
-    -> if we want to use custom object as key, we need to ensure that the hashcode() of the key of hashMap
-    does not change. If it happens then it is impossible to get object value from that key.
+## What is the NavigableSet?
 
-What is the contract of equals() and hashCode() method?
+NavigableSet represents a navigable set in Java Collection Framework. The NavigableSet interface inherits from the ``SortedSet`` interface. It behaves like a SortedSet with the exception that we have navigation methods available in addition to the sorting mechanisms of the SortedSet. 
+For example, the NavigableSet interface can navigate the set in reverse order compared to the order defined in SortedSet. A NavigableSet may be accessed and traversed in either ascending or descending order. 
+**The classes that implement this interface are, TreeSet and ConcurrentSkipListSet**
 
-    👉🏻 If two objects are equal, then they must have the same hashcode.
-    👉🏻 if two objects have the same hash code, then they may or may not be equal.
+## TreeSet
 
-    //Equal objects must produce same hashcode
-	   //a.equals(b) -> true    then  a.hashCode() = b.hashCode()
+TreeSet is one of the most important implementations of the SortedSet interface in Java that uses a Tree for storage. The ordering of the elements is maintained by a set using their natural ordering whether or not an explicit comparator is provided. This must be consistent with equals if it is to correctly implement the Set interface. 
 
-  	//unequal objects need not produce same hashcode
-  	//a.equals(b) -> false    then  a.hashCode() = b.hashCode() -> true
-  	//a.equals(b) -> false    then  a.hashCode() = b.hashCode() -> false
+It can also be ordered by a Comparator provided at set creation time, depending on which constructor is used. The TreeSet implements a NavigableSet interface by inheriting AbstractSet class.
 
-What is the NavigableMap?
+## What are IdentityHashMap, EnumMap and WeakHashMap? How they are different?
 
-What is the difference between HashMap and HashSet in java?
+| PROPERTIES | IdentityHashMap | WeakHashMap | EnumMap |
+| References | IdentityHashMap stores strong key reference.  | WeakHashMap stores the weak key reference. | EnumMap stores the strong key reference.|
+| Search and get the values | It uses equality operator (==) to search and get the values. | It uses equals() method for that purpose. | It also uses equals() method for that purpose. |
+| Keys	| It allows to store any type of keys. | It also allows to store any type of keys. | It allows to store only enum type keys. |
+| Underlined data structure	| It uses the array as an underlined data structure.	| It uses the HashTable as an underlined data structure. | It uses the array as an underlined data structure. |
+| Iterator	| Iterator used in IdentityHashMap is Fail-fast. | Iterator used in WeakHashMap is Fail-fast. | Iterator used in EnumMap is weakly consistent. |
+| Null Values | It allows to store null values.	| It allows to store null values. | It doesn’t allow to store null values |
 
-    👉🏻 HashMap is collection of key-value pairs whereas HashSet is an un-ordered collection of unique
-    elements!
+## When to use HashMap and when to use TreeMap?
 
-What are IdentityHashMap and WeakHashMap? How they are different?
+* HashMap is the best implementation of Map for inserting, deleting, and locating elements.
+* TreeMap is the better alternative if we need to traverse the keys in a sorted order.
 
-When to use HashMap and when to use TreeMap?
-
-    👉🏻 HashMap is the best implementation of Map for inserting, deleting, and locating elements.
-
-    👉🏻 TreeMap is the better alternative if we need to traverse the keys in a sorted order.
-
-    -> HashMap is faster than TreeMap; for sorted key traversal, it is faster way to add elements to a
-    HashMap, and then convert the map to a TreeMap.
-
+> HashMap is faster than TreeMap; for sorted key traversal, it is faster way to add elements to a HashMap, and then convert the map to a TreeMap.
 
 //Concurrent Collections
 //java.util.concurrent v5
 
 What is iterator's fail-fast property?
 
-    While iterating over any collection, we cannot perform any modification on elements.
-    Whenever we access the next element in collection, Iterator's fail fast property checks for any
-    modification in the structure of that collection.'
-    -> If any modifications found, it throws RuntimeException.
+While iterating over any collection, we cannot perform any modification on elements.
+Whenever we access the next element in collection, Iterator's fail fast property checks for any
+modification in the structure of that collection.'
 
-    👉🏻 Almost all the implementations of the iterator, are fail-fast by design.
-      ** Except the concurrent collection classes.
+-> If any modifications found, it throws RuntimeException.
+👉🏻 Almost all the implementations of the iterator, are fail-fast by design.
+**Except the concurrent collection classes.**
 
-What are Concurrent Collection classes? When does ConcurrentModificationException occur?
+**Here we have some java Concurrent collection classes:**
+1. Immutable List in Java
+2. CopyOnWriteArrayList in java
+3. Immutable Set in Java
+4. CopyOnWriteArraySet in java
+5. ConcurrentHashMap in java
 
-    The Concurrent Package [java.util.concurrent] which introduced in java 1.5,
-    contains thread-safe collection classes called Concurrent Collection class:
-    -> that allows collections to be modified while iterating.
+## What are Concurrent Collection classes? When does ConcurrentModificationException occur?
 
-    By design, iterator implementation are fail fast and throw the ConcurrentModificationException
-    whenever we modify element while iterating.
+The Concurrent Package [java.util.concurrent] which introduced in java 1.5,
+contains thread-safe collection classes called Concurrent Collection class:
+-> that allows collections to be modified while iterating.
 
-    -> Iterator implementations in Concurrent Package allows us to do the modifications at runtime too.
+By design, iterator implementation are fail fast and throw the ConcurrentModificationException
+whenever we modify element while iterating.-> Iterator implementations in Concurrent Package allows us to do the modifications at runtime too.
 
-    1. CopyOnWriteArrayList 2. ConcurrentHashMap 3. CopyOnWriteArraySet.
+## What is the difference between fail-fast and fail safe?
 
-What is the difference between fail-fast and fail safe?
+Points about the Fail Safe iterators:
 
-What is the difference between Synchronized Collection and concurrent collection?
+* We can perform the modification operations on a collection while iterating over it.
+* They will not throw ConcurrentModificationException during the iteration.
+* The Fail Safe iterators use a copy of the collection to traverse over the elements.
+* Unlike the Fail Fast, they require more memory as they cloned the collection.
+* The examples of Fail Safe iterators are ConcurrentHashMap, CopyOnWriteArrayList, etc.
+* Difference Between Fail Fast and Fail Safe Iterators
+* The Major difference between Fail Fast and Fail Safe iterator is that the Fail Safe does not throw any ConcurrentModificationException in modifying the object during the iteration process, contrary to fail fast, which throws an exception in such scenarios. This is because the Fail Safe iterator works on a cloned collection instead of the original collection.
 
-    Synchronized collections classes, like Hashtable and Vector provides thread-safe implementation of Map
-    and List.
+There are several other comparisons between them on the basis of different parameters. Let's discuss them:
 
-    There are several factors which make them less suitable for use in highly concurrent applications.
+| Base of Comparison | Fail Fast Iterator | Fail Safe Iterator |
+| --- | --- | --- |
+| Exception	| It throws a ConcurrentModificationException in modifying the object during the iteration process. |	It does not throw Exception. |
+| Clone Object |	No clone object is created during the iteration process. | A copy or clone object is created during the iteration process. |
+| Memory utilization | It requires low memory during the process. | It requires more memory during the process. |
+| Modification	| It does not allow modification during iteration. | It allows modification during the iteration process. |
+| Performance |	It is fast.	| It is slightly slower than Fail Fast. |
+| Examples | HashMap, ArrayList, Vector, HashSet, etc	| CopyOnWriteArrayList, ConcurrentHashMap, etc.|
 
-    Performance: The synchronized collections are unsuitable because of their 'wide-locking mechanism'.
-    They acquire lock on complete object whereas concurrent classes locks only a part.
+## What is the difference between Synchronized Collection and concurrent collection?
 
-When do we use ConcurrentHashMap in Java?
+* Synchronized collections classes, like Hashtable and Vector provides thread-safe implementation of Map and List.
+* There are several factors which make them less suitable for use in highly concurrent applications.
+* Performance: The synchronized collections are unsuitable because of their 'wide-locking mechanism'.
+* They acquire lock on complete object whereas concurrent classes locks only a part.
 
-Can we replace HashTable with ConcurrentHashMap?
+## Hashtable Vs HashMap vs ConcurrentHashMap
 
-    Yes, we can replace the HashTable with ConcurrentHashMap.
-    -> As the performance of ConcurrentHashMap is better than HashTable.
+[Hashtable Vs HashMap vs ConcurrentHashMap](https://medium.com/art-of-coding/hash-table-vs-concurrent-hashmap-and-its-internal-working-b28fc2725bdb)
 
-    We need to be careful with code which relies on locking behavior of Hashtable.
-    Since Hashtable locks whole Map instead of a portion of Map, compound operations like
-    if(Hashtable.get(key) == null) put(key, value) works in Hashtable but not in concurrentHashMap.
+## Can we replace HashTable with ConcurrentHashMap?
 
-What is CopyOnWriteArrayList? How it is different than ArrayList?
-    <lecture>
+Yes, we can replace the HashTable with ConcurrentHashMap.
+-> As the performance of ConcurrentHashMap is better than HashTable
 
-What is BlockingQueue?
-    <lecture>
+We need to be careful with code which relies on locking behavior of Hashtable.
+Since Hashtable locks whole Map instead of a portion of Map, compound operations like
+if(Hashtable.get(key) == null) put(key, value) works in Hashtable but not in concurrentHashMap.
+
