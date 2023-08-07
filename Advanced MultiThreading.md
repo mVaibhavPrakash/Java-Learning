@@ -120,7 +120,7 @@ public class Main {
 
 Executors class provide useful methods to execute Callable in a thread pool.
 Since callable tasks run in parallel, we have to wait for the returned Object.
-Callable tasks return java.util.concurrent.Future object.
+Callable tasks return ``java.util.concurrent.Future`` object. Future is an interface.
 Using Future we can find out the status of the Callable task and get the returned Object.
 It provides get() method that can wait for the Callable to finish and then return the result.
 So, Future is basically a placeholder for the object which is going to be returned by the callable task at any time in future.
