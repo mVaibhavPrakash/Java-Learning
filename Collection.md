@@ -1,283 +1,232 @@
+## What is Java Collection Framework?
 
-What is Java Collection Framework?
+A java collection framework is a collection of interfaces and classes which are used to store and
+process data efficiently, as a Collection is something which is used to store Data objects.
 
-    A java collection framework is a collection of interfaces and classes which are used to store and
-    process data efficiently, as a Collection is something which is used to store Data objects.
+This framework was introduced in Java version 1.2.
+-> Reduced the development effort.
+-> Code quality is enhanced.
 
-    This framework was introduced in Java version 1.2.
-    -> Reduced the development effort.
-    -> Code quality is enhanced.
+## What are the basic interfaces of collection framework?
 
-What are the basic interfaces of collection framework?
+1. Collection
+2. List
+3. Set
+4. Queue
+5. Map
 
-    1. Collection
-    2. List
-    3. Set
-    4. Queue
-    5. Map
+## Why Map Interface does not extend Collection interface?
 
-Why Map Interface does not extend Collection interface?
+The Map is way different than collection. In Map there are no elements, it has key-value pairs.
+👉🏻 It does not fit into the Group of elements Paradigm.
 
-    The Map is way different than collection. In Map there are no elements, it has key-value pairs.
-    👉🏻 It does not fit into the Group of elements Paradigm.
+However there are many methods to retrieve keys and values as collection.
 
-    However there are many methods to retrieve keys and values as collection.
+## What is the difference between Collection and Collections?
 
-What is the difference between Collection and Collections?
+## Why Collection Interface does not extend Serializable and Cloneable interfaces?
 
-Why Collection Interface does not extend Serializable and Cloneable interfaces?
+'There is no need to do it!'
+Collection is not supposed to do what Cloneable and Serializable interfaces do.
 
-    'There is no need to do it!'
-    Collection is not supposed to do what Cloneable and Serializable interfaces do.
+### What they do?
 
-    What they do?
+They are just the marker interfaces which are actually empty interfaces.
+👉🏻 If Collection Interface implements these interfaces then it will mandate cloning and serialization in all implementation, which is less flexible and more restrictive.
 
-    They are just the marker interfaces which are actually empty interfaces.
+## When we had Array, Why do we need collection?
 
-    👉🏻 If Collection Interface implements these interfaces then it will mandate cloning and serialization
-    in all implementation, which is less flexible and more restrictive.
+We know Array is a group of primitives.. which holds homogeneous data.
+It has also some limitations like, arrays are always fixed in size.
+So to overcome these problems, collection were introduced.
+Collection, which can also be called a container, is a group of individual objects.
 
-When we had Array, Why do we need collection?
+#### How can it solve the problems that we had in array?
 
-    We know Array is a group of primitives.. which holds homogeneous data.
-    It has also some limitations like, arrays are always fixed in size.
-    So to overcome these problems, collection were introduced.
-    Collection, which can also be called a container, is a group of individual objects.
+Collections are grow-able in Nature,
+that means we aren't bound to declare size of any collection at declaration as we are with arrays.
+Size of collections can be increased or decreased on the base of our programming requirement.
+You can add or remove any number of elements in collection.
 
-    How can it solve the problems that we had in array?
+Hence collections solve the first limitation.
+And next, we only can have homogeneous type of data elements in array,
+But Collections can have any kind of data element. They can be homogeneous or heterogeneous.
 
-    Collections are grow-able in Nature,
-    that means we aren't bound to declare size of any collection at declaration as we are with arrays.
-    Size of collections can be increased or decreased on the base of our programming requirement.
-    You can add or remove any number of elements in collection.
+## When we should use arrays and when collection?
 
-    hence collections solve the first limitation.
+* Array are recommended to use if we know the size in advance..
+because Performance-wise Arrays are better to use than Collections.
 
-    And next,
-    we only can have homogeneous type of data elements in array,
-    But Collections can have any kind of data element. They can be homogeneous or heterogeneous.
+* From Memory point of view, we should not use 'Arrays'..
+    * Suppose we take an array of 100 size. And if we only have 10 elements in it, so, here the rest of the memory blocks get wasted. Thats why arrays are not recommended to use in memory point of view.
+    * On the other hand, Collections are grow-able or resizable in nature, and it uses memory as per required only.
 
-when we should use arrays and when collection?
+## What is the difference between Array and ArrayList?
 
-    Array are recommended to use if we know the size in advance..
-    because Performance-wise Arrays are better to use than Collections.
+The very first difference between Array and ArrayList is,
 
-    From Memory point of view, we should not use 'Arrays'..
-    Suppose we take an array of 100 size. And if we only have 10 elements in it, so,
-    here the rest of the memory blocks get wasted. Thats why arrays are not recommended to use in memory point of view.
-    On the other hand, Collections are grow-able or resizable in nature, and it uses memory as per required only.
+1. Array can contain primitive or Objects whereas ArrayList can only contain Objects.
+2. Arrays are fixed in size whereas ArrayList size is dynamic.
+3. ArrayList accepts duplicate objects unlike arrays..
+4. Array does not provide a lot of features like ArrayList, such as add(), addAll(), removeAll() etc..
 
-What is the difference between Array and ArrayList?
+So ArrayList is the obvious choice when we work on list.. But if the size of list is fixed and if we are using the list of primitives then we should use Arrays.. Although collection use auto boxing to reduce the coding effort but still it makes them slow.. so would use array with primitives.
+And if are working on multidimensional situation, then also using array [][] is way more easy than List<List<>>..
 
-    The very first difference between Array and ArrayList is,
-    Array can contain primitive or Objects whereas ArrayList can only contain Objects.
-    next is
-    Arrays are fixed in size whereas ArrayList size is dynamic.
-    And, ArrayList accepts duplicate objects unlike arrays..
-    Array does not provide a lot of features like ArrayList, such as add(), addAll(), removeAll() etc..
+## How LinkedList is different from ArrayList?
 
-    So ArrayList is the obvious choice when we work on list.. But if the size of list is fixed and if we are using the list of primitives then we should use Arrays.. Although collection use auto boxing to reduce the coding effort but still it makes them slow.. so would use array with primitives.
-    And if are working on multidimensional situation, then also using array [][] is way more easy than List<List<>>..
+* ArrayList and LinkedList both implement the List interface but there are some differences between them..
+* ArrayList is an indexed based data structure.. The underlying data structure for ArrayList is a resizable or growable Array.
+* ArrayList is good choice if retrieval is frequent while LinedlIst is better is deletion is frequent
+* Next thing is, Insertion and removal of any element is faster in LinkedList compared to ArrayList. Because one insertion or deletion in middle requires n number of shifts.. So there is no concept of resizing array when element is added in middle..
+* and in linkedList it requires only one change in the address pointer of the particular node to add or remove any element.
+* LinkedList consumes more memory than ArrayList because every node in LinkedList stores reference of previous and next elements..'
 
-How LinkedList is different from ArrayList?
+## What are the different ways to iterate over a list?
 
-    ArrayList and LinkedList both implement the List interface but there are some differences between them..
+To access or to get elements from collection there are many ways present in java.
+1. Loops (classic for loop)
+2. Cursors
+    * In java these are the cursors available for collections:
+        1. Iterator
+        2. ListIterator
+        3. Enumeration
 
-    ArrayList is an indexed based data structure.. The underlying data structure for ArrayList is a resizable or growable Array.
+## What is the difference between Iterator and ListIterator and Enumeration?
 
-    And LinkedList is a data structure which stores data and its address as list of nodes.. here, every node is linked to its previous and next node using pointers.. That is, the address part of the element points to the next element of the linked list.so see the address that the first node is having.. is actually the address of the next node.
+| Property | Enumeration | Iterator	| ListIterator |
+| --- | --- | --- | --- |
+| Where we can apply? | It can be applied only to the legacy classes. | It can be applied to any collection interface. | It can be applied to the only list interface. |
+| Is it a legacy? | Yes (introduced in 1.0 V).	| No (introduced in 1.2 V).	| No (introduced in 1.2 V).|
+| Allowed Movement | 	Single direction, i.e we can traverse elements present in the collection only in the forward direction.	| Single direction, i.e we can traverse elements present in the collection only in the forward direction. | Bidirectional, i.e we can traverse elements present in the collection both in forward and backward directions. |
+| Allowed  Operation | We can only perform the read operation. | We can perform read and remove operation. | We can perform read, remove, add, and replace operations. |
+| How can we get it? | By calling elements() method present in the vector class. | By calling iterator() method present in any collection interface. | By calling listIterator() method present in the list interface. |
 
-    This is how we create ArrayList, and linkedLists
+## What are the legacy implementations?
 
-    ArrayList<String> al = new ArrayList<String>();
-    //and to add elements.. these are the methods.. (explain the suggestions)
-    al.add("John");
-    al.add("Rohn");
+Vector is a legacy class.
 
-    LinkedList<String> lList = new LinkedList<String>();
-    lList.add("");
+* Legacy class: The classes that were already there before introducing collection framework.
+* Sub Class of Vector -> Stack, is also a legacy class.
 
-    Since ArrayList is index based data structure, it provides random access to its elements with the performance of O(1).. that is, we can access any element by the index.. Linked list also allows to get any element by index, but internally it traverse the list from start to read at the index node, then return the element. So the performance is O(n) which is slower than of arrayList. Therefore the ArrayList is recommended to use retrieving data..
+Vector is implemented on a growable or a resizable array.
+* It is an ordered collection
+* allows duplicates.
+``Vector v = new Vector();``
 
-    Next thing is, Insertion and removal of any element is faster in LinkedList compared to ArrayList. Because one insertion or deletion in middle requires n number of shifts.. So there is no concept of resizing array when element is added in middle..
+## What are the similarities and difference between ArrayList and Vector?
 
-    and in linkedList it requires only one change in the address pointer of the particular node to add or remove any element.
+## Which collection classes provide random access of its elements?
 
-    Next is,
-    LinkedList consumes more memory than ArrayList because every node in LinkedList stores reference of previous and next elements..'
+These are the collection classes which provide random access: ``ArrayList``, ``Vector``, ``Stack``, ``HashMap``, ``TreeMap``, ``Hash-table``.
 
-What are the different ways to iterate over a list?
+## How to make a collection read only?
 
-    To access or to get elements from collection there are many ways present in java.
-    1. Loops (classic for loop)
-    2. Cursors
-        In java these are the cursors available for collections:
-            1. Iterator
-            2. ListIterator
-            3. Enumeration
+We can create a read only collection by using unmodifiableCollection method of Collections class.
+``Collections.unmodifiableCollection(Collection c)``
 
-What is the difference between Iterator and ListIterator and Enumeration?
+> if any operation occurs it will throw UnsupportedOperationException.
 
-What are the legacy implementations?
+## How can we make a collection thread-safe?
 
-    Vector is a legacy class.
-    Legacy class: The classes that were already there before introducing collection framework.
+There is a method in Collections class ->
+``synchronizedCollection(Collection c)`` : used to get a synchronized or thread-safe collection.
 
-    Sub Class of Vector -> Stack, is also a legacy class.
+## Whats difference between TreeSet and LinkedHashSet and HashSet?
 
-    Vector is implemented on a growable or a resizable array.
-        -> It is an ordered collection
-        -> allows duplicates.
+* These are the implementations of Set.
+* Starting with TreeSet, the main feature of TreeSet is Sorting.
+* Its the implementation class of sortedSet.
+* So in TreeSet the insertion of elements is done on some sorting order. like we want to store all the Employee's object according to their EmployeeIds then we should go for SortedSet or TreeSet.
+* Also in treeSet, we cannot put heterogeneous elements in it.
+* Its about sorting as we cannot sort different type of objects so it is restricted to insert diff data types in treeSet. ``SortedSet<Integer> t = new TreeSet<>();``.It will creates an TreeSet object in which elements to be inserted in Default natural sorting order.
+> If we are depending on the default natural sorting order, then our elemtns/object should be...
+homogeneous and comparable, otherwise we will get classCastException.
 
-    Vector v = new Vector();
+* LinkedHashSet.. it was introduced in 1.4 version. 
+* It is the sub class of Hashset (no insertion order) where insertion order is preserved. And that's the main difference between HashSet and LinkedHashSet.
 
-    Stack implements the stack data structure. It is based on the principle of Last In First Out.
-        👉🏻 element which is inserted in last, will be the first one to come out.
+* So all of the three, TreeSet, LinkedHashSet and HashSet doesn't allow to store duplicates. And none of these are thread-safe..
+* But HashSet is the Fastest among them. LinkedHashSet comes second or can be similar to HashSet but TreeSet is slower because it performs sorting for each insertion.
+* Next difference between these, is ordering.
+    * HashSet doesn't maintain any order while LinkedHashSet maintains insertion order and treeSet maintains sorting order of elements.
+* And talking about internal implementations,
+    * HashSet is backed by HashMap..
+    * whereas LinkedHashSet is implemented using HashSet and LinkedList.
+    * And TreeSet, it is backed up by navigableMap and it internally uses TreeMap.
+* Next difference is about way of comparing things,
+    * like HashSet and LinkedHashSet uses equals() for comparison
+    * and TreeSet uses compareTo() method for maintaining ordering.
 
-    Stack s = new Stack();
+## Properties class
 
-      -> to insert any object : push()
-      -> to remove the top element : pop()
+The Java Properties class, ``java.util.Properties``, is like a Java Map of Java String key and value pairs. The Java Properties class can write the key, value pairs to a properties file on disk, and read the properties back in again. This is an often used mechanism for storing simple configuration properties for Java applications.
 
-What are the similarities and difference between ArrayList and Vector?
+#### Create a Properties Instance
 
-Which collection classes provide random access of its elements?
+``Properties properties = new Properties();``
 
-    These are the collection classes which provide random access:
-        ArrayList, Vector, Stack, HashMap, TreeMap, Hash-table.
+#### Set Properties
 
-What are Stack and Queue? How they are different?
+To set properties in a Java Properties instance you use the ``setProperty()`` method.
 
-    Stack and Queue are used to store data before processing them.
+``properties.setProperty("email", "john@doe.com");``
 
-    Queue represents an ordered list of objects which is limited to insert elements
-    at the end of the list and removing from the start..
+This example sets the property with the key email to the value john@doe.com.
 
-    This is how we create a queue,
+#### Get Properties
 
-    Queue<Integer> q = new LinkedList<>();
+To get properties from a Java Properties object you use the ``getProperty()`` method, passing the key of the property to get as parameter. 
 
-    being an interface it needs the concrete classes to create objects,
-    PriorityQueue and LinkedList are most common to use.
+``String email = properties.getProperty("email");``
 
-    And to add element,
-    q.add(10);
-    q.add(20);
+#### Remove Properties
 
-    sysout(q);
+You can remove a property from a Java Properties instance using its ``remove()`` method, passing as parameter to remove() the key for the property to remove. 
 
-    and the remove method will remove the head that is the first element
+``properties.remove("email");``
 
-    int a = q.remove();		//return the removed element
-    sysout("element removed- "+a)
+#### Iterate Properties
+You can iterate the keys of a Java Properties instance by obtaining the key set for the Properties instance, and iterating this key set.
 
-    sysout(q);
+```java
+Properties properties = new Properties();
 
-    So Queue allows retrieval of element in First In First Out order. and it is different from stack as Stack allows elements to be retrieved in Last In First out order.
+properties.setProperty("key1", "value1");
+properties.setProperty("key2", "value2");
+properties.setProperty("key3", "value3");
 
-    Stack<Integer> st = new Stack<>();
-    st.push(10);
-    st.push(20);
+Iterator keyIterator = properties.keySet().iterator();
 
-    To pop,
-    st.pop();
+while(keyIterator.hasNext()){
+    String key   = (String) keyIterator.next();
+    String value = properties.getProperty(key);
+    System.out.println(key + " = " + value );
+}
+This example will print out the following lines:
 
-    sysout(st);
+key1 = value1
+key2 = value2
+key3 = value3
+```
 
-    So thats the difference between Stack and queue.. Stack is a class and queue is an interface.
+#### Store Properties to File
 
-How can we sort Collections?
+You can store the property key, value pairs to a properties file which can be read again later on. You store the contents of a Properties object via its ``store()`` method.
 
-    There are some implementations of set and map which are used to store elements in a sorting order.
-    -> SortedMap, SortedSet etc. - can be used to get a sorted collection(Map or Set).
+```java
+Properties properties = new Properties();
 
-    To sort List implementations, the Collections provides method sort().
+properties.setProperty("property1", "value1");
+properties.setProperty("property2", "value2");
+properties.setProperty("property3", "value3");
 
-    Collections.sort(): sorts list implementation passed to it.
-
-    -> It does not return anything just sorts the collection.
-
-How to make a collection read only?
-
-    We can create a read only collection by using unmodifiableCollection method of Collections class.
-
-    Collections.unmodifiableCollection(Collection c)
-
-    -> if any operation occurs it will throw UnsupportedOperationException.
-
-How can we make a collection thread-safe?
-
-    There is a method in Collections class ->
-    synchronizedCollection(Collection c) : used to get a synchronized or thread-safe collection.
-
-What is the difference between Set and List?
-
-    Both Set and List are used to store objects and provides convenient way to insert,
-    remove and retrieve elements and also provides support for iteration.
-
-    Fundamental differences between List and Set:
-     1. Allowing Duplicate Elements
-     2. Order
-
-When should we use List and when to use Set??
-
-    👉🏻 If we need to maintain insertion order and we can have duplicates too then we use List.
-    👉🏻 If we want a collection of unique objects then we should use Set.
-
-How does HashSet is implemented? How does it use Hashing?
-
-What are Comparable and Comparator interface? When to use what?
-
-Whats difference between TreeSet and LinkedHashSet and HashSet?
-
-    These are the implementations of Set.
-
-    Starting with TreeSet, the main feature of TreeSet is Sorting.
-    Its the implementation class of sortedSet.
-    So in TreeSet the insertion of elements is done on some sorting order.
-    like we want to store all the Employee's object according to their EmployeeIds then we should
-    go for SortedSet or TreeSet.
-    Also in treeSet, we cannot put heterogeneous elements in it.
-    Its about sorting as we cannot sort different type of objects so it is restricted to insert diff data types in treeSet.
-
-    SortedSet<Integer> t = new TreeSet<>();
-
-    It will creates an TreeSet object in which elements to be inserted in Default natural sorting order.
-    Note that, If we are depending on the default natural sorting order, then our elemtns/object should be...
-    homogeneous and comparable, otherwise we will get classCastException.
-
-    So we can add integer only.
-    t.add(10);
-    t.add(5);
-    sysout(t);
-
-    This will add both elements in ascending order by default.
-
-    And next is LinkedHashSet.. it was introduced in 1.4 version. It is the sub class of Hashset (no insertion order) where insertion order is preserved.
-    And that's the main difference between HashSet and LinkedHashSet.
-
-    We create linkedHashSet like,
-    LinkedHashSet lhs = new LinkedHashSet();
-
-    So all of the three, TreeSet, LinkedHashSet and HashSet doesn't allow to store duplicates.
-    And none of these are thread-safe..
-    But HashSet is the Fastest among them.
-    LinkedHashSet comes second or can be similar to HashSet but
-    TreeSet is slower because it performs sorting for each insertion.
-
-    Next difference between these, is ordering.
-    HashSet doesn't maintain any order while LinkedHashSet maintains insertion order
-    and treeSet maintains sorting order of elements.
-
-    And talking about internal implementations,
-    HashSet is backed by HashMap..
-    whereas LinkedHashSet is implemented using HashSet and LinkedList.
-    And TreeSet, it is backed up by navigableMap and it internally uses TreeMap.
-
-    Next difference is about way of comparing things,
-    like HashSet and LinkedHashSet uses equals() for comparison
-    and TreeSet uses compareTo() method for maintaining ordering.
-    This was all about differences between them.
+try(FileWriter output = new FileWriter("data/props.properties")){
+    properties.store(output, "These are properties");
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
 
 ## Can we add a null element to TreeSet and HashSet?
 
