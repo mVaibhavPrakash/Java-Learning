@@ -46,11 +46,70 @@ ExecutorService executor = Executors.newWorkStealingPool();
 
 ``The invokeAny()`` method *takes a collection of Callable objects, or subinterfaces of Callable*. Invoking this method does not return a Future, but returns the result of one of the Callable objects. You have no guarantee about which of the Callable's results you get. Just one of the ones that finish.
 
+Example:
+```java
+ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+Set<Callable<String>> callables = new HashSet<Callable<String>>();
+
+callables.add(new Callable<String>() {
+    public String call() throws Exception {
+        return "Task 1";
+    }
+});
+callables.add(new Callable<String>() {
+    public String call() throws Exception {
+        return "Task 2";
+    }
+});
+callables.add(new Callable<String>() {
+    public String call() throws Exception {
+        return "Task 3";
+    }
+});
+
+String result = executorService.invokeAny(callables);
+
+System.out.println("result = " + result);
+
+executorService.shutdown();
+```
+
 2. ``invokeAll()``
 
 The ``invokeAll()`` method *invokes all of the Callable objects you pass to it in the collection passed as parameter*. The invokeAll() returns a list of Future objects via which you can obtain the results of the executions of each Callable.
 
 Keep in mind that a task might finish due to an exception, so it may not have "succeeded". There is no way on a Future to tell the difference.
+
+```java
+ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+Set<Callable<String>> callables = new HashSet<Callable<String>>();
+
+callables.add(new Callable<String>() {
+    public String call() throws Exception {
+        return "Task 1";
+    }
+});
+callables.add(new Callable<String>() {
+    public String call() throws Exception {
+        return "Task 2";
+    }
+});
+callables.add(new Callable<String>() {
+    public String call() throws Exception {
+        return "Task 3";
+    }
+});
+
+List<Future<String>> futures = executorService.invokeAll(callables);
+
+for(Future<String> future : futures){
+    System.out.println("future.get = " + future.get());
+}
+
+executorService.shutdown();
+```
 
 3. ``submit()`` and ``execute()`` are defined in below example
 
