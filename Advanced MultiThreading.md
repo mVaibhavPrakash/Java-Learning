@@ -44,9 +44,51 @@ ExecutorService executor = Executors.newWorkStealingPool();
 
 We pass the callable task inside the submit method and invoke the submit on the created ExecutorService.
 
+Code :
+```java
+import java.util.concurrent.*;
+
+public class Main {
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        Callable<String> stringCallable = () -> "Callable called";
+
+        Future<String> callableFuture = executorService.submit(stringCallable);
+
+        System.out.println("Result of the callable - " + callableFuture.get());
+
+        executorService.shutdown();
+    }
+}
+```
+
 ### How do you execute runnable task from executorservice?
 
 We pass the runnable in the execute method and invoke it on the ExecutorService.
+
+Code :
+
+```java
+import java.util.concurrent.*;
+
+public class Main {
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        Runnable runnable = () -> System.out.println("Callable called");
+
+        Future<?> runnableFuture = executorService.submit(runnable);
+
+        System.out.println("Result of the Future - " + runnableFuture.get());
+
+        executorService.shutdown();
+
+    }
+}
+```
 
 ### What is Future?⭐️
 
