@@ -24,6 +24,10 @@ However there are many methods to retrieve keys and values as collection.
 
 ## What is the difference between Collection and Collections?
 
+* Collection is the interface where you group objects into a single unit. 
+* Collections is a utility class that has some set of operations you perform on Collection.
+* Collection does not have all static methods in it, but Collections consist of methods that are all static.
+
 ## Why Collection Interface does not extend Serializable and Cloneable interfaces?
 
 'There is no need to do it!'
