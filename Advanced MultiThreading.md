@@ -125,6 +125,13 @@ Using Future we can find out the status of the Callable task and get the returne
 It provides get() method that can wait for the Callable to finish and then return the result.
 So, Future is basically a placeholder for the object which is going to be returned by the callable task at any time in future.
 
+### What is FutureTask Class?
+
+FutureTask is the base implementation class of Future interface and we can use it with Executors for asynchronous processing.
+
+Most of the time we don’t need to use FutureTask class but it comes real handy if we want to override some of the methods of Future interface and want to keep most of the base implementation.
+We can just extend this class and override the methods according to our requirements.
+
 ### What is ThreadLocal?
 
 Java ThreadLocal is used to create thread-local variables. i.e., variables local to each thread.
@@ -282,13 +289,6 @@ Context Switching is the process of storing and restoring of CPU state so that T
     * The fork() method invokes the compute() method and breaks down the task into smaller subtasks.
     * The join() method waits for subtasks to complete and merges their results.
     * ForkJoinPool is commonly used with parallel streams and CompletableFuture.
-
-### What is FutureTask Class?
-
-FutureTask is the base implementation class of Future interface and we can use it with Executors for asynchronous processing.
-
-Most of the time we don’t need to use FutureTask class but it comes real handy if we want to override some of the methods of Future interface and want to keep most of the base implementation.
-We can just extend this class and override the methods according to our requirements.
 
 ### What are Concurrent Collection Classes?
 
