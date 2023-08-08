@@ -819,6 +819,58 @@ Here the cursor is showing forever because the threads enter into the deadlock s
 2. **Use Lock Ordering**: We have to always assign a numeric value to each lock and before acquiring the lock with a higher numeric value we have to acquire the locks with a lower numeric value.
 3. **Avoiding unnecessary Locks**: We should use locks only for those members on which it is required, unnecessary use of locks leads to a deadlock situation. And it is recommended to use a lock-free data structure and If it is possible to keep your code free from locks. For example, instead of using synchronized ``ArrayList`` use the ``ConcurrentLinkedQueue``.
 
+4. **Lock Order**– As you saw from my previous example, deadlocks occur when multiple threads accessed resources and obtained locks in different order. Ensuring the same lock ordering sequence will help avoid this common pitfall.
+Corrected Snippet for proper Lock Order
+
+```java
+synchronized (ResourceA) {
+  System.out.println("Worker1: Holding ResourceA...");
+  doSomeWork();
+  System.out.println("Worker1: Waiting for ResourceB...");
+  synchronized (ResourceB) {
+    System.out.println("Worker1: Holding ResourceA & ResourceB...");
+    doSomeOtherWork();
+  }
+}
+...
+synchronized (ResourceA) {
+  System.out.println("Worker2: Holding ResourceA...");
+  doSomeWork();
+  System.out.println("Worker2: Waiting for ResourceB...");
+  synchronized (ResourceB) {
+    System.out.println("Worker2: Holding ResourceA & ResourceB...");
+    doSomeOtherWork();
+  }
+}
+```
+
+5. **Nested Locks** – A nested lock occurs when you obtain a lock on one resource and then attempt obtaining one or more additional locks without releasing current locks. This scenario also existed in my example as I was holding on to a lock on Resource A while trying to acquire a lock on Resource B without releasing Resource A.
+```java
+synchronized (ResourceA) {
+  System.out.println("Worker1: Holding ResourceA...");
+  doSomeWork();
+}
+System.out.println("Worker1: Waiting for ResourceB...");
+synchronized (ResourceB) {
+  System.out.println("Worker1: Holding ResourceB...");
+  doSomeOtherWork();
+}
+...
+ 
+synchronized (ResourceA) {
+  System.out.println("Worker2: Holding ResourceA...");
+  doSomeWork();
+}
+System.out.println("Worker2: Waiting for ResourceB...");
+synchronized (ResourceB) {
+  System.out.println("Worker2: Holding ResourceB...");
+  doSomeOtherWork();
+}
+```
+
+6. **Avoid Intrinsic Locks** – When locking multiple resources avoid using intrinsic locks, instead use explicit locks via timed tryLock. Using intrinsic locks will wait forever if the lock cannot be acquired. By using a timeout, you retain control when it fails for some unexpected reason. You are then at liberty to wait for some specified duration and try again at a later time.
+Narrow Lock Scope – When locking resources always ensure you hold the lock on the critical resource for as brief a time as possible. Move all unnecessary code outside of the synchronized block of code.
+
 #### Example 2: Deadlock is prevented
 
 ```java
