@@ -690,6 +690,18 @@ Liveness problems include:
 
 If two threads are waiting for each other forever such type of infinite waiting is called deadlock in java. Synchronized keyword is the only reason for deadlock situation hence while using synchronized keyword we have to take special care. There is no resolution technique for deadlock, but several prevention techniques are available. 
 
+#### Monitoring DeadLock using VisualVM
+
+Whenever you run multithreaded applications it is a good idea to launch VisualVM and analyze how your multithreaded application is working. 
+
+As soon as the application is launched and I activate the “Threads” tab I can see that blocking is occurring and we, in fact, have a deadlock condition. Please ensure the threads visualization checkbox is checked otherwise the tab will be mostly blank.
+
+![deadlock_screenshot_VisualVm](Images/deadlock_screenshot.png)
+
+As you can see from the screenshot, some of the threads are fine. Green means thread is running. Yellow means it is waiting from some resource to become available, or waiting for notify/notifyAll from another thread. **Finally, red means that the thread is waiting to gain access over a monitor (in other words, it has reached a synchronized block or is waiting for some kind of lock on a resource or object)**. As you can see from the screenshot, both Thread_1 and Thread_2 are waiting and in this case, blocking each other causing a deadlock condition.
+
+**Additionally we can review the ``Thread Dump`` from Java VisualVM and search for deadlock**
+
 #### Implementation: Deadlock occurs
 
 Example 1:
