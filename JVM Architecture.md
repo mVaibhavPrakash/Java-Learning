@@ -42,37 +42,33 @@ debug and execute java program.
 | Platform Dependency | The JDK is platform-dependent. It means that for every different platform, you require a different JDK.	| JRE, just like JDK, is also platform-dependent. It means that for every different platform, you require a different JRE. | The JVM is platform-independent. It means that you won’t require a different JVM for every different platform. |
 | Tools |	Since JDK is primarily responsible for the development, it consists of various tools for debugging, monitoring, and developing java applications. | JRE, on the other hand, does not consist of any tool- like a debugger, compiler, etc. It rather contains various supporting files for JVM, and the class libraries that help JVM in running the program. | JVM does not consist of any tools for software development. |
 | Implementation |	JDK = Development Tools + JRE (Java Runtime Environment)	| JRE = Libraries for running the application + JVM (Java Virtual Machine) |	JVM = Only the runtime environment that helps in executing the Java bytecode. |
-| Why Use It? | Why use JDK? </br> Some crucial reasons to use JDK are: <ul> <li>It consists of various tools required for writing Java programs. </li><li> JDK also contains JRE for executing Java programs. </li><li> It includes an Appletviewer, Java application launcher, compiler, etc. </li><li> The compiler helps in converting the code written in Java into bytecodes. </li><li> The Java application launcher helps in opening a JRE. It then loads all of the necessary details and then executes all of its main methods. | Why use JRE? Some crucial reasons to use JRE are: </li><li> If a user wants to run the Java applets, then they must install JRE on their system. </li><li> The JRE consists of class libraries along with JVM and its supporting files. It has no other tools like a compiler or a debugger for Java development. </li><li> JRE uses crucial package classes like util, math, awt, lang, and various runtime libraries.</li></ul> | Why use JVM? Some crucial reasons to use JVM are:
-* It provides its users with a platform-independent way for executing the Java source code.
-* JVM consists of various tools, libraries, and multiple frameworks.
-* The JVM also comes with a Just-in-Time (JIT) compiler for converting the Java source code into a low-level machine language. Thus, it ultimately runs faster than any regular application.
-* Once you run the Java program, you can run JVM on any given platform to save your time. |
-| Features | Features of JDK 
-Here are a few crucial features of JDK:
-* It has all the features that JRE does.
-* JDK enables a user to handle multiple extensions in only one catch block.
-* It basically provides an environment for developing and executing the Java source code.
-* It has various development tools like the debugger, compiler, etc.
-* One can use the Diamond operator to specify a generic interface in place of writing the exact one.
-* Any user can easily install JDK on Unix, Mac, and Windows OS (Operating Systems). |
-Features of JRE
-Here are a few crucial features of JRE:
-* It is a set of tools that actually helps the JVM to run.
-* The JRE also consists of deployment technology. It includes Java Plug-in and Java Web Start as well.
-* A developer can easily run a source code in JRE. But it does not allow them to write and compile the concerned Java program.
-* JRE also contains various integration libraries like the JDBC (Java Database Connectivity), JNDI (Java Naming and Directory Interface), RMI (Remote Method Invocation), and many more.
-* It consists of the JVM and virtual machine client for Java HotSpot. |
-Features of JVM
-Here are a few crucial features of JVM:
-
-* The JVM enables a user to run applications on their device or in a cloud environment.
-* It helps in converting the bytecode into machine-specific code.
-* JVM also provides some basic Java functions, such as garbage collection, security, memory management, and many more.
-* It uses a library along with the files given by JRE (Java Runtime Environment) for running the program.
-* Both JRE and JDK contain JVM.
-* It is easily customizable. For instance, a user can feasibly allocate a maximum and minimum memory to it.
-* JVM can also execute a Java program line by line. It is thus also known as an interpreter.
-* JVM is also independent of the OS and hardware. It means that once a user writes a Java program, they can easily run it anywhere |
+| Why Use It? | Why use JDK? </br> Some crucial reasons to use JDK are: <ul> <li>It consists of various tools required for writing Java programs. </li><li> JDK also contains JRE for executing Java programs. </li><li> It includes an Appletviewer, Java application launcher, compiler, etc. </li><li> The compiler helps in converting the code written in Java into bytecodes. </li><li> The Java application launcher helps in opening a JRE. It then loads all of the necessary details and then executes all of its main methods. | Why use JRE? Some crucial reasons to use JRE are: </li><li> If a user wants to run the Java applets, then they must install JRE on their system. </li><li> The JRE consists of class libraries along with JVM and its supporting files. It has no other tools like a compiler or a debugger for Java development. </li><li> JRE uses crucial package classes like util, math, awt, lang, and various runtime libraries.</li></ul> | Why use JVM? </br> Some crucial reasons to use JVM are:
+<ul><li> It provides its users with a platform-independent way for executing the Java source code.</li>
+<li> JVM consists of various tools, libraries, and multiple frameworks.</li>
+<li> The JVM also comes with a Just-in-Time (JIT) compiler for converting the Java source code into a low-level machine language. Thus, it ultimately runs faster than any regular application.</li>
+<li> Once you run the Java program, you can run JVM on any given platform to save your time.</li></ul> |
+| Features | Features of JDK </br>Here are a few crucial features of JDK:
+<ul><li> It has all the features that JRE does.</li>
+<li> JDK enables a user to handle multiple extensions in only one catch block.</li>
+<li> It basically provides an environment for developing and executing the Java source code.</li>
+<li> It has various development tools like the debugger, compiler, etc.</li>
+<li> One can use the Diamond operator to specify a generic interface in place of writing the exact one.</li>
+<li> Any user can easily install JDK on Unix, Mac, and Windows OS (Operating Systems).</li> </ul>|
+Features of JRE </br> Here are a few crucial features of JRE:
+<ul><li> It is a set of tools that actually helps the JVM to run.</li>
+<li> The JRE also consists of deployment technology. It includes Java Plug-in and Java Web Start as well.</li>
+<li> A developer can easily run a source code in JRE. But it does not allow them to write and compile the concerned Java program.</li>
+<li> JRE also contains various integration libraries like the JDBC (Java Database Connectivity), JNDI (Java Naming and Directory Interface), RMI (Remote Method Invocation), and many more.</li>
+<li> It consists of the JVM and virtual machine client for Java HotSpot. </li></ul>|
+Features of JVM </br>Here are a few crucial features of JVM:
+<ul><li> The JVM enables a user to run applications on their device or in a cloud environment.</li>
+<li> It helps in converting the bytecode into machine-specific code.</li>
+<li> JVM also provides some basic Java functions, such as garbage collection, security, memory management, and many more.</li>
+<li> It uses a library along with the files given by JRE (Java Runtime Environment) for running the program.</li>
+<li> Both JRE and JDK contain JVM.</li>
+<li> It is easily customizable. For instance, a user can feasibly allocate a maximum and minimum memory to it.</li>
+<li> JVM can also execute a Java program line by line. It is thus also known as an interpreter.</li>
+<li> JVM is also independent of the OS and hardware. It means that once a user writes a Java program, they can easily run it anywhere</li></ul> |
 
 ## How JVM works?⭐️
    
