@@ -1,6 +1,58 @@
- 
-### Describing Garbage Collection
-What is Automatic Garbage Collection?
+## Which objects are eligible for garbage collection?
+
+Any object on the heap which unreachable through a reference from the stack is eligible for garbage collection.
+
+## Is programmer responsible to destroy objects?⭐️
+
+No! In java programmer need not to worry for this. Garbage collector destroys the objects which are no longer in use.
+Before calling garbage collector, it is recommended to make the unused object available for garbage collection.
+
+## How to make an object available for garbage collection?⭐️
+
+There are 4 ways to do so,
+
+1. Nullifying the reference variable: by doing so the object in heap will be unreachable from the stack.
+2. Reassigning the reference variable: the variable gets assigned with new object and the older one gets unreferenced from stack..
+3. Object inside method: we know for every method call the stack has a stack frame, which consists of all of its members. When a method is executed the stack frame is popped out from
+stack and thus all of its members get unreferenced from the stack.
+4. Creating anonymous object: we know an anonymous object is not referenced, so it is eligible for garbage collection.
+
+## How to call garbage collector?
+
+The most common way to invoke garbage collector is by invoking gc method of system class.
+``System.gc();``
+
+Other way is to invoke gc method with Runtime class.
+``Runtime.getRuntime().gc()``;
+
+This method suggests the JVM to recycle the unused objects in order to make the memory available for future allocation.
+
+## Can you guarantee that invoking gc will definitely call garbage collector?⭐️
+
+By invoking gc, we just request or suggest JVM to call garbage collector. But there is no guarantee that the Java virtual machine will do that. So answer is no!
+
+## If an object reference is set to null, will the Garbage Collector immediately free the memory held by that object ?
+
+No, the object will be available for garbage collection in the next cycle of the garbage collector.
+
+## When should we call garbage collector to run?
+
+When we are executing multiple blocks of code and after executing one block
+-> if we want to free the memory so that the next block of code may execute more efficiently
+-> if you are trying to get more accurate evaluation and want to start those code block with the same state as we started the very first block.... then we may call the gc.
+
+## Why is it bad idea to run gc?
+
+As we know we can not guarantee that the garbage collector will process when we call gc, so we should just do not bother to do it.
+Because when we call gc, Garbage collection temporarily stops all threads in our application for running.
+When garbage collection takes place our application is temporarily suspended.. and it would not resume until the gc process complete.
+This 'stops the world!' That is, running garbage collection can cause an unacceptable freeze in
+execution.
+
+## Describing Garbage Collection
+
+### What is Automatic Garbage Collection?
+
 Automatic garbage collection is the process of looking at heap memory, identifying which objects are in use and which are not, and deleting the unused objects. An in use object, or a referenced object, means that some part of your program still maintains a pointer to that object. An unused object, or unreferenced object, is no longer referenced by any part of your program. So the memory used by an unreferenced object can be reclaimed.
 
 In a programming language like C, allocating and deallocating memory is a manual process. In Java, process of deallocating memory is handled automatically by the garbage collector. The basic process can be described as follows.
@@ -29,9 +81,6 @@ Here is an example of such data. The Y axis shows the number of bytes allocated 
 
 ![Hotspot JVM](Images/Byteallocated.gif)
 As you can see, fewer and fewer objects remain allocated over time. In fact most objects have a very short life as shown by the higher values on the left side of the graph.
-
-
-
 
 ### Garbage collection and Java
 In programming languages like C, developers have to take close care of memory by allocating and deallocating it accordingly.

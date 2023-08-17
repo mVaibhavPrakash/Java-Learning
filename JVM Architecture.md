@@ -43,7 +43,7 @@ debug and execute java program.
 | Tools |	Since JDK is primarily responsible for the development, it consists of various tools for debugging, monitoring, and developing java applications. | JRE, on the other hand, does not consist of any tool- like a debugger, compiler, etc. It rather contains various supporting files for JVM, and the class libraries that help JVM in running the program. | JVM does not consist of any tools for software development. |
 | Implementation |	JDK = Development Tools + JRE (Java Runtime Environment)	| JRE = Libraries for running the application + JVM (Java Virtual Machine) |	JVM = Only the runtime environment that helps in executing the Java bytecode. |
 | Why Use It? | Why use JDK? </br> </br> Some crucial reasons to use JDK are: </br> <ul> <li>It consists of various tools required for writing Java programs. </li><li> JDK also contains JRE for executing Java programs. </li><li> It includes an Appletviewer, Java application launcher, compiler, etc. </li><li> The compiler helps in converting the code written in Java into bytecodes. </li><li> The Java application launcher helps in opening a JRE. It then loads all of the necessary details and then executes all of its main methods.</li></ul> | Why use JRE? </br> </br>Some crucial reasons to use JRE are: </br>  <ul></li><li> If a user wants to run the Java applets, then they must install JRE on their system. </li><li> The JRE consists of class libraries along with JVM and its supporting files. It has no other tools like a compiler or a debugger for Java development. </li><li> JRE uses crucial package classes like util, math, awt, lang, and various runtime libraries.</li></ul> | Why use JVM? </br> </br> Some crucial reasons to use JVM are: </br> <ul><li> It provides its users with a platform-independent way for executing the Java source code.</li><li> JVM consists of various tools, libraries, and multiple frameworks.</li><li> The JVM also comes with a Just-in-Time (JIT) compiler for converting the Java source code into a low-level machine language. Thus, it ultimately runs faster than any regular application.</li><li> Once you run the Java program, you can run JVM on any given platform to save your time.</li></ul> |
-| Features | Features of JDK </br> </br>Here are a few crucial features of JDK: </br>  <ul><li> It has all the features that JRE does.</li><li> JDK enables a user to handle multiple extensions in only one catch block.</li><li> It basically provides an environment for developing and executing the Java source code.</li><li> It has various development tools like the debugger, compiler, etc.</li><li> One can use the Diamond operator to specify a generic interface in place of writing the exact one.</li><li> Any user can easily install JDK on Unix, Mac, and Windows OS (Operating Systems).</li></ul> | Features of JRE </br> </br> Here are a few crucial features of JRE: </br> <ul><li> It is a set of tools that actually helps the JVM to run.</li><li> The JRE also consists of deployment technology. It includes Java Plug-in and Java Web Start as well.</li><li> A developer can easily run a source code in JRE. But it does not allow them to write and compile the concerned Java program.</li><li> JRE also contains various integration libraries like the JDBC (Java Database Connectivity), JNDI (Java Naming and Directory Interface), RMI (Remote Method Invocation), and many more.</li><li> It consists of the JVM and virtual machine client for Java HotSpot. </li></ul> | Features of JVM </br> </br>Here are a few crucial features of JVM: </br> <ul><li> The JVM enables a user to run applications on their device or in a cloud environment.</li><li> It helps in converting the bytecode into machine-specific code.</li><li> JVM also provides some basic Java functions, such as garbage collection, security, memory management, and many more.</li><li> It uses a library along with the files given by JRE (Java Runtime Environment) for running the program.</li><li> Both JRE and JDK contain JVM.</li><li> It is easily customizable. For instance, a user can feasibly allocate a maximum and minimum memory to it.</li><li> JVM can also execute a Java program line by line. It is thus also known as an interpreter.</li><li> JVM is also independent of the OS and hardware. It means that once a user writes a Java program, they can easily run it anywhere</li></ul> |
+| Features | Features of JDK </br> </br>Here are a few crucial features of JDK: </br>  <ul><li> It has all the features that JRE does.</li><li> JDK enables a user to handle multiple extensions in only one cIatch block.</li><li> It basically provides an environment for developing and executing the Java source code.</li><li> It has various development tools like the debugger, compiler, etc.</li><li> One can use the Diamond operator to specify a generic interface in place of writing the exact one.</li><li> Any user can easily install JDK on Unix, Mac, and Windows OS (Operating Systems).</li></ul> | Features of JRE </br> </br> Here are a few crucial features of JRE: </br> <ul><li> It is a set of tools that actually helps the JVM to run.</li><li> The JRE also consists of deployment technology. It includes Java Plug-in and Java Web Start as well.</li><li> A developer can easily run a source code in JRE. But it does not allow them to write and compile the concerned Java program.</li><li> JRE also contains various integration libraries like the JDBC (Java Database Connectivity), JNDI (Java Naming and Directory Interface), RMI (Remote Method Invocation), and many more.</li><li> It consists of the JVM and virtual machine client for Java HotSpot. </li></ul> | Features of JVM </br> </br>Here are a few crucial features of JVM: </br> <ul><li> The JVM enables a user to run applications on their device or in a cloud environment.</li><li> It helps in converting the bytecode into machine-specific code.</li><li> JVM also provides some basic Java functions, such as garbage collection, security, memory management, and many more.</li><li> It uses a library along with the files given by JRE (Java Runtime Environment) for running the program.</li><li> Both JRE and JDK contain JVM.</li><li> It is easily customizable. For instance, a user can feasibly allocate a maximum and minimum memory to it.</li><li> JVM can also execute a Java program line by line. It is thus also known as an interpreter.</li><li> JVM is also independent of the OS and hardware. It means that once a user writes a Java program, they can easily run it anywhere</li></ul> |
 
 ## How JVM works?⭐️
    
@@ -180,8 +180,7 @@ Class B, however, is the only class visible to other classes loaded by the exten
 
 By default the classes does not get initialised in this.
 
-//Memory Areas
-L3-00:12 What are the various memory areas present in JVM?⭐️
+## What are the various memory areas present in JVM?⭐️
 
     JVM has 5 different memory areas ..
     1. Method area
@@ -190,255 +189,134 @@ L3-00:12 What are the various memory areas present in JVM?⭐️
     4. PC Registers
     5. Native method area
 
-L3-00:30 Which memory area is used to store Static variables?
+## Which memory area is used to store Static variables?
 
-    JVM stores the Class level information in the Method area.
-    Class level information consists Class name, parent Class name, Method info, Variables info,
-    Constructors, Modifiers info, Constant pool info etc.
+JVM stores the Class level information in the Method area.
+Class level information consists Class name, parent Class name, Method info, Variables info,
+Constructors, Modifiers info, Constant pool info etc.
 
-    Whenever we start JVM, a method area gets created,
-    👉🏻 and that will be shared among all JVM threads.
+Whenever we start JVM, a method area gets created,
+👉🏻 and that will be shared among all JVM threads.
 
-L3-01:14 When are the static variables loaded in memory?
+## When are the static variables loaded in memory?
 
-    Static variables get loaded at the time of Class loading and gets stored in the method area.
+Static variables get loaded at the time of Class loading and gets stored in the method area.
 
-L3-01:31 What is Heap space in Java?⭐️
+## What is Heap space in Java?⭐️
 
-    Heap memory in JVM is used to store objects and corresponding instance variables.
-    👉🏻 Whenever we create objects, it is always created in Heap space.
+Heap memory in JVM is used to store objects and corresponding instance variables.
+👉🏻 Whenever we create objects, it is always created in Heap space.
 
-    Heap area gets created when we start JVM
-    👉🏻 Heap area is shared among all the threads.
+Heap area gets created when we start JVM
+👉🏻 Heap area is shared among all the threads.
 
-    Method and heap area need not be continuous.
+Method and heap area need not be continuous.
 
-L3-02:10 What is String pool?⭐️
+## What is Stack? What it stores?⭐️
 
-    String pool or string intern pool is a special storage area in Heap space.
-    When we create a string, it gets stored to the string pool, so that if any other string will get
-    created which exists in the pool then instead of creating new object,
-    the reference of existing string will be returned.
+Stack is a part of memory that stores each method call performed by that thread including primitives and local variables.
+👉🏻 For every thread, a new runtime stack gets created..
 
-L3-03:04 What is Stack? What it stores?⭐️
+## What is stack frame? What does it consist?
 
-    Stack is a part of memory that stores each method call performed by that thread including primitives
-    and local variables.
+Each entry in stack is called stack frame.
+1. Local Variable Array
+    * Which store local variables and corresponding values related to any method.
+2. Operand Stack
+    * It is a runtime workspace for JVM, to perform any intermediate operations.
+3. Frame data
+    * All symbols corresponding to any method are stored here.
 
-    👉🏻 For every thread, a new runtime stack gets created..
+👉🏻 For every method call one stack frame is created.
 
-L3-05:42 What is stack frame? What does it consist?
+## How stack and heap are interrelated?⭐️
 
-    Each entry in stack is called stack frame.
-    1. Local Variable Array
-            -> Which store local variables and corresponding values related to any method.
-    2. Operand Stack
-            -> It is a runtime workspace for JVM, to perform any intermediate operations.
-    3. Frame data
-            -> All symbols corresponding to any method are stored here.
+We know Local variables are stored on the stack, and all the objects in java are stored on the
+Heap area.
+👉🏻 For every object on the heap, there is a pointer which is the reference to that object.
+This reference variable is also stored on the stack. This is how Stack and heap are interrelated..
 
-    👉🏻 For every method call one stack frame is created.
+### How to get information about heap memory?
 
-How stack and heap are interrelated?⭐️
+We know the java application can communicate directly with JVM via runtime class.
+Runtime Class provides various methods from which we can get information about memory.
 
-    We know Local variables are stored on the stack, and all the objects in java are stored on the
-    Heap area.
-    👉🏻 For every object on the heap, there is a pointer which is the reference to that object.
-    This reference variable is also stored on the stack. This is how Stack and heap are interrelated..
+We create Runtime instance via method getInstance(), because this Class is Singleton class.
+```java
+Runtime r = Runtime.getInstance();
+r.maxMemory();
+//this method returns the maximum amount of memory that the Java virtual machine will attempt to use.
+r.totalMemory()		//this returns the total amount of memory in the Java virtual machine.
+r.freeMemory();		//this returns the amount of free memory in the Java Virtual Machine.
+```
 
-How to get information about heap memory?
+### What happens when there is not enough Heap Space for storing new objects?⭐️
 
-    We know the java application can communicate directly with JVM via runtime class.
-    Runtime Class provides various methods from which we can get information about memory.
+JVM tries to free up space but if it fails then JVM throws java.lang.OutOfMemoryError.
 
-    We create Runtime instance via method getInstance(), because this Class is Singleton class.
+### How to set minimum and maximum heap size??
 
-    Runtime r = Runtime.getInstance();
-    r.maxMemory();
-    //this method returns the maximum amount of memory that the Java virtual machine will attempt to use.
+By using -Xmx we can specify the maximum heap size for any program..
+And -Xms to set the minimum heap size..
 
-    r.totalMemory()		//this returns the total amount of memory in the Java virtual machine.
+``$ java -Xms512m -Xmx1024m <classname>``
 
-    r.freeMemory();		//this returns the amount of free memory in the Java Virtual Machine.
+### Why do member variables have default values whereas local variables do not have any default value ?
 
-What happens when there is not enough Heap Space for storing new objects?⭐️
+In java, ClassLoader is responsible to load the Class and while loading the Class they initialize
+the static variable and blocks.
+JVM does not have any idea about local variables at the time of Class loading, therefore local variables do not have any default values.
 
-    JVM tries to free up space but if it fails then JVM throws java.lang.OutOfMemoryError.
+### What PC registers are for?
 
-How to set minimum and maximum heap size??
+👉🏻 Every thread has separate PC register.
+PC registers is used to hold the address of current executing instruction. when the instruction gets executed the PC register will be updated with the next one.
 
-    By using -Xmx we can specify the maximum heap size for any program..
-    And -Xms to set the minimum heap size..
+### What is Native Method Stack?
 
-    $ java -Xms512m -Xmx1024m <classname>
-
-Why do member variables have default values whereas local variables do not have any default value ?
-
-    In java, ClassLoader is responsible to load the Class and while loading the Class they initialize
-    the static variable and blocks.
-
-    JVM does not have any idea about local variables at the time of Class loading, therefore
-    local variables do not have any default values.
-
-What PC registers are for?
-
-    👉🏻 Every thread has separate PC register.
-    PC registers is used to hold the address of current executing instruction. when the instruction gets
-    executed the PC register will be updated with the next one.
-
-What is Native Method Stack?
-
-    It is another memory space of JVM which stores the native method information.
-    👉🏻 for every thread, there will be a separated native method stack.
+It is another memory space of JVM which stores the native method information.
+👉🏻 for every thread, there will be a separated native method stack.
 
 //Execution Engine
 
-What is Execution engine? What it does?
+### What is Execution engine? What it does?
 
-    Execution engine is the component in JVM which is responsible to execute the byte code which is
-    assigned to the runtime data area.
+Execution engine is the component in JVM which is responsible to execute the byte code which is assigned to the runtime data area.
 
-    It has following sub-components:
-    1. Interpreter
-    2. JIT compiler
-    3. Garbage collector
+It has following sub-components:
+1. Interpreter
+2. JIT compiler
+3. Garbage collector
 
-What is Interpreter?
+### What is Interpreter?
 
-    Interpreter is a program that reads byte code in the sequential manner (line by line).
-      it runs the application by accepting file name argument from the command line,
+Interpreter is a program that reads byte code in the sequential manner (line by line).
+It runs the application by accepting file name argument from the command line, ``java <compiled file name>``
 
-      java <compiled file name>
+#### What are the limitations interpreter has?
 
-What are the limitations interpreter has?
+Interpreter interprets fast but executes slow!
+The limitation is, when a code of block or one method is called multiple times, every time a new interpretation is required.
 
-    Interpreter interprets fast but executes slow!
-    The limitation is, when a code of block or one method is called multiple times,
-    every time a new interpretation is required.
+### What is JIT compiler?⭐️
 
-What is JIT compiler?⭐️
+It stands for Just-in-time compiler.
+It compiles those byte code parts which are having similar functionality at the same time.
 
-    It stands for Just-in-time compiler.
-    It compiles those byte code parts which are having similar functionality at the same time.
+### Sub components of JIT compiler:
 
-Sub components of JIT compiler:
+1. **Intermediate code generator**: it produces intermediate code.
+2. **Code Optimizer**: Responsible for optimizing that intermediate code.
+3. **Target code generator**: Responsible for generating native code!
+4. **Profiler**: Responsible for finding the hot code! It finds which method is called multiple times.
 
-    1. Intermediate code generator: it produces intermediate code.
-    2. Code Optimizer: Responsible for optimizing that intermediate code.
-    3. Target code generator: Responsible for generating native code!
-    4. Profiler: Responsible for finding the hot code! It finds which method is called multiple times.
+## What are memory leaks? What are soft references?
 
-What is Garbage collector?
+Memory leak is a scenario that occurs when objects are no longer being used by the application,
+but the Garbage Collector is unable to remove them from working memory – because they’re still being referenced.
+As a result, the application consumes more and more resources – which eventually leads to OutOfMemoryError.
 
-    It is the component of Execution engine which frees up the memory by collecting and removing
-    the unreferenced objects.
-
-//
-
-What is garbage collection?
-
-    Garbage is unused and unreferenced objects, and Garbage collection is the process inside JVM which
-    identifies and discards those objects which are no longer required in the application.
-
-    ->It is a mechanism of JVM to reclaim heap space from objects which are eligible for garbage collection.
-
-Which objects are eligible for garbage collection?
-
-    Any object on the heap which unreachable through a reference from the stack is eligible for garbage collection.
-
-Is programmer responsible to destroy objects?⭐️
-
-    No! In java programmer need not to worry for this. Garbage collector destroys the objects which are no longer in use.
-    Before calling garbage collector, it is recommended to make the unused object available for garbage collection.
-
-How to make an object available for garbage collection?⭐️
-
-    There are 4 ways to do so,
-
-    1. Nullifying the reference variable: by doing so the object in heap will be unreachable from the stack.
-
-    2. Reassigning the reference variable: the variable gets assigned with new object and the older one gets unreferenced from stack..
-
-    3. Object inside method: we know for every method call the stack has a stack frame, which consists of all of its members. When a method is executed the stack frame is popped out from
-    stack and thus all of its members get unreferenced from the stack.
-
-    4. Creating anonymous object: we know an anonymous object is not referenced, so it is eligible for garbage collection.
-
-How to call garbage collector?
-
-    The most common way to invoke garbage collector is by invoking gc method of system class.
-          System.gc();
-
-    Other way is to invoke gc method with Runtime class.
-          Runtime.getRuntime().gc();
-
-    This method suggests the JVM to recycle the unused objects in order to make the memory available for
-    future allocation.
-
-Can you guarantee that invoking gc will definitely call garbage collector?⭐️
-
-    By invoking gc, we just request or suggest JVM to call garbage collector. But there is no guarantee
-    that the Java virtual machine will do that. So answer is no!
-
-If an object reference is set to null, will the Garbage Collector immediately free the memory held by that object ?
-
-    No, the object will be available for garbage collection in the next cycle of the garbage collector.
-
-When should we call garbage collector to run?
-
-    When we are executing multiple blocks of code and after executing one block
-    -> if we want to free the memory so that the next block of code may execute more efficiently
-    -> if you are trying to get more accurate evaluation and want to start those code block with the same
-    state as we started the very first block..
-    .. then we may call the gc.
-
-Why is it bad idea to run gc?
-
-    As we know we can not guarantee that the garbage collector will process when we call gc, so we should
-    just do not bother to do it.
-    Because when we call gc, Garbage collection temporarily stops all threads in our application for running.
-    When garbage collection takes place our application is temporarily suspended.. and it would not resume
-    until the gc process complete.
-    This 'stops the world!' That is, running garbage collection can cause an unacceptable freeze in
-    execution.
-
-When is the finalize() method gets called? What is the purpose of calling it?
-
-    Finalise method is a special method present in object class. That means every class can override this
-    method.
-    when we call the gc, it calls the finalise method before performing the clean up activity. This allows
-    programmer to perform other clean up activities too
-    -> like releasing any system resource, closing connections..
-
-    So when it is called? It is called before performing garbage collection.
-
-    However we can not be assured that the finalise method will be called when we call the gc..
-    We don't have any idea that the method is going to be called or not or when this method will going to
-    be called.
-
-Why we should not use finalize() method?⭐️
-
-    There is no assurance that finalize method will get called. Therefore it gets useless sometimes to put
-    any clean up code in the finalise method.
-
-So there is no use of finalize method?
-
-    We can use this method to check that are the rosaries are closed or not?
-    So you may not use finalize method to correct the problem but at least send out a warning that
-    something could be wrong.
-
-What are memory leaks? What are soft references?
-
-    memory leak is a scenario that occurs when objects are no longer being used by the application,
-    but the Garbage Collector is unable to remove them from working memory – because they’re still being referenced.
-     As a result, the application consumes more and more resources – which eventually leads to OutOfMemoryError.
-
-    Soft leaks: it may be possible that any objects are not being used for years but any third party API or
-    any other thing is there for keeping it live.. these kind of objects should be garbaged but they are
-    not because they are somehow referenced from stack.⭐️
-
-    # Java Overview
- Java is a programming language and computing platform first released by Sun Microsystems in 1995. It is the underlying technology that powers Java programs including utilities, games, and business applications. Java runs on more than 850 million personal computers worldwide, and on billions of devices worldwide, including mobile and TV devices. Java is composed of a number of key components that, as a whole, create the Java platform.
+**Soft leaks**: it may be possible that any objects are not being used for years but any third party API or any other thing is there for keeping it live.. these kind of objects should be garbaged but they are not because they are somehow referenced from stack.⭐️
 
 ## Java Runtime Edition
 When you download Java, you get the Java Runtime Environment (JRE). The JRE consists of the Java Virtual Machine (JVM), Java platform core classes, and supporting Java platform libraries. All three are required to run Java applications on your computer. With Java 7, Java applications run as desktop applications from the operating system, as a desktop application but installed from the Web using Java Web Start, or as a Web Embedded application in a browser (using JavaFX).
