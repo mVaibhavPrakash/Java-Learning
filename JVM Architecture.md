@@ -55,53 +55,42 @@ the compiler creates the Class file having the byte code.. This .class file goes
 Class loader is a set of components which loads the classes during runtime into JVM.
 These classes are not loaded all at once, when the application requires that particular class or we can say when we try to use a Class, Java ClassLoader loads that class into memory.
 
-L2-00:43 What activities are performed by the classloader subsystem?
+## What activities are performed by the classloader subsystem?
     
-    Class loader subsystem is responsible to perform these three activities:
-	     1.Loading
-	     2.Linking
-	     3.Initialization
+Class loader subsystem is responsible to perform these three activities:
+1. Loading
+2. Linking
+3. Initialization
 
-       Loading: The classloader reads the class and generates the binary data.
-       This binary data get stored inside method area.
-                Method area - class related data gets stored.
-       With all the class info, JVM creates an object of Type : java.lang.Class for that loaded class in
-       heap area.
-       This 'java.lang.Class' class object provides complete information for that class.
+* Loading: The classloader reads the class and generates the binary data.
+This binary data get stored inside method area.
+Method area - class related data gets stored.
+With all the class info, JVM creates an object of Type : java.lang.Class for that loaded class in
+heap area. This ``java.lang.Class`` class object provides complete information for that class.
 
-02:30  -> If we call a class more than once, will there be more than one java.lang.Class object for that class?
 
-            NO. Even though we call the class multiple times but in the heap area there will be only one
-            Class class object, because one Class class object for that particular class is enough to
-            provide information for that class. For any new object the class information will remain same.
+* Linking: It consists of three activities..
+    1. Verify
+    2. Prepare
+    3. Resolve
+    * Verification: Bytecode verifier ensures that code passed to java interpreter is in a fit state to be executed. This is also a reason why JAVA is secure..
+    * Preparation: JVM allocates memory to class level variables and assign default values to them.
+    * Resolution: JVM replaces symbolic names with original memory references from method area.
+        ```java
+        class Demo{
+          public static void public static void main(String[] args) {
+            String s = ...
+            Student s1 = new Student();
+          }
+        }
+        ```
+    Constant Pool of Demo : Demo, String, Student
+    In resolution, these names will get replaced with memory level references from method area.
 
-        Linking: It consists of three activities..
-                Verify
-                Prepare
-                Resolve
-
-            Verification: Bytecode verifier ensures that code passed to java interpreter is in a fit state
-            to be executed.
-            This is also a reason why JAVA is secure..
-
-            Preparation: JVM allocates memory to class level variables and assign default values to them.
-
-            Resolution: JVM replaces symbolic names with original memory references from method area.
-                        class Demo{
-                          public static void public static void main(String[] args) {
-                            String s = ...
-                            Student s1 = new Student();
-                          }
-                        }
-
-                    Constant Pool of Demo : Demo, String, Student
-              In resolution, these names will get replaced with memory level references from method area.
-
-        Initialization: -> Original value get assigned to the static variables.
-                        -> Static blocks get executed from parent to child and top to bottom in this phase.
-
-        Note: While loading linking initialisation any error occurs,
-        then we will get runtime exception saying java.lang.linkage error.
+* Initialization: 
+    * Original value get assigned to the static variables.
+    * Static blocks get executed from parent to child and top to bottom in this phase
+Note: While loading linking initialisation any error occurs, then we will get runtime exception saying java.lang.linkage error.
 
 ## What are the different class loaders used by JVM?
 
