@@ -62,20 +62,20 @@ Class loader subsystem is responsible to perform these three activities:
 2. Linking
 3. Initialization
 
-* Loading: The classloader reads the class and generates the binary data.
+* **Loading**: The classloader reads the class and generates the binary data.
 This binary data get stored inside method area.
 Method area - class related data gets stored.
 With all the class info, JVM creates an object of Type : java.lang.Class for that loaded class in
 heap area. This ``java.lang.Class`` class object provides complete information for that class.
 
 
-* Linking: It consists of three activities..
-    1. Verify
-    2. Prepare
-    3. Resolve
-    * Verification: Bytecode verifier ensures that code passed to java interpreter is in a fit state to be executed. This is also a reason why JAVA is secure..
-    * Preparation: JVM allocates memory to class level variables and assign default values to them.
-    * Resolution: JVM replaces symbolic names with original memory references from method area.
+* **Linking**: It consists of three activities..
+    1. *Verify*
+    2. *Prepare*
+    3. *Resolve*
+    * **Verification**: Bytecode verifier ensures that code passed to java interpreter is in a fit state to be executed. This is also a reason why JAVA is secure..
+    * **Preparation**: JVM allocates memory to class level variables and assign default values to them.
+    * **Resolution**: JVM replaces symbolic names with original memory references from method area.
         ```java
         class Demo{
           public static void public static void main(String[] args) {
@@ -87,7 +87,7 @@ heap area. This ``java.lang.Class`` class object provides complete information f
     Constant Pool of Demo : Demo, String, Student
     In resolution, these names will get replaced with memory level references from method area.
 
-* Initialization: 
+* **Initialization**: 
     * Original value get assigned to the static variables.
     * Static blocks get executed from parent to child and top to bottom in this phase
 Note: While loading linking initialisation any error occurs, then we will get runtime exception saying java.lang.linkage error.
