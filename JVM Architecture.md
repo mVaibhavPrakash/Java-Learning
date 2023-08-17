@@ -1,47 +1,103 @@
-L1-00:40 What do you mean by Virtual Machine?
+## What do you mean by Virtual Machine?
 
-    A software program that simulates behaviour of a physical machine, which can perform operations
-    like any other physical machine. For example,
-    -> VMWare is the system based virtual machine
-    -> JVM is the Application based virtual machine
+A software program that simulates behaviour of a physical machine, which can perform operations
+like any other physical machine. For example,
+-> VMWare is the system based virtual machine
+-> JVM is the Application based virtual machine
 
-L1-01:17 What is JVM?
+## What is JVM?
 
-    "Java Virtual Machine"
-    Basically JVM provides runtime environment in which Java programs are executed.
-    First the java programs get compiled and converted into byte code.
-    JVM is responsible for loading Class files and executing that byte code.
+"Java Virtual Machine"
+Basically JVM provides runtime environment in which Java programs are executed.
+First the java programs get compiled and converted into byte code.
+JVM is responsible for loading Class files and executing that byte code.
 
--> What makes Java platform independent? Or what you mean by 'write once, run anywhere'?⭐️
+## What makes Java platform independent? Or what you mean by 'write once, run anywhere'?⭐️
 
-    JVM converts the byte code to the machine specific code i.e,
-    one java program can be executed on any type operating system because of JVM.
-    That is why we need different kinds of JVM for different Operating systems.
+JVM converts the byte code to the machine specific code i.e,
+one java program can be executed on any type operating system because of JVM.
+That is why we need different kinds of JVM for different Operating systems.
 
-L1-02:36 Is JVM, a compiler or interpreter ?⭐️
+## Is JVM, a compiler or interpreter ?⭐️
 
-    JVM is an interpreter.
+JVM is an interpreter.
 
-L1-02:45 What are JRE, JDK? how these are different from JVM?⭐️
+## What are JRE, JDK? how these are different from JVM?⭐️
     
-    JRE: JRE stands for Java runtime environment and JVM is actually an implementation of JRE.
-    It consists of set of libraries like jar files and other files that JVM uses at runtime.
-    so it is different from JVM as it only contains the environment to execute java program.
+JRE: JRE stands for Java runtime environment and JVM is actually an implementation of JRE.
+It consists of set of libraries like jar files and other files that JVM uses at runtime.
+so it is different from JVM as it only contains the environment to execute java program.
 
-    JDK: The Java development kit consists more than JRE, as it provides all the tools which
-    are used to develop java applications along with tools and executable required to compile,
-    debug and execute java program.
+JDK: The Java development kit consists more than JRE, as it provides all the tools which
+are used to develop java applications along with tools and executable required to compile,
+debug and execute java program.
 
-L1-04:25 How JVM works?⭐️
+## Difference Between JDK, JRE, and JVM
+
+| Parameter |	JDK	| JRE |	JVM |
+| --- | --- | --- | --- |
+| Full-Form	The JDK is an abbreviation for Java Development Kit. |	The JRE is an abbreviation for Java Runtime Environment. | The JVM is an abbreviation for Java Virtual Machine. |
+| Definition | The JDK (Java Development Kit) is a software development kit that develops applications in Java. Along with JRE, the JDK also consists of various development tools (Java Debugger, JavaDoc, compilers, etc.)	 | The Java Runtime Environment (JRE) is an implementation of JVM. It is a type of software package that provides class libraries of Java, JVM, and various other components for running the applications written in Java programming.	| The Java Virtual Machine (JVM) is a platform-independent abstract machine that has three notions in the form of specifications. This document describes the requirement of JVM implementation. |
+| Functionality	The JDK primarily assists in executing codes. It primarily functions in development. | JRE has a major responsibility for creating an environment for the execution of code.| JVM specifies all of the implementations. It is responsible for providing all of these implementations to the JRE. |
+| Platform Dependency | The JDK is platform-dependent. It means that for every different platform, you require a different JDK.	| JRE, just like JDK, is also platform-dependent. It means that for every different platform, you require a different JRE. | The JVM is platform-independent. It means that you won’t require a different JVM for every different platform. |
+| Tools |	Since JDK is primarily responsible for the development, it consists of various tools for debugging, monitoring, and developing java applications. | JRE, on the other hand, does not consist of any tool- like a debugger, compiler, etc. It rather contains various supporting files for JVM, and the class libraries that help JVM in running the program. | JVM does not consist of any tools for software development. |
+| Implementation |	JDK = Development Tools + JRE (Java Runtime Environment)	| JRE = Libraries for running the application + JVM (Java Virtual Machine) |	JVM = Only the runtime environment that helps in executing the Java bytecode. |
+| Why Use It? | Why use JDK?
+Some crucial reasons to use JDK are:
+* It consists of various tools required for writing Java programs.
+* JDK also contains JRE for executing Java programs.
+* It includes an Appletviewer, Java application launcher, compiler, etc.
+* The compiler helps in converting the code written in Java into bytecodes.
+* The Java application launcher helps in opening a JRE. It then loads all of the necessary details and then executes all of its main methods. |
+ Why use JRE?
+Some crucial reasons to use JRE are:
+
+* If a user wants to run the Java applets, then they must install JRE on their system.
+* The JRE consists of class libraries along with JVM and its supporting files. It has no other tools like a compiler or a debugger for Java development.
+* JRE uses crucial package classes like util, math, awt, lang, and various runtime libraries. |
+Why use JVM?
+Some crucial reasons to use JVM are:
+
+* It provides its users with a platform-independent way for executing the Java source code.
+* JVM consists of various tools, libraries, and multiple frameworks.
+* The JVM also comes with a Just-in-Time (JIT) compiler for converting the Java source code into a low-level machine language. Thus, it ultimately runs faster than any regular application.
+* Once you run the Java program, you can run JVM on any given platform to save your time. |
+| Features | Features of JDK 
+Here are a few crucial features of JDK:
+* It has all the features that JRE does.
+* JDK enables a user to handle multiple extensions in only one catch block.
+* It basically provides an environment for developing and executing the Java source code.
+* It has various development tools like the debugger, compiler, etc.
+* One can use the Diamond operator to specify a generic interface in place of writing the exact one.
+* Any user can easily install JDK on Unix, Mac, and Windows OS (Operating Systems). |
+Features of JRE
+Here are a few crucial features of JRE:
+* It is a set of tools that actually helps the JVM to run.
+* The JRE also consists of deployment technology. It includes Java Plug-in and Java Web Start as well.
+* A developer can easily run a source code in JRE. But it does not allow them to write and compile the concerned Java program.
+* JRE also contains various integration libraries like the JDBC (Java Database Connectivity), JNDI (Java Naming and Directory Interface), RMI (Remote Method Invocation), and many more.
+* It consists of the JVM and virtual machine client for Java HotSpot. |
+Features of JVM
+Here are a few crucial features of JVM:
+
+* The JVM enables a user to run applications on their device or in a cloud environment.
+* It helps in converting the bytecode into machine-specific code.
+* JVM also provides some basic Java functions, such as garbage collection, security, memory management, and many more.
+* It uses a library along with the files given by JRE (Java Runtime Environment) for running the program.
+* Both JRE and JDK contain JVM.
+* It is easily customizable. For instance, a user can feasibly allocate a maximum and minimum memory to it.
+* JVM can also execute a Java program line by line. It is thus also known as an interpreter.
+* JVM is also independent of the OS and hardware. It means that once a user writes a Java program, they can easily run it anywhere |
+
+## How JVM works?⭐️
    
-    We know, JVM is a runtime engine to run the java applications.. when we write a java file..
-    the compiler creates the Class file having the byte code.. This .class file goes into various steps.
+We know, JVM is a runtime engine to run the java applications.. when we write a java file..
+the compiler creates the Class file having the byte code.. This .class file goes into various steps.
 
-L2-00:17 What is Classloader?⭐️
+## What is Classloader?⭐️
     
-    Class loader is a set of components which loads the classes during runtime into JVM.
-    These classes are not loaded all at once, when the application requires that particular class or we can say
-    when we try to use a Class, Java ClassLoader loads that class into memory.
+Class loader is a set of components which loads the classes during runtime into JVM.
+These classes are not loaded all at once, when the application requires that particular class or we can say when we try to use a Class, Java ClassLoader loads that class into memory.
 
 L2-00:43 What activities are performed by the classloader subsystem?
     
@@ -91,51 +147,93 @@ L2-00:43 What activities are performed by the classloader subsystem?
         Note: While loading linking initialisation any error occurs,
         then we will get runtime exception saying java.lang.linkage error.
 
-L2-07:14 What are the different class loaders used by JVM?
+## What are the different class loaders used by JVM?
 
-    There are three diff class loaders, each of them has a predefined location from where they loads class.
+There are three diff class loaders, each of them has a predefined location from where they loads class.
 
-    Bootstrap Class Loader | Primordial Class loader:
+### Bootstrap Class Loader
 
-        It is responsible to load the classes which are present in bootstrap path (jdk->jre->lib->rt.jar)
-        like, rt.jar..
-        rt.jar -> core java apis.
-        so this Class loader loads the core java api classes.
+Java classes are loaded by an instance of java.lang.ClassLoader. However, class loaders are classes themselves. So the question is, who loads the java.lang.ClassLoader itself?
 
-        This Class loader is parent of all other class loaders in java. It is not implemented in java.
+This is where the bootstrap or primordial class loader comes into play.
 
-    Extension Class Loader:
+It's mainly responsible for loading JDK internal classes, typically rt.jar and other core libraries located in the $JAVA_HOME/jre/lib directory. Additionally, the Bootstrap class loader serves as the parent of all the other ClassLoader instances.
 
-        This Class loader is responsible to load classes from the extension path. (jre/lib/ext/'*'.jar)
-        Extension Class loader is the implementation of Bootstrap Class loader.
-        It is implemented by sun.misc.Launcher$ExtClassLoader
+This bootstrap class loader is part of the core JVM and is written in native code, as pointed out in the above example. Different platforms might have different implementations of this particular class loader.
 
-    Application Class loader | System Class loader:
+### Extension Class Loader
 
-        It is responsible for loading the classes from the CLASSPATH environment variable.
-        This is the child class of Extension Class loader.
-        It is implemented by sun.misc.Launcher$AppClassLoader.
+The extension class loader is a child of the bootstrap class loader, and takes care of loading the extensions of the standard core Java classes so that they're available to all applications running on the platform.
 
-    Note: Except the bootstrap classloader which is only implemented in native languages not in java,
-    all the classloader are implemented using java.lang.ClassLoader.
+The extension class loader loads from the JDK extensions directory, usually the $JAVA_HOME/lib/ext directory, or any other directory mentioned in the java.ext.dirs system property.
 
-L2-09:28 How does JVM load the classes?⭐️
+### System Class Loader
 
-    The classloader subsystem works on the delegation principle. One classloader delegates the
-    responsibility for loading the class to their parent and if it doesn't work, then they loads the class
-    by themselves
+The system or application class loader, on the other hand, takes care of loading all the application level classes into the JVM. It loads files found in the classpath environment variable, -classpath, or -cp command line option. It's also a child of the extensions class loader.
+
+> **Note:** Except the bootstrap classloader which is only implemented in native languages not in java, all the classloader are implemented using java.lang.ClassLoader.
+
+## How Do Class Loaders Work?
+
+Class loaders are part of the Java Runtime Environment. When the JVM requests a class, the class loader tries to locate the class and load the class definition into the runtime using the fully qualified class name.
+
+The ``java.lang.ClassLoader.loadClass()`` method is responsible for loading the class definition into runtime. It tries to load the class based on a fully qualified name.
+
+If the class isn't already loaded, it delegates the request to the parent class loader. This process happens recursively.
+
+Eventually, if the parent class loader doesn’t find the class, then the child class will call the java.net.URLClassLoader.findClass() method to look for classes in the file system itself. 
+
+If the last child class loader isn't able to load the class either, it throws ``java.lang.NoClassDefFoundError`` or ``java.lang.ClassNotFoundException``.
+
+Let's look at an example of the output when ClassNotFoundException is thrown:
+```java
+java.lang.ClassNotFoundException: com.baeldung.classloader.SampleClassLoader    
+    at java.net.URLClassLoader.findClass(URLClassLoader.java:381)    
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:424)    
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:357)    
+    at java.lang.Class.forName0(Native Method)    
+    at java.lang.Class.forName(Class.java:348)
+```
+If we go through the sequence of events right from calling java.lang.Class.forName(), we can see that it first tries to load the class through the parent class loader, and then java.net.URLClassLoader.findClass() to look for the class itself.
+
+When it still doesn't find the class, it throws a ClassNotFoundException.
+
+Now let's examine three important features of class loaders.
+
+### Delegation Model
+
+Class loaders follow the delegation model, where on request to find a class or resource, a ClassLoader instance will delegate the search of the class or resource to the parent class loader.
+
+Let's say we have a request to load an application class into the JVM. The system class loader first delegates the loading of that class to its parent extension class loader, which in turn delegates it to the bootstrap class loader.
+
+Only if the bootstrap and then the extension class loader are unsuccessful in loading the class, the system class loader tries to load the class itself.
+
+### Unique Classes
+
+As a consequence of the delegation model, it's easy to ensure unique classes, as we always try to delegate upwards.
+
+If the parent class loader isn't able to find the class, only then will the current instance attempt to do so itself.
+
+### Visibility
+
+In addition, children class loaders are visible to classes loaded by their parent class loaders.
+
+For instance, classes loaded by the system class loader have visibility into classes loaded by the extension and bootstrap class loaders, but not vice-versa.
+
+To illustrate this, if Class A is loaded by the application class loader, and class B is loaded by the extensions class loader, then both A and B classes are visible as far as other classes loaded by the application class loader are concerned.
+
+Class B, however, is the only class visible to other classes loaded by the extension class loader.
+
 
  What is the difference between static and dynamic class loading?⭐️
 
-L2-12:30 What is difference between Class.forName() and ClassLoader.loadClass()?⭐️
+## What is difference between Class.forName() and ClassLoader.loadClass()?⭐️
 
-    Both methods try to load classes dynamically.
+* Both methods try to load classes dynamically.
+* The most common method is Class.forName(). By default the classes get initialised using this method.
+* loadClass() is an instance method and requires a particular ClassLoader to load the class.
 
-    The most common method is Class.forName(). By default the classes get initialised using this method.
-
-    loadClass() is an instance method and requires a particular ClassLoader to load the class.
-
-    By default the classes does not get initialised in this.
+By default the classes does not get initialised in this.
 
 //Memory Areas
 L3-00:12 What are the various memory areas present in JVM?⭐️
