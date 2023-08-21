@@ -310,6 +310,12 @@ It compiles those byte code parts which are having similar functionality at the 
 3. **Target code generator**: Responsible for generating native code!
 4. **Profiler**: Responsible for finding the hot code! It finds which method is called multiple times.
 
+The JIT compiler is able to perform certain simple optimizations while compiling a series of bytecode to native machine language. Some of these optimizations performed by JIT compilers are data analysis, reduction of memory accesses by register allocation, translation from stack operations to register operations, elimination of common sub-expressions, etc.
+
+### How does just-in-time compilation work?
+
+Bytecode is an important feature in applications that help in cross-platform execution. Additionally, bytecode must be compiled and translated to a language a CPU can properly understand. However, how that bytecode is translated into a native language may have a large impact on the speed and performance of an application. To improve performance, JIT compilers will, at runtime, compile suitable bytecode sequences into machine code. The code is typically sent to a processor, where the code instructions are then carried out. When the same block of bytecode is needed again, the previously created object code will be used. Code that looks like it can be re-optimized is called "hot." Code can be monitored, and hot code paths can be created to optimize code, as opposed to having the same sequence of code be interpreted multiple times -- which may occur in other compiler types. With less chance of code being interpreted multiple times, there is less overhead, meaning faster execution speeds. This is why most implementations of JVM use JIT compilers.
+
 ## What are memory leaks? What are soft references?
 
 Memory leak is a scenario that occurs when objects are no longer being used by the application,

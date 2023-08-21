@@ -45,6 +45,7 @@ CompletableFuture<String> CompletableFuture = new CompletableFuture<String>();
 The most frequently used CompletableFuture methods are:
 
 * ``supplyAsync()``: It complete its job asynchronously. The result of supplier is run by a task from ``ForkJoinPool.commonPool()`` as default. The ``supplyAsync()`` method returns CompletableFuture on which we can apply other methods.
+* ``runAsync()``: It complete its job asynchronously. The ``runAsync()`` method returns ``CompletableFuture<Void>``(means nothing) on which we can't apply other methods.
 * ``thenApply()``: The method accepts function as an arguments. It returns a new CompletableStage when this stage completes normally. The new stage use as the argument to the supplied function.
 * ``join()``: the method returns the result value when complete. It also throws a CompletionException (unchecked exception) if completed exceptionally.
 
@@ -81,6 +82,13 @@ Output:
 38416
 ```
 
+> NOTE: By Default ``supplyAsync()`` and ``runAsync()`` uses ``ForkJoinPool`` but we can pass 2nd argument as Executor which will act as custom Threadpool.
+Ex- 
+```java
+Executor executor = Executors.newCachedThreadPool();
+CompletableFuture<List<Students>> futureStudents = CompletableFuture.supplyAsync(()->getStudents(),executor);
+futureStudents.get();
+```
 ### Exception Handling of CompletableFuture
 
 Consider the following figure, which represents the five CFs:
